@@ -1,0 +1,39 @@
+@import url('https://fonts.google.com/specimen/B612?preview.text_type=custom');
+
+body {
+    margin: 0 0 0 0;
+    font-family: 'B612', sans-serif;
+    text-decoration: none;
+}
+  
+* {
+    box-sizing: border-box;
+    font-size: 1rem;
+    animation: fade-in 1s;
+    font-family: 'B612', sans-serif;
+    color: black;
+}
+
+/* 
+
+==================================
+
+BACKGROUND CSS
+
+==================================
+
+*/
+
+#tsparticles {
+    height: 100vh;
+}
+
+.landingTitle {
+    z-index: 999;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
