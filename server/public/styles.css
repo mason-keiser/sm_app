@@ -124,6 +124,7 @@ BACKGROUND CSS
 
 .hamCont > h3 {
     cursor: pointer;
+    font-size: 1.3rem;
 }
 
 .hamCont > h3:hover {
@@ -210,6 +211,10 @@ BACKGROUND CSS
         width: 100vw;
         background: rgba(243, 243, 243, 1)
     }
+    .hamCont > h3 {
+        cursor: pointer;
+        font-size: 1.5rem;
+    }
 }
 
 @media screen and (max-width: 360px) {
@@ -221,6 +226,11 @@ BACKGROUND CSS
 
     .dateHolder > h4 {
         font-size: 1rem;
+    }
+
+    .hamCont > h3 {
+        cursor: pointer;
+        font-size: 1.2rem;
     }
 
 }
