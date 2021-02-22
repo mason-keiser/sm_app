@@ -36,7 +36,7 @@ const Landing = (props) => {
                 </div>
             </div>
             <div className='landingTitle'>
-                <h1>ÜConnect</h1>
+                <h1>üConnect</h1>
                 <h5>Click Here to Login</h5>
                 <h6> Mason Keiser  © 2021. All rights reserved.</h6>
             </div>
