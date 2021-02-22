@@ -49,8 +49,9 @@ BACKGROUND CSS
     bottom: 3%;
 }
 
-.landingTitle > h5 {
+.landingTitle > h5:hover {
     cursor: pointer;
+    color: rgba(0, 0, 0, 0.4);
 }
 
 .landingNav {
@@ -92,12 +93,79 @@ BACKGROUND CSS
 
 .ham:hover{
     cursor: pointer;
+    color: rgba(0, 0, 0, 0.4);
 }
 
 .landingNav > h3,
 .landingNav > h6 {
     align-items: flex-end;
 }
+
+.hamCont {
+    color: white;
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    background: black;
+    display: flex;
+    background: rgba(243, 243, 243, 0.8);
+    flex-direction: column;
+    padding-top: 3rem;
+    align-items: center;
+    height: 100vh;
+    width: 40vw;
+    transition: left 1s;
+    left:-40vw;
+}
+.hamCont.open{
+    left:0px;
+    display: flex;
+}
+
+.hamCont > h3 {
+    cursor: pointer;
+}
+
+.hamCont > h3:hover {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.hamCont > h4 {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 4rem;
+}
+
+.x{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    cursor: pointer;
+}
+
+.x:hover{
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.nav {
+    height: 15vh;    
+}
+
+#navIcon {
+    height: 4rem;
+    border: 3px solid white;
+    border-radius: 50%;
+    padding: 0.5rem;
+}
+
+#side {
+    height: 100%;
+    position: fixed;
+}
+
+
 
 @media screen and (orientation: landscape) and (max-height: 440px) {
     .landingTitle {
@@ -119,6 +187,11 @@ BACKGROUND CSS
         font-size: 3rem;
     }
 
+    .hamCont.open {
+        width: 100vw;
+        background: rgba(243, 243, 243, 1)
+    }
+
 }
 
 @media screen and (max-width: 430px) {
@@ -132,6 +205,10 @@ BACKGROUND CSS
     }
     .dateHolder > h4 {
         font-size: 1.3rem;
+    }
+    .hamCont.open {
+        width: 100vw;
+        background: rgba(243, 243, 243, 1)
     }
 }
 

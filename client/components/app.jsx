@@ -31,7 +31,7 @@ const App = (props) => {
     let navTert = (view.name === 'init')
         ? <Landing setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
         : (view.name === 'login')
-            ? <Login dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
+            ? <Login setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
             : null
 
     return (
