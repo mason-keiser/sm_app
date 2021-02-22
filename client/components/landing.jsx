@@ -29,9 +29,11 @@ const Landing = (props) => {
     return (
         <div className='appCont'>
             <div className='landingNav'>
-                <div></div>
-                <h2 className="date2 m-4">{dateBuilder(new Date())}</h2>
-                <h3>{formatAMPM(new Date())}</h3>
+                <h1 className='ham fas fa-bars'></h1>
+                <div className='dateHolder'>
+                    <h3 className="date2 m-3">{dateBuilder(new Date())}</h3>
+                    <h4>{formatAMPM(new Date())}</h4>
+                </div>
             </div>
             <div className='landingTitle'>
                 <h1>ÜConnect</h1>

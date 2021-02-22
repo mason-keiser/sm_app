@@ -44,7 +44,7 @@ BACKGROUND CSS
     margin: 5rem;
 }
 
-.landingTitle > h6 {
+.landingTitle > h6{
     position: absolute;
     bottom: 3%;
 }
@@ -54,13 +54,44 @@ BACKGROUND CSS
     z-index: 999;
     display: flex;
     flex-direction: row;
+    justify-content: flex-end;
+    width: 100vw;
 }
 
-.landingNav > h3 {
+.dateHolder {
+    display: flex;
+    margin-right: 2rem;
+}
+
+.dateHolder > h4 {
     border: 2px solid black;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 5px;
     width: fit-content;
+    height: fit-content;
+    margin: auto;
+}
+
+.dateHolder > h3 {
+    margin-right: 6rem;
+}
+
+.ham {
+    position: absolute;
+    left: 2%;
+    top: 25%;
+    font-size: 2rem;
+    color: black;
+    cursor: pointer;
+}
+
+.ham:hover{
+    cursor: pointer;
+}
+
+.landingNav > h3,
+.landingNav > h6 {
+    align-items: flex-end;
 }
 
 @media screen and (orientation: landscape) and (max-height: 440px) {
