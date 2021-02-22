@@ -121,3 +121,14 @@ BACKGROUND CSS
         font-size: 4rem;
     }
 }
+
+@media screen and (max-width: 430px) {
+  
+    .landingTitle > h1 {
+        margin: 5rem;
+        font-size: 4rem;
+    }
+    .dateHolder{
+        margin-right: 5px;
+    }
+}
