@@ -29,7 +29,7 @@ BACKGROUND CSS
 }
 
 .landingTitle {
-    z-index: 999;
+    z-index: 950;
     position: absolute;
     height: 100vh;
     width: 100vw;
@@ -47,6 +47,10 @@ BACKGROUND CSS
 .landingTitle > h6{
     position: absolute;
     bottom: 3%;
+}
+
+.landingTitle > h5 {
+    cursor: pointer;
 }
 
 .landingNav {
@@ -83,6 +87,7 @@ BACKGROUND CSS
     font-size: 2rem;
     color: black;
     cursor: pointer;
+    z-index: 999;
 }
 
 .ham:hover{
