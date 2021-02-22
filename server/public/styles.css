@@ -106,20 +106,14 @@ BACKGROUND CSS
 
 @media screen and (orientation: landscape) and (max-height: 330px) {
     .landingTitle {
-        justify-content: unset;
+        justify-content: center;
     }
 
     .landingTitle > h1 {
         margin: 3rem;
+        font-size: 3rem;
     }
-}
 
-@media screen and (max-width: 330px) {
-  
-    .landingTitle > h1 {
-        margin: 5rem;
-        font-size: 4rem;
-    }
 }
 
 @media screen and (max-width: 430px) {
@@ -131,4 +125,20 @@ BACKGROUND CSS
     .dateHolder{
         margin-right: 5px;
     }
+    .dateHolder > h4 {
+        font-size: 1.3rem;
+    }
+}
+
+@media screen and (max-width: 360px) {
+  
+    .landingTitle > h1 {
+        margin: 5rem;
+        font-size: 4rem;
+    }
+
+    .dateHolder > h4 {
+        font-size: 1rem;
+    }
+
 }
