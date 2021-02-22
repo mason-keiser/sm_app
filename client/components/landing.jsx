@@ -31,7 +31,7 @@ const Landing = (props) => {
             <div className='landingNav'>
                 <h1 className='ham fas fa-bars'></h1>
                 <div className='dateHolder'>
-                    <h3 className="date2 m-3">{dateBuilder(new Date())}</h3>
+                    <h4 className="date2 border-0 m-3">{dateBuilder(new Date())}</h4>
                     <h4>{formatAMPM(new Date())}</h4>
                 </div>
             </div>
