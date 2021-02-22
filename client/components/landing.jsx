@@ -4,11 +4,39 @@ import Particles from 'react-tsparticles'
 
 const Landing = (props) => {
 
+    const dateBuilder = (d) => {
+        let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        let date = d.getDate();
+        let month = months[d.getMonth()];
+        let year = d.getFullYear();
+        return `${month} ${date}, ${year}`
+    }
+
+    const formatAMPM = (d) => {
+        var hours = d.getHours();
+        var minutes = d.getMinutes();
+        var ampm = hours >= 12 ? 'pm' : 'am';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        minutes = minutes < 10 ? '0'+minutes : minutes;
+        var strTime = hours + ':' + minutes + ' ' + ampm;
+        return strTime;
+      }
+
+    let today = new Date();
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
     return (
         <div className='appCont'>
-            <div>
-                <h1 className='landingTitle'> Social Media App</h1>
+            <div className='landingNav'>
+                <div></div>
+                <h2 className="date2 m-4">{dateBuilder(new Date())}</h2>
+                <h3>{formatAMPM(new Date())}</h3>
+            </div>
+            <div className='landingTitle'>
+                <h1>ÜConnect</h1>
+                <h5>Click Here to Login</h5>
+                <h6> Mason Keiser  © 2021. All rights reserved.</h6>
             </div>
             <Particles
                 id="tsparticles"

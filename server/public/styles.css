@@ -36,4 +36,57 @@ BACKGROUND CSS
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+
+.landingTitle > h1 {
+    font-size: 5rem;
+    margin: 5rem;
+}
+
+.landingTitle > h6 {
+    position: absolute;
+    bottom: 3%;
+}
+
+.landingNav {
+    position: absolute;
+    z-index: 999;
+    display: flex;
+    flex-direction: row;
+}
+
+.landingNav > h3 {
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 5px;
+    width: fit-content;
+}
+
+@media screen and (orientation: landscape) and (max-height: 440px) {
+    .landingTitle {
+        justify-content: unset;
+    }
+
+    .landingTitle > h1 {
+        margin: 5rem;
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 330px) {
+    .landingTitle {
+        justify-content: unset;
+    }
+
+    .landingTitle > h1 {
+        margin: 3rem;
+    }
+}
+
+@media screen and (max-width: 330px) {
+  
+    .landingTitle > h1 {
+        margin: 5rem;
+        font-size: 4rem;
+    }
 }
