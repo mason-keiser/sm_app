@@ -4,6 +4,15 @@ import Bg from "./bg"
 
 const Landing = (props) => {
 
+    useEffect(() => {
+    setInterval(() => {
+        if (document.getElementById('time') !== null) {
+            document.getElementById('time').textContent = props.formatAMPM(new Date())
+        } else {
+        }
+    }, 1000);
+    }, [])
+
     const handleMenu = () => {
         const ham = document.getElementById('side');
         const icon = document.getElementById('ham');
@@ -23,7 +32,7 @@ const Landing = (props) => {
                 <h1 onClick={() => handleMenu()} id='ham' className='ham fas fa-bars'></h1>
                 <div className='dateHolder'>
                     <h4 className="date2 border-0 m-3">{props.dateBuilder(new Date())}</h4>
-                    <h4>{props.formatAMPM(new Date())}</h4>
+                    <h4 id='time'>{props.formatAMPM(new Date())}</h4>
                 </div>
             </div>
             <div className='landingTitle'>
@@ -35,7 +44,7 @@ const Landing = (props) => {
                 <h2 onClick={() => handleMenu()}className='x fa fa-times'></h2>
                 <h3 className='m-4' onClick={() => props.setView({name: 'login', params: {}})}>Login</h3>
                 <h3 className='m-2'>Sign Up</h3>
-                <h4>Mason Keiser © 2021</h4 >
+                <h4>üConnect © 2021</h4 >
             </div>
             <Bg/>
         </div>
