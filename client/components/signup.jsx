@@ -93,7 +93,7 @@ const Signup = (props) => {
             <h6 className='footer'> Mason Keiser  © 2021. All rights reserved.</h6>
             <div id='side'  className='hamCont'>
                 <h2 onClick={() => handleMenu()} className='x fa fa-times'></h2>
-                <h3 className='m-4'>Sign Up</h3>
+                <h3 className='m-4' onClick={() => props.setView({name: 'login', params: {}})}>Login</h3>
                 <h3 className='m-2' onClick={() => props.setView({name: 'init', params: {}})}>◄ Back Home</h3>
                 <h4>üConnect © 2021</h4 >
             </div>
