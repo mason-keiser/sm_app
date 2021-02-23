@@ -255,6 +255,10 @@ LOGIN FORM STYLING
     z-index: 999;
 }
 
+#loginForm{
+    margin-bottom: 5rem;
+}
+
 .loginFormCont > h2 {
     z-index: 999;
 }
@@ -268,7 +272,7 @@ LOGIN FORM STYLING
     background: white;
     width: 4vw;
     height: 6vh;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -276,11 +280,11 @@ LOGIN FORM STYLING
 }
 
 .form-group > div > input {
-    font-size: 1.5rem;
+    font-size: 1rem;
     width: 20vw;
     height: 6vh;
     border: none;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.2);
 }
 
 .footer {
@@ -300,10 +304,10 @@ LOGIN FORM STYLING
 
 .loginButton > button {
     background: white;
-    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.2);
     margin: auto;
-    width: 10vw;
-    height: 6vh;
+    width: 7vw;
+    height: 5vh;
 }
 
 .loginButton > button:hover {
@@ -319,13 +323,12 @@ LOGIN FORM STYLING
 }
 
 .altButtons > h5{
-    border: 2px solid black;
     padding: 10px;
     border-radius: 15px;
 }
 
 .altButtons > h5:hover{
-    background: rgba(255, 255, 255, 0.8);
+    color: rgba(0, 0, 0, 0.6);
     cursor: pointer;
 }
 #password {
@@ -334,4 +337,5 @@ LOGIN FORM STYLING
 
 #eye {
     cursor: pointer;
+    box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.2)
 }

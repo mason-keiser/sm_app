@@ -41,7 +41,7 @@ const Login = (props) => {
             </div>
             <div className='loginFormCont'>
               <h2 className='title2 m-5'> Login </h2>
-                <form style={{zIndex: '999'}}>
+                <form id='loginForm' style={{zIndex: '999'}}>
                     <div className='form-group'>
                         <label htmlFor="email">Username: </label>
                         <div className='d-flex'>
