@@ -3,6 +3,7 @@ import React from 'react'
 import Particles from 'react-tsparticles'
 import Landing from "./landing"
 import Login from "./login"
+import Signup from './signup'
 
 
 const App = (props) => {
@@ -32,8 +33,9 @@ const App = (props) => {
         ? <Landing setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
         : (view.name === 'login')
             ? <Login setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
-            : null
-
+            : (view.name === 'signup')
+                ? <Signup setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
+                : null
     return (
         <div>
             {navTert}

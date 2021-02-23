@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import React from 'react'
 import Bg from "./bg"
 
-const Login = (props) => {
+const Signup = (props) => {
 
     const handleMenu = () => {
         const ham = document.getElementById('side');
@@ -43,9 +43,9 @@ const Login = (props) => {
                     <h4>{props.formatAMPM(new Date())}</h4>
                 </div>
             </div>
-            <div className='loginFormCont'>
-              <h2 className='title2'> Login </h2>
-                <form id='loginForm' style={{zIndex: '999'}}>
+            <div className='signUpFormCont'>
+              <h2 className='title2'> Sign Up </h2>
+                <form id='signUpForm' style={{zIndex: '999'}}>
                     <div className='form-group'>
                         <label htmlFor="email">Username: </label>
                         <div className='d-flex'>
@@ -61,20 +61,28 @@ const Login = (props) => {
                             <span onClick={() => passEye()} id='eye' className='fas fa-eye-slash show'></span>
                         </div>
                     </div>
+                    <div className='form-group'>
+                        <label htmlFor="password">Re-Enter Password:</label>
+                        <div className='d-flex'>
+                            <span className='fas fa-lock'></span>
+                            <input type="password" placeholder='Re-Enter Password' autoComplete='current-password' name='password' className="" id='password'/>
+                            <span onClick={() => passEye()} id='eye' className='fas fa-eye-slash show'></span>
+                        </div>
+                    </div>
                     <div id="required" className="required"></div>
-                    <div className='loginButton'>
-                         <button type='submit' className='btn mt-2'>Login</button>
+                    <div className='signUpButton'>
+                         <button type='submit' className='btn mt-2'>Sign Up</button>
                     </div>
                     <div className='altButtons'>
                         <h5>Login As Guest</h5>
-                        <h5  onClick={() => props.setView({name: 'signup', params: {}})}>Sign Up</h5>
+                        <h5 onClick={() => props.setView({name: 'login', params: {}})}>Login</h5>
                     </div>
                 </form>
             </div>
             <h6 className='footer'> Mason Keiser  © 2021. All rights reserved.</h6>
             <div id='side'  className='hamCont'>
                 <h2 onClick={() => handleMenu()} className='x fa fa-times'></h2>
-                <h3 className='m-4'  onClick={() => props.setView({name: 'signup', params: {}})}>Sign Up</h3>
+                <h3 className='m-4'>Sign Up</h3>
                 <h3 className='m-2' onClick={() => props.setView({name: 'init', params: {}})}>◄ Back Home</h3>
                 <h4>üConnect © 2021</h4 >
             </div>
@@ -83,4 +91,4 @@ const Login = (props) => {
     )
 }
 
-export default Login
+export default Signup
