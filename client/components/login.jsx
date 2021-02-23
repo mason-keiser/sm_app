@@ -50,14 +50,14 @@ const Login = (props) => {
                         <label htmlFor="email">Username: </label>
                         <div className='d-flex'>
                             <span className='fas fa-user'></span>
-                            <input type="text" autoComplete='current-username' placeholder='Username' name='email' className="" id='email'/>
+                            <input type="text" autoComplete='current-username' placeholder='Enter Username' name='email' className="" id='email'/>
                         </div>
                     </div>
                     <div className='form-group'>
                         <label htmlFor="password">Password:</label>
                         <div className='d-flex'>
                             <span className='fas fa-lock'></span>
-                            <input type="password" placeholder='Password' autoComplete='current-password' name='password' className="" id='password'/>
+                            <input type="password" placeholder='Enter Password' autoComplete='current-password' name='password' className="" id='password'/>
                             <span onClick={() => passEye()} id='eye' className='fas fa-eye-slash show'></span>
                         </div>
                     </div>
