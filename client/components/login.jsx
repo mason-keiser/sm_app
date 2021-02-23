@@ -19,14 +19,18 @@ const Login = (props) => {
 
     const passEye = () => {
         const eye = document.getElementById('eye')
+        const pass = document.getElementById('password')
+        console.log(pass.type)
         if (eye.classList.contains('show')) {
-            eye.classList.remove('fa-eye')
-            eye.classList.remove('show')
-            eye.classList.add ('fa-eye-slash')
-        } else {
-            eye.classList.add('fa-eye')
-            eye.classList.add('show')
             eye.classList.remove('fa-eye-slash')
+            eye.classList.remove('show')
+            pass.type = 'text'
+            eye.classList.add ('fa-eye')
+        } else {
+            eye.classList.add('fa-eye-slash')
+            eye.classList.add('show')
+            pass.type = 'password'
+            eye.classList.remove('fa-eye')
         }
     }
     
@@ -54,7 +58,7 @@ const Login = (props) => {
                         <div className='d-flex'>
                             <span className='fas fa-lock'></span>
                             <input type="password" placeholder='Password' autoComplete='current-password' name='password' className="" id='password'/>
-                            <span onClick={() => passEye()} id='eye' className='fas fa-eye show'></span>
+                            <span onClick={() => passEye()} id='eye' className='fas fa-eye-slash show'></span>
                         </div>
                     </div>
                     <div id="required" className="required"></div>
