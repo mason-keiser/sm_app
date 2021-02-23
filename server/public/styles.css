@@ -430,6 +430,9 @@ LOGIN FORM STYLING
         width: 7vw;
     }
 
+    .altButtons > h5{
+        margin-bottom: 2rem;
+    }
 }
 
 @media screen and (orientation: portrait) and (min-width: 760px) {
