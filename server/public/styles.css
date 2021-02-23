@@ -369,6 +369,14 @@ LOGIN & SIGNUP FORM STYLING
     cursor: pointer;
 }
 
+#eye1 {
+    cursor: pointer;
+}
+
+#eye2 {
+    cursor: pointer;
+}
+
 .title2{
     margin: 3rem;
 }
@@ -416,6 +424,14 @@ LOGIN & SIGNUP FORM STYLING
     }
 
     #eye {
+        width: 7vw;
+    }
+
+    #eye1{
+        width: 7vw;
+    }
+
+    #eye2 {
         width: 7vw;
     }
 
@@ -480,6 +496,14 @@ LOGIN & SIGNUP FORM STYLING
         width: 7vw;
     }
 
+    #eye1 {
+        width: 7vw;
+    }
+
+    #eye2 {
+        width: 7vw;
+    }
+
     .altButtons > h5{
         margin-bottom: 2rem;
     }
@@ -500,6 +524,15 @@ LOGIN & SIGNUP FORM STYLING
     #eye{
         height: 5vh;
     }
+
+    #eye1{
+        height: 5vh;
+    }
+
+    #eye2{
+        height: 5vh;
+    }
+
 
     .form-group > div > span {
         width: 10vw;
