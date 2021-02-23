@@ -90,10 +90,6 @@ const Bg = (props) => {
                     interactivity: {
                     detectsOn: "canvas",
                     events: {
-                        onHover: {
-                        enable: true,
-                        mode: "repulse"
-                        },
                         onClick: {
                         enable: true,
                         mode: "push"

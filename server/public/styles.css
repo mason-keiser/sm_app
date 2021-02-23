@@ -26,6 +26,7 @@ BACKGROUND CSS
 
 #tsparticles {
     height: 100vh;
+    position: absolute;
 }
 
 .landingTitle {
@@ -233,4 +234,104 @@ BACKGROUND CSS
         font-size: 1.2rem;
     }
 
+}
+
+/*
+
+==================================
+
+LOGIN FORM STYLING
+
+==================================
+
+*/
+
+.loginFormCont {
+    justify-content: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 999;
+}
+
+.loginFormCont > h2 {
+    z-index: 999;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group > div > span {
+    background: white;
+    width: 4vw;
+    height: 6vh;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.form-group > div > input {
+    font-size: 1.5rem;
+    width: 20vw;
+    height: 6vh;
+    border: none;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.footer {
+    position: absolute;
+    bottom: 3%;
+    text-align: center;
+    z-index: 999;
+    margin: auto;
+    width: 100vw;
+}
+
+.loginButton {
+    display: flex;
+    align-items: center;
+    margin: 2rem;
+}
+
+.loginButton > button {
+    background: white;
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    width: 10vw;
+    height: 6vh;
+}
+
+.loginButton > button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.altButtons {
+    z-index: 999;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 4rem;
+}
+
+.altButtons > h5{
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.altButtons > h5:hover{
+    background: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+#password {
+    width: 16vw;
+}
+
+#eye {
+    cursor: pointer;
 }
