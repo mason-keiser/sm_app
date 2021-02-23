@@ -266,13 +266,13 @@ LOGIN FORM STYLING
 .form-group {
     display: flex;
     flex-direction: column;
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
 }
 
 .form-group > div > span {
     background: white;
     width: 4vw;
     height: 6vh;
-    box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -284,7 +284,6 @@ LOGIN FORM STYLING
     width: 20vw;
     height: 6vh;
     border: none;
-    box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.2);
 }
 
 .footer {
@@ -304,7 +303,7 @@ LOGIN FORM STYLING
 
 .loginButton > button {
     background: white;
-    box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
     margin: auto;
     width: 7vw;
     height: 5vh;
@@ -337,5 +336,125 @@ LOGIN FORM STYLING
 
 #eye {
     cursor: pointer;
-    box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.2)
+}
+
+.title2{
+    margin: 3rem;
+}
+
+@media screen and (max-width: 440px) {
+    .form-group > div > input { 
+        width: 70vw;
+        border-radius: 0;
+    }
+
+    #password {
+        width: 60vw;
+    }
+
+    .form-group > div > span {
+        width: 10vw;
+    }
+
+    .loginButton > button {
+        width: 20vw;
+        height: 7vh
+    }
+}
+
+@media screen and (max-height: 450px) {
+    .form-group > div > input { 
+        width: 57vw;
+        border-radius: 0;
+        height: 12vh;
+    }
+
+    .form-group > div > span {
+        width: 7vw;
+        height: 12vh;
+    }
+
+    #password {
+        width: 50vw;
+        height: 12vh;
+    }
+
+    #eye {
+        width: 7vw;
+    }
+
+    .loginFormCont {
+        justify-content: center;
+        height: 150vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 999;
+    }
+
+    .loginButton > button {
+        width: 15vw;
+        height: 12vh
+    }
+
+    .title2{
+        margin: 0;
+        margin-top: 5rem;
+    }
+
+    .footer{
+        position: relative;
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 330px) {
+    .title2{
+        margin: 0;
+        margin-top: 10rem;
+    }
+
+    .form-group > div > input { 
+        height: 15vh;
+    }
+
+    .form-group > div > span {
+        height: 15vh;
+    }
+
+    #password {
+        width: 50vw;
+        height: 15vh;
+    }
+
+    #eye {
+        width: 7vw;
+    }
+
+}
+
+@media screen and (orientation: portrait) and (min-width: 760px) {
+    .form-group > div > input { 
+        width: 40vw;
+        border-radius: 0;
+        height: 5vh;
+    }
+
+    #password {
+        width: 30vw;
+        height: 5vh;
+    }
+
+    #eye{
+        height: 5vh;
+    }
+
+    .form-group > div > span {
+        width: 10vw;
+        height: 5vh;
+    }
+
+    .loginButton > button {
+        width: 15vw;
+        height: 4vh
+    }
 }
