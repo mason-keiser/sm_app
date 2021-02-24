@@ -4,6 +4,42 @@ import Bg from "./bg"
 
 const Signup = (props) => {
 
+    const [user_name, setUserName] = useState('');
+    const [user_password1, setUserPassword1] = useState('');
+    const [user_password2, setUserPassword2] = useState('');
+
+    const handleSubmit = (callback) => {
+        event.preventDefault()
+        let newPass = null
+        if (user_password1 === user_password2) {
+            newPass = user_password1
+        } else {
+            return null
+        }
+        event.preventDefault()
+        const obj = {
+            user_name: user_name,
+            user_password: newPass,
+        }
+        if (!obj) {
+           return null
+        } else {
+        callback(obj)
+        }
+    }
+
+    const handleChange = (event) => {
+        if (event.target.id === 'user_name') {
+            setUserName(`@${event.target.value}`)
+        }
+        if (event.target.id === 'password1') {
+            setUserPassword1(event.target.value)
+        }
+        if (event.target.id === 'password2') {
+            setUserPassword2(event.target.value)
+        }
+    } 
+
     const handleMenu = () => {
         const ham = document.getElementById('side');
         const icon = document.getElementById('ham');
@@ -56,19 +92,19 @@ const Signup = (props) => {
             </div>
             <div className='signUpFormCont'>
               <h2 className='title2'> Sign Up </h2>
-                <form id='signUpForm' style={{zIndex: '999'}}>
+                <form onSubmit={() => handleSubmit(props.signup)} id='signUpForm' style={{zIndex: '999'}}>
                     <div className='form-group'>
                         <label htmlFor="email">Username: </label>
                         <div className='d-flex'>
                             <span className='fas fa-user'></span>
-                            <input type="text" autoComplete='current-username' placeholder='Enter Username' name='email' className="" id='email'/>
+                            <input type="text" autoComplete='current-username' placeholder='Enter Username' name='email' className="" onChange={handleChange} id='user_name'/>
                         </div>
                     </div>
                     <div className='form-group'>
                         <label htmlFor="password">Password:</label>
                         <div className='d-flex'>
                             <span className='fas fa-lock'></span>
-                            <input type="password" placeholder='Enter Password' autoComplete='current-password' name='password' className="pass1" id='password'/>
+                            <input type="password" placeholder='Enter Password' autoComplete='current-password' name='password' className="pass1" onChange={handleChange} id='password1'/>
                             <span onClick={() => passEye(event)} title='1' id='eye1' className='fas fa-eye-slash show'></span>
                         </div>
                     </div>
@@ -76,7 +112,7 @@ const Signup = (props) => {
                         <label htmlFor="password">Re-Enter Password:</label>
                         <div className='d-flex'>
                             <span className='fas fa-lock'></span>
-                            <input type="password" placeholder='Re-Enter Password' autoComplete='current-password' name='password' className="pass2" id='password'/>
+                            <input type="password" placeholder='Re-Enter Password' autoComplete='current-password' name='password' className="pass2" onChange={handleChange} id='password2'/>
                             <span onClick={() => passEye()} title='2' id='eye2' className='fas fa-eye-slash show'></span>
                         </div>
                     </div>

@@ -42,6 +42,60 @@ const App = (props) => {
                 })
     }
 
+    const loginAsGuest = () => {
+        fetch('/api/login/guest/guest', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json'}
+        })
+            .then(response => {
+                if (response.status === 400 || response.status === 404) {
+                    return null
+                } else {
+                    return response.json();
+                }
+            })
+                .then(result => {
+                    if (!result) {
+                        return null
+                    } else {
+                        setUser({
+                            user_id: result[0].user_id,
+                            user_name: result[0].user_name,
+                            user_profile_image: result[0].user_profile_image ? result[0].user_profile_image : null,
+                            user_profile_header: result[0].user_profile_header ? result[0].user_header_image : null
+                        })
+                    }
+                })
+    }
+
+    const signUp = (signupInfo) => {
+        console.log(signupInfo)
+        fetch('/api/signUp', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify(signupInfo)
+        })
+        .then(response => {
+            if (response.status === 400 || response.status === 404) {
+                return null
+            } else {
+                return response.json();
+            }
+        })
+            .then(result => {
+                if (!result) {
+                    return null
+                } else {
+                    setUser({
+                        user_id: result.user_id,
+                        user_name: result.user_name,
+                        user_profile_image: result.user_profile_image ? result.user_profile_image : null,
+                        user_profile_header: result.user_profile_header ? result.user_header_image : null
+                    })
+                }
+            })
+    }
+
     const dateBuilder = (d) => {
         let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         let date = d.getDate();
@@ -64,9 +118,9 @@ const App = (props) => {
     let navTert = (view.name === 'init')
         ? <Landing setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
         : (view.name === 'login')
-            ? <Login login={login} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
+            ? <Login login={login} loginInfo={loginAsGuest} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
             : (view.name === 'signup')
-                ? <Signup setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
+                ? <Signup signup={signUp} loginInfo={loginAsGuest} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                 : null
     return (
         <div>

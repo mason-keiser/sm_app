@@ -365,6 +365,14 @@ LOGIN & SIGNUP FORM STYLING
     width: 16vw;
 }
 
+#password1 {
+    width: 16vw;
+}
+
+#password2{
+    width: 16vw;
+}
+
 #eye {
     cursor: pointer;
 }
@@ -388,6 +396,14 @@ LOGIN & SIGNUP FORM STYLING
     }
 
     #password {
+        width: 60vw;
+    }
+
+    #password1 {
+        width: 60vw;
+    }
+
+    #password2 {
         width: 60vw;
     }
 
@@ -419,6 +435,16 @@ LOGIN & SIGNUP FORM STYLING
     }
 
     #password {
+        width: 50vw;
+        height: 12vh;
+    }
+
+    #password1 {
+        width: 50vw;
+        height: 12vh;
+    }
+
+    #password2 {
         width: 50vw;
         height: 12vh;
     }
@@ -492,6 +518,16 @@ LOGIN & SIGNUP FORM STYLING
         height: 15vh;
     }
 
+    #password1 {
+        width: 50vw;
+        height: 15vh;
+    }
+
+    #password2 {
+        width: 50vw;
+        height: 15vh;
+    }
+
     #eye {
         width: 7vw;
     }
@@ -517,6 +553,16 @@ LOGIN & SIGNUP FORM STYLING
     }
 
     #password {
+        width: 30vw;
+        height: 5vh;
+    }
+
+    #password1 {
+        width: 30vw;
+        height: 5vh;
+    }
+
+    #password2 {
         width: 30vw;
         height: 5vh;
     }
