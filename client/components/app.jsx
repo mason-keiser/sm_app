@@ -43,7 +43,7 @@ const App = (props) => {
     }
 
     const loginAsGuest = () => {
-        fetch('/api/login/guest/guest', {
+        fetch('/api/login/@guest/guest', {
             method: 'GET',
             headers: { 'Content-Type': 'application/json'}
         })
@@ -116,11 +116,11 @@ const App = (props) => {
     }
 
     let navTert = (view.name === 'init')
-        ? <Landing setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
+        ? <Landing loginAsGuest={loginAsGuest} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
         : (view.name === 'login')
-            ? <Login login={login} loginInfo={loginAsGuest} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
+            ? <Login login={login} loginAsGuest={loginAsGuest} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
             : (view.name === 'signup')
-                ? <Signup signup={signUp} loginInfo={loginAsGuest} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
+                ? <Signup signup={signUp} loginAsGuest={loginAsGuest} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                 : null
     return (
         <div>

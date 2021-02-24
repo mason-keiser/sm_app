@@ -121,7 +121,7 @@ const Signup = (props) => {
                          <button type='submit' className='btn mt-2'>Sign Up</button>
                     </div>
                     <div className='altButtons'>
-                        <h5>Login As Guest</h5>
+                        <h5 onClick={() => props.loginAsGuest()}>Login As Guest</h5>
                         <h5 onClick={() => props.setView({name: 'login', params: {}})}>Login</h5>
                     </div>
                 </form>
