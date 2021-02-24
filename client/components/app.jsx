@@ -35,6 +35,8 @@ const App = (props) => {
                         setUser({
                             user_id: result[0].user_id,
                             user_name: result[0].user_name,
+                            user_profile_image: result[0].user_profile_image ? result[0].user_profile_image : null,
+                            user_header_image: result[0].user_header_image ? result[0].user_header_image : null
                         })
                     }
                 })
