@@ -10,10 +10,31 @@ const Signup = (props) => {
 
     const handleSubmit = (callback) => {
         event.preventDefault()
+        const use  = document.getElementById('use');
+        const pass1 = document.getElementById('lo');
+        const pass2 = document.getElementById('lo2')
+        const req = document.getElementById('required')
         let newPass = null
         if (user_password1 === user_password2) {
             newPass = user_password1
         } else {
+            pass1.style.color='red'
+            pass2.style.color = 'red'
+            req.textContent ='* passwords do not match *'
+            return
+        }
+        if (!user_name) {
+            use.style.color = 'red'
+            req.textContent ='* red fields are required for sign up *'
+        } if (!user_password1) {
+            pass1.style.color='red'
+            req.textContent ='* red fields are required for sign up *'
+        }  if (!user_password2) {
+            pass2.style.color='red'
+            req.textContent ='* red fields are required for sign up *'
+        } 
+        if (!user_name || !user_password1 || !user_password2) {
+            event.preventDefault()
             return null
         }
         event.preventDefault()
@@ -96,14 +117,14 @@ const Signup = (props) => {
                     <div className='form-group'>
                         <label htmlFor="email">Username: </label>
                         <div className='d-flex'>
-                            <span className='fas fa-user'></span>
+                            <span id='use' className='fas fa-user'></span>
                             <input type="text" autoComplete='current-username' placeholder='Enter Username' name='email' className="" onChange={handleChange} id='user_name'/>
                         </div>
                     </div>
                     <div className='form-group'>
                         <label htmlFor="password">Password:</label>
                         <div className='d-flex'>
-                            <span className='fas fa-lock'></span>
+                            <span id='lo' className='fas fa-lock'></span>
                             <input type="password" placeholder='Enter Password' autoComplete='current-password' name='password' className="pass1" onChange={handleChange} id='password1'/>
                             <span onClick={() => passEye(event)} title='1' id='eye1' className='fas fa-eye-slash show'></span>
                         </div>
@@ -111,12 +132,12 @@ const Signup = (props) => {
                     <div className='form-group'>
                         <label htmlFor="password">Re-Enter Password:</label>
                         <div className='d-flex'>
-                            <span className='fas fa-lock'></span>
+                            <span id='lo2' className='fas fa-lock'></span>
                             <input type="password" placeholder='Re-Enter Password' autoComplete='current-password' name='password' className="pass2" onChange={handleChange} id='password2'/>
                             <span onClick={() => passEye()} title='2' id='eye2' className='fas fa-eye-slash show'></span>
                         </div>
                     </div>
-                    <div id="required" className="required"></div>
+                    <div style={{color: 'red', textAlign: 'center'}} id="required" className="required"></div>
                     <div className='signUpButton'>
                          <button type='submit' className='btn mt-2'>Sign Up</button>
                     </div>

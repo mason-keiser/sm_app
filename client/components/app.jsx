@@ -82,7 +82,14 @@ const App = (props) => {
         })
         .then(response => {
             if (response.status === 400 || response.status === 404) {
-                return null
+                const use  = document.getElementById('use');
+                const pass1 = document.getElementById('lo');
+                const pass2 = document.getElementById('lo2')
+                const req = document.getElementById('required')
+                    use.style.color = 'red';
+                    pass1.style.color = 'red';
+                    pass2.style.color = 'red';
+                    req.textContent = '* information entered incorrectly *'
             } else {
                 return response.json();
             }
