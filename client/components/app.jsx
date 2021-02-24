@@ -9,6 +9,36 @@ import Signup from './signup'
 const App = (props) => {
 
     const [view, setView] = useState({ name: 'init', params: {} })
+    const [user, setUser] = useState({})
+
+    const login = (loginInfo) => {
+        if (!loginInfo) {
+            return null
+        }
+        const name = loginInfo.user_name;
+        const password = loginInfo.user_password;
+        fetch('/api/login/' + name + '/' + password, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json'}
+        })
+            .then(response => {
+                if (response.status === 400 || response.status === 404) {
+                    return null
+                } else {
+                    return response.json();
+                }
+            })
+                .then(result => {
+                    if (!result) {
+                        return null
+                    } else {
+                        setUser({
+                            user_id: result[0].user_id,
+                            user_name: result[0].user_name,
+                        })
+                    }
+                })
+    }
 
     const dateBuilder = (d) => {
         let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -32,7 +62,7 @@ const App = (props) => {
     let navTert = (view.name === 'init')
         ? <Landing setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
         : (view.name === 'login')
-            ? <Login setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
+            ? <Login login={login} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
             : (view.name === 'signup')
                 ? <Signup setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                 : null

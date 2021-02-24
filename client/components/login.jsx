@@ -4,6 +4,31 @@ import Bg from "./bg"
 
 const Login = (props) => {
 
+    const [user_name, setUserName] = useState('')
+    const [user_password, setUserPassword] = useState('')
+
+    const handleSubmit = (callback) => {
+        event.preventDefault()
+        const obj = {
+            user_name: user_name,
+            user_password: user_password
+        }
+        if (!obj) {
+            null
+        } else {
+        callback(obj)
+        }
+    }
+
+    const handleChange = (event) => {
+        if (event.target.id === 'user_name') {
+            setUserName(`@${event.target.value}`)
+        }
+        if (event.target.id === 'password') {
+            setUserPassword(event.target.value)
+        }
+    } 
+
     const handleMenu = () => {
         const ham = document.getElementById('side');
         const icon = document.getElementById('ham');
@@ -45,19 +70,19 @@ const Login = (props) => {
             </div>
             <div className='loginFormCont'>
               <h2 className='title2'> Login </h2>
-                <form id='loginForm' style={{zIndex: '999'}}>
+                <form onSubmit={() => handleSubmit(props.login)} id='loginForm' style={{zIndex: '999'}}>
                     <div className='form-group'>
                         <label htmlFor="email">Username: </label>
                         <div className='d-flex'>
                             <span className='fas fa-user'></span>
-                            <input type="text" autoComplete='current-username' placeholder='Enter Username' name='email' className="" id='email'/>
+                            <input type="text" autoComplete='current-username' placeholder='Enter Username' name='email' className="" onChange={handleChange} id='user_name'/>
                         </div>
                     </div>
                     <div className='form-group'>
                         <label htmlFor="password">Password:</label>
                         <div className='d-flex'>
                             <span className='fas fa-lock'></span>
-                            <input type="password" placeholder='Enter Password' autoComplete='current-password' name='password' className="" id='password'/>
+                            <input type="password" placeholder='Enter Password' autoComplete='current-password' name='password' className="" onChange={handleChange} id='password'/>
                             <span onClick={() => passEye()} id='eye' className='fas fa-eye-slash show'></span>
                         </div>
                     </div>
