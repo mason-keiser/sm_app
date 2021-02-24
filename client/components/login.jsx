@@ -8,6 +8,20 @@ const Login = (props) => {
     const [user_password, setUserPassword] = useState('')
 
     const handleSubmit = (callback) => {
+        const use = document.getElementById('use');
+        const lock = document.getElementById('lo')
+        const req = document.getElementById('required')
+        if (!user_name) {
+            use.style.color = 'red'
+            req.textContent ='* red fields are required for login *'
+        } if (!user_password) {
+            lock.style.color='red'
+            req.textContent ='* red fields are required for login *'
+        } 
+        if (!user_name || !user_password) {
+            event.preventDefault()
+            return null
+        }
         event.preventDefault()
         const obj = {
             user_name: user_name,
@@ -74,19 +88,19 @@ const Login = (props) => {
                     <div className='form-group'>
                         <label htmlFor="email">Username: </label>
                         <div className='d-flex'>
-                            <span className='fas fa-user'></span>
+                            <span id='use' className='fas fa-user'></span>
                             <input type="text" autoComplete='current-username' placeholder='Enter Username' name='email' className="" onChange={handleChange} id='user_name'/>
                         </div>
                     </div>
                     <div className='form-group'>
                         <label htmlFor="password">Password:</label>
                         <div className='d-flex'>
-                            <span className='fas fa-lock'></span>
+                            <span id='lo' className='fas fa-lock'></span>
                             <input type="password" placeholder='Enter Password' autoComplete='current-password' name='password' className="" onChange={handleChange} id='password'/>
                             <span onClick={() => passEye()} id='eye' className='fas fa-eye-slash show'></span>
                         </div>
                     </div>
-                    <div id="required" className="required"></div>
+                    <div style={{color: 'red', textAlign: 'center'}} id="required" className="required"></div>
                     <div className='loginButton'>
                          <button type='submit' className='btn mt-2'>Login</button>
                     </div>

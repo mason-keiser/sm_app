@@ -23,7 +23,12 @@ const App = (props) => {
         })
             .then(response => {
                 if (response.status === 400 || response.status === 404) {
-                    return null
+                    const use = document.getElementById('use');
+                    const lock = document.getElementById('lo')
+                    const req = document.getElementById('required')
+                        use.style.color = 'red';
+                        lock.style.color = 'red';
+                        req.textContent = '* login information entered incorrectly *'
                 } else {
                     return response.json();
                 }
