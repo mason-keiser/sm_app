@@ -297,6 +297,7 @@ LOGIN & SIGNUP FORM STYLING
     width: 20vw;
     height: 6vh;
     border: none;
+    outline: none;
 }
 
 .footer {
@@ -363,14 +364,17 @@ LOGIN & SIGNUP FORM STYLING
 }
 #password {
     width: 16vw;
+    outline: none;
 }
 
 #password1 {
     width: 16vw;
+    outline: none;
 }
 
 #password2{
     width: 16vw;
+    outline: none;
 }
 
 #eye {
