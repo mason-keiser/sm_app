@@ -3,6 +3,8 @@ const express = require('express');
 
 const db = require('./database');
 const ClientError = require('./client_error');
+const crypto = require('crypto');
+const bcrypt = require('bcrypt');
 const staticMiddleware = require('./static_middleware');
 const sessionMiddleware = require('./session_middleware');
 
@@ -22,12 +24,18 @@ app.get('/api/health-check', (req, res, next) => {
 //  SIGN UP API POST REQUEST THAT ADDS USER INFO TO DB
 
 app.post('/api/signUp/', (req, res, next) => {
+  let password =  req.body.user_password;
+
   const sql = `
   INSERT INTO "users" ("user_name", "user_password")
   VALUES                  ($1, $2)
   RETURNING *;
   `;
-  const params = [req.body.user_name, req.body.user_password];
+
+  const salt = bcrypt.genSaltSync(10);
+  var hash = bcrypt.hashSync(req.body.user_password, salt)
+
+  const params = [req.body.user_name, hash];
   
   for (let i = 0; i < params.length; i ++) {
     if (!params[i]) {
@@ -46,18 +54,44 @@ app.post('/api/signUp/', (req, res, next) => {
 app.get('/api/login/:user_name/:user_password/', (req, res, next) => {
   const username = req.params.user_name;
   const password = req.params.user_password;
+
+  const sqlToGetPass = `
+  SELECT "user_password" from "users"
+  WHERE "user_name" = $1
+  `
   const sql = `
   SELECT * FROM "users"
   WHERE "user_name" = $1 
   AND "user_password" = $2;
   `;
-  const params = [username, password];
-  db.query(sql, params)
+
+  db.query(sqlToGetPass, [username] )
     .then(result => {
       if (!result.rows[0]) {
         return res.status(400).json({ message: `No user information contains: ${username} or ${password}` });
       } else {
-        return res.status(200).json(result.rows);
+        let hashedPass = result.rows[0];
+        bcrypt.compare(password, hashedPass.user_password, function(err, isMatch) {
+          if (err) {
+            throw err
+          } else if (!isMatch) {
+            console.log("Password doesn't match!")
+          } else {
+            console.log('passwords match!')
+            db.query(sql, [username, hashedPass.user_password] )
+            .then(result => {
+              if (!result.rows[0]) {
+                return res.status(400).json({ message: `No user information contains: ${username} or ${password}` });
+              } else {
+                return res.status(200).json(result.rows)
+              }
+            })
+            .catch(err => {
+              console.error(err);
+              res.status(500).json({ error: 'An unexpected error occurred.' });
+            });
+          }
+        })
       }
     })
     .catch(err => {
