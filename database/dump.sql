@@ -99,19 +99,9 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 --
 
 COPY public.users (user_id, user_name, user_password, user_profile_image, user_header_image) FROM stdin;
-1	@masonksr	pass	\N	\N
-3	@mel	1234	\N	\N
-5	@guest	guest	\N	\N
-6	@jim	1	\N	\N
-7	YungMas	pass	\N	\N
-8	YungMas2	pass	\N	\N
-9	YungMas	pass72b0e492878df74d37d0f5bd315067190e68df73	\N	\N
-10	YungMas	pass$2b$10$Z3dLDtiogReYBNOQpfUFP.CLim2.2epo8cj9/H5Icthsg11YgoEgW	\N	\N
-11	YungMas	theez$2b$10$hv4l.fqDIyH3eAsJqWJQw.dveU0RvCJQe9L2q0dnjpNUTBRzY3fcS	\N	\N
 12	YungMas	$2b$10$rPs4evFu86TCnfa/Hfg8eOyK2mHhLHXed/oNfSScavfTAqL3ssoi6	\N	\N
-13	Yu	$2b$10$iG5a88GEAukTof2SMiLkhe4mZ4tz3kdPKkLNAwiwnaQbe2hSoJ3oy	\N	\N
 14	Yu	$2b$10$NjXYEpiLuTFLHpCO1Qh40ukwSOldm17w67L6JIMQuscKLeKQ85hrC	\N	\N
-15	Ye	$2b$10$MhSHd/4nfXctnos/KmNb5O39qwKMTSdGctHscXYWkQSXmAEoebryK	\N	\N
+16	masonksr	$2b$10$tjE4LKqpgmE1fHn3oL1eD.Uw878xYXmv5QduOka2SyAukTXP913rm	\N	\N
 \.
 
 
@@ -119,7 +109,7 @@ COPY public.users (user_id, user_name, user_password, user_profile_image, user_h
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_user_id_seq', 15, true);
+SELECT pg_catalog.setval('public.users_user_id_seq', 16, true);
 
 
 --
