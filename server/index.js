@@ -24,16 +24,14 @@ app.get('/api/health-check', (req, res, next) => {
 //  SIGN UP API POST REQUEST THAT ADDS USER INFO TO DB
 
 app.post('/api/signUp/', (req, res, next) => {
-  let password =  req.body.user_password;
+  const salt = bcrypt.genSaltSync(10);
+  const hash = bcrypt.hashSync(req.body.user_password, salt)
 
   const sql = `
   INSERT INTO "users" ("user_name", "user_password")
   VALUES                  ($1, $2)
   RETURNING *;
   `;
-
-  const salt = bcrypt.genSaltSync(10);
-  var hash = bcrypt.hashSync(req.body.user_password, salt)
 
   const params = [req.body.user_name, hash];
   
