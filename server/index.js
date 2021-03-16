@@ -68,20 +68,20 @@ app.get('/api/login/:user_name/:user_password/', (req, res, next) => {
   db.query(sqlToGetPass, [username] )
     .then(result => {
       if (!result.rows[0]) {
-        return res.status(400).json({ message: `No user information contains: ${username} or ${password}` });
+        return res.status(400).json({ message: `No user information contains: ${username}` });
       } else {
         let hashedPass = result.rows[0];
-        bcrypt.compare(password, hashedPass.user_password, function(err, isMatch) {
+        bcrypt.compare(password, hashedPass.user_password, async function(err, isMatch) {
           if (err) {
-            throw err
+            return err
           } else if (!isMatch) {
-            console.log("Password doesn't match!")
+            return res.status(400).json({ message: `passwords do not match` });
           } else {
             console.log('passwords match!')
             db.query(sql, [username, hashedPass.user_password] )
             .then(result => {
               if (!result.rows[0]) {
-                return res.status(400).json({ message: `No user information contains: ${username} or ${password}` });
+                return res.status(400).json({ message: `No user information contains: ${username} or ${hashedPass.user_password}` });
               } else {
                 return res.status(200).json(result.rows)
               }
