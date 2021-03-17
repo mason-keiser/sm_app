@@ -14,6 +14,7 @@ const Feed = (props) => {
             iconHolder.style.float = 'right'
             iconHolder.classList.remove('d')
             icon.classList.remove('fa-moon')
+            icon.style.color = 'orange'
             icon.classList.add('fa-sun')
             iconHolder.style.background = 'white'
             bar.style.background = 'white'
@@ -21,6 +22,7 @@ const Feed = (props) => {
         } else {
             iconHolder.style.float = 'left'
             iconHolder.classList.add('d')
+            icon.style.color = 'yellow'
             icon.classList.remove('fa-sun')
             icon.classList.add('fa-moon')
             iconHolder.style.background = '#4F4F4F'
