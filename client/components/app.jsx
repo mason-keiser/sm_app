@@ -7,7 +7,7 @@ import Feed from './feed'
 
 const App = (props) => {
 
-    const [view, setView] = useState({ name: 'feed', params: {} })
+    const [view, setView] = useState({ name: 'init', params: {} })
     const [user, setUser] = useState({})
 
     const login = (loginInfo) => {
