@@ -617,3 +617,48 @@ LOGIN & SIGNUP FORM STYLING
         height: 5vh
     }
 }
+
+/*
+
+==================================
+
+HOME FEED CSS
+
+==================================
+
+*/
+
+.sideMenu {
+    width: 25vw;
+    height: 100vh;
+    z-index: 999;
+    position: absolute;
+    border-right: 2px solid rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menTit {
+    height: 12vh;
+}
+
+.profileTag{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+}
+
+.profileTag > .fas {
+    margin-right: 15px;
+    margin-bottom: 5px;
+}
+
+.foote{
+    position: absolute;
+    bottom: 0;
+    left: 8%;
+    width: 100%;
+}
