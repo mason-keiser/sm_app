@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react"
 import React from 'react'
-import Particles from 'react-tsparticles'
 import Landing from "./landing"
 import Login from "./login"
 import Signup from './signup'
-
+import Feed from './feed'
 
 const App = (props) => {
 
@@ -43,6 +42,7 @@ const App = (props) => {
                             user_profile_image: result[0].user_profile_image ? result[0].user_profile_image : null,
                             user_header_image: result[0].user_header_image ? result[0].user_header_image : null
                         })
+                        setView ({ name: 'feed', params: {}})
                     }
                 })
     }
@@ -69,6 +69,7 @@ const App = (props) => {
                             user_profile_image: result[0].user_profile_image ? result[0].user_profile_image : null,
                             user_profile_header: result[0].user_profile_header ? result[0].user_header_image : null
                         })
+                        setView ({ name: 'feed', params: {}})
                     }
                 })
     }
@@ -104,6 +105,7 @@ const App = (props) => {
                         user_profile_image: result.user_profile_image ? result.user_profile_image : null,
                         user_profile_header: result.user_profile_header ? result.user_header_image : null
                     })
+                    setView ({ name: 'feed', params: {}})
                 }
             })
     }
@@ -133,7 +135,9 @@ const App = (props) => {
             ? <Login login={login} loginAsGuest={loginAsGuest} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
             : (view.name === 'signup')
                 ? <Signup signup={signUp} loginAsGuest={loginAsGuest} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
-                : null
+                : (view.name === 'feed')
+                    ?<Feed user={user} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
+                    : null
     return (
         <div>
             {navTert}
