@@ -4,6 +4,32 @@ import Bg from "./bg"
 
 const Feed = (props) => {
 
+    const toggler = () => {
+        const iconHolder = document.querySelector('.toggIconHolder')
+        const icon = document.getElementById('modeIcon');
+        const bar = document.querySelector('.modeToggler')
+        const bg = document.getElementById('tsparticles')
+        console.log(bg.firstChild)
+        if (iconHolder.classList.contains('d')) {
+            iconHolder.style.float = 'right'
+            iconHolder.classList.remove('d')
+            icon.classList.remove('fa-moon')
+            icon.classList.add('fa-sun')
+            iconHolder.style.background = 'white'
+            bar.style.background = 'white'
+            bg.firstChild.style.backgroundColor="#F5F5F5"
+        } else {
+            iconHolder.style.float = 'left'
+            iconHolder.classList.add('d')
+            icon.classList.remove('fa-sun')
+            icon.classList.add('fa-moon')
+            iconHolder.style.background = '#4F4F4F'
+            bar.style.background = 'black'
+            bg.firstChild.style.backgroundColor='#4F4F4F'
+
+        }
+    }
+
     return (
         <div>
             <div className='landingNav'>
@@ -18,10 +44,12 @@ const Feed = (props) => {
                     <div className='fas fa-user'></div>
                     <h4>My Profile</h4>
                 </div>
-                <div>
+                <div className='togg d-flex flex-column align-items-center'>
                     <h6>Night Mode:</h6>
                     <div className='modeToggler'>
-
+                        <div onClick={() => toggler()} className='toggIconHolder'>
+                            <span id='modeIcon' className='fas fa-sun'></span>
+                        </div>
                     </div>
                 </div>
                 <h6 className='foote'> Mason Keiser  © 2021. All rights reserved.</h6>
