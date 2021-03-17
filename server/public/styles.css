@@ -27,6 +27,7 @@ BACKGROUND CSS
 #tsparticles {
     height: 100%;
     position: absolute;
+    transition: ease-in 1s;
 }
 
 .landingTitle {
@@ -673,7 +674,7 @@ HOME FEED CSS
     border-radius: 25px;
     background: white;
     box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
-    transition: ease 0.5s;
+    
 }
 
 .toggIconHolder {
