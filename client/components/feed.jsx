@@ -11,6 +11,7 @@ const Feed = (props) => {
         const bg = document.getElementById('tsparticles')
         const words = document.querySelectorAll('.nm')
         const userI = document.getElementById('userI')
+        const menu = document.getElementById('menu')
 
         if (iconHolder.classList.contains('d')) {
             for (let i = 0; i < words.length; i++ ) {
@@ -23,9 +24,10 @@ const Feed = (props) => {
             icon.classList.remove('fa-moon')
             icon.style.color = 'orange'
             icon.classList.add('fa-sun')
-            iconHolder.style.background = 'white'
+            iconHolder.style.background = '#F5F5F5'
             bar.style.background = 'white'
             bg.firstChild.style.backgroundColor="#F5F5F5"
+            menu.style.background ='#F5F5F5'
         } else {
             for (let i = 0; i < words.length; i++ ) {
                 words[i].style.color = 'white'
@@ -40,6 +42,7 @@ const Feed = (props) => {
             iconHolder.style.background = '#262626'
             bar.style.background = 'black'
             bg.firstChild.style.backgroundColor='#262626'
+            menu.style.background ='#262626'
         }
     }
 
@@ -51,21 +54,29 @@ const Feed = (props) => {
                     <h4 id='time' className='nm'>{props.formatAMPM(new Date())}</h4>
                 </div>
             </div>
-            <div className='sideMenu'>
-                <h3 className='menTit mt-3 nm'>üConnect</h3>
-                <div className='profileTag'>
-                    <div id='userI' className='fas fa-user'></div>
-                    <h4 className='nm'>My Profile</h4>
-                </div>
-                <div className='togg d-flex flex-column align-items-center'>
-                    <h6 className='nm'>Night Mode:</h6>
-                    <div className='modeToggler'>
-                        <div onClick={() => toggler()} className='toggIconHolder'>
-                            <span id='modeIcon' className='fas fa-sun'></span>
+            <div className='columnCont'>
+                <div id='menu'className='sideMenu'>
+                    <h3 className='menTit mt-3 nm'>üConnect</h3>
+                    <div className='profileTag'>
+                        <div id='userI' className='fas fa-user'></div>
+                        <h4 className='nm'>My Profile</h4>
+                    </div>
+                    <div className='togg d-flex flex-column align-items-center'>
+                        <h6 className='nm'>Night Mode:</h6>
+                        <div className='modeToggler'>
+                            <div onClick={() => toggler()} className='toggIconHolder'>
+                                <span id='modeIcon' className='fas fa-sun'></span>
+                            </div>
                         </div>
                     </div>
+                    <h6 className='foote nm'> Mason Keiser  © 2021. All rights reserved.</h6>
                 </div>
-                <h6 className='foote nm'> Mason Keiser  © 2021. All rights reserved.</h6>
+                <div className='postCont'>
+                    <div className='inputCont'>
+                        <textarea style={{resize: 'none'}} placeholder='enter post here ..' name="postInput" id="postInput" cols="30" rows="10"></textarea>
+                        <button>+</button>
+                    </div>
+                </div>
             </div>
             <Bg/>
         </div>

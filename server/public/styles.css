@@ -28,6 +28,7 @@ BACKGROUND CSS
     height: 100%;
     position: absolute;
     transition: ease-in 1s;
+    z-index: -1;
 }
 
 .landingTitle {
@@ -633,11 +634,12 @@ HOME FEED CSS
     width: 25vw;
     height: 100vh;
     z-index: 999;
-    position: absolute;
+    position: relative;
     border-right: 2px solid rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: #F5F5F5;
 }
 
 .menTit {
@@ -661,7 +663,7 @@ HOME FEED CSS
     position: absolute;
     bottom: 0;
     left: 8%;
-    width: 100%;
+    
 }
 
 .togg > h6 {
@@ -693,4 +695,86 @@ HOME FEED CSS
 
 .toggIconHolder > .fas {
     color: orange;
+}
+
+.columnCont {
+    display: flex;
+    flex-direction: row;
+}
+
+.postCont {
+    width: 75vw;
+}
+
+#postInput{
+    z-index: 999;
+    padding: 10px;
+    align-self: center;
+    width: 35vw;
+    height: 15vh;
+    border: none;
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.inputCont{
+    width: 75vw;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 5rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.inputCont > button {
+    width: 45px;
+    height: 45px;
+    background: #24B67E;
+    color: white;
+    margin: auto;
+    border: none;
+    border-radius: 50%;
+    position: absolute;
+    left: auto;
+    top: 11rem;
+    z-index: 999;
+    font-size: x-large;
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (min-width: 1000px) {
+    .inputCont >button {
+       top: 11.5rem
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .sideMenu{
+        width: 40vw;
+    }
+
+    .postCont{
+        width: 60vw;
+    }
+
+    .modeToggler {
+        width: 20vw;
+    }
+
+    .toggIconHolder{
+        width: 8vw;
+    }
+
+    #postInput {
+        width: 55vw;
+    }
+
+    .inputCont {
+        width: 60vw;
+    }
+
+    .dateHolder > h4 {
+        font-size: 1rem;
+    }
 }
