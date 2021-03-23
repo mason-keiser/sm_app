@@ -98,6 +98,24 @@ app.get('/api/login/:user_name/:user_password/', (req, res, next) => {
     });
 });
 
+// API GET POSTS
+
+app.get('/api/getPosts', (req, res, next) => {
+  const sql = `SELECT * FROM "posts"`
+  db.query(sql)
+  .then(result => {
+    if (!result.rows[0]) {
+      return res.status(400).json({ message: `get posts attempt was unsuccessful` });
+    } else {
+      return res.status(200).json(result.rows)
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    res.status(500).json({ error: 'An unexpected error occurred.' });
+  });
+})
+
 // API POST REQUEST TO ADD TO POSTS DB
 
 app.post('/api/posts/', (req, res, next) => {
