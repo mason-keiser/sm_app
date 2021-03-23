@@ -98,6 +98,49 @@ app.get('/api/login/:user_name/:user_password/', (req, res, next) => {
     });
 });
 
+// API POST REQUEST TO ADD TO POSTS DB
+
+app.post('/api/posts/', (req, res, next) => {
+  const user_id = req.body.user_id;
+  const post = req.body.post;
+  const post_image = req.body.post_image;
+  const params = [user_id, post];
+  let sql
+  (!user_id) 
+     ? res.status(404).json({error: `missing user_id`})
+     : (!post)
+        ? res.status(404).json({error: `missing post input`})
+        : null
+  
+  if (!post_image) {
+    sql = `
+      INSERT INTO posts ("user_id", "post")
+      VALUES ($1, $2) 
+      RETURNING *
+    `
+  } else {
+    params.push(post_image)
+    sql = `
+      INSERT INTO posts ("user_id", "post", "post_image")
+      VALUES ($1, $2, $3) 
+      RETURNING *
+    `
+  }
+
+  db.query(sql, params)
+  .then(result => {
+    if (!result.rows[0]) {
+      return res.status(400).json({ message: `post attempt was unsuccessful` });
+    } else {
+      return res.status(200).json(result.rows)
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    res.status(500).json({ error: 'An unexpected error occurred.' });
+  });
+})
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });

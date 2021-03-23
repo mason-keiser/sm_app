@@ -5,7 +5,7 @@ import Login from "./login"
 import Signup from './signup'
 import Feed from './feed'
 
-const App = (props) => {
+const App = () => {
 
     const [view, setView] = useState({ name: 'init', params: {} })
     const [user, setUser] = useState({})
