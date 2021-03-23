@@ -104,8 +104,10 @@ app.post('/api/posts/', (req, res, next) => {
   const user_id = req.body.user_id;
   const post = req.body.post;
   const post_image = req.body.post_image;
-  const params = [user_id, post];
+  const likes = req.body.likes;
+  const params = [user_id, post, likes];
   let sql
+
   (!user_id) 
      ? res.status(404).json({error: `missing user_id`})
      : (!post)
@@ -114,15 +116,15 @@ app.post('/api/posts/', (req, res, next) => {
   
   if (!post_image) {
     sql = `
-      INSERT INTO posts ("user_id", "post")
-      VALUES ($1, $2) 
+      INSERT INTO posts ("user_id", "post", "likes")
+      VALUES ($1, $2, $3) 
       RETURNING *
     `
   } else {
     params.push(post_image)
     sql = `
-      INSERT INTO posts ("user_id", "post", "post_image")
-      VALUES ($1, $2, $3) 
+      INSERT INTO posts ("user_id", "post", "likes" "post_image")
+      VALUES ($1, $2, $3, $4) 
       RETURNING *
     `
   }
