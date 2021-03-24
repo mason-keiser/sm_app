@@ -9,6 +9,28 @@ const App = () => {
 
     const [view, setView] = useState({ name: 'init', params: {} })
     const [user, setUser] = useState({})
+    const [posts, setPosts] = useState({})
+
+    useEffect(() => {
+        fetch('/api/getPosts', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json'}
+        })
+        .then(response => {
+            if (response.status === 400 || response.status === 404) {
+                return null
+            } else {
+                return response.json();
+            }
+        })
+            .then(result => {
+                if (!result) {
+                    return null
+                } else {
+                    setPosts(result)
+                }
+            })
+    },[])
 
     const login = (loginInfo) => {
         if (!loginInfo) {
@@ -136,7 +158,7 @@ const App = () => {
             : (view.name === 'signup')
                 ? <Signup signup={signUp} loginAsGuest={loginAsGuest} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                 : (view.name === 'feed')
-                    ?<Feed user={user} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
+                    ?<Feed posts={posts} user={user} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                     : null
     return (
         <div>

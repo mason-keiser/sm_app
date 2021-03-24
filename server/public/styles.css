@@ -760,10 +760,12 @@ HOME FEED CSS
 
     .modeToggler {
         width: 20vw;
+        height: 3vh;
     }
 
     .toggIconHolder{
         width: 8vw;
+        
     }
 
     #postInput {
