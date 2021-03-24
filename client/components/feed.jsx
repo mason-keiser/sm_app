@@ -63,7 +63,7 @@ const Feed = (props) => {
             );
         })
     )
-    : <h2 className="empty mt-5 m-auto">No Activity History available, please add new activity to view history</h2>
+    : <h2 className="empty mt-5 m-auto">No Posts available</h2>
 
 
     return (
