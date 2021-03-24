@@ -145,6 +145,8 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 COPY public.posts (post_id, user_id, post, post_image, likes, replies) FROM stdin;
 1	16	New phone who dis?	\N	69	\N
 2	16	Time to go surfing	\N	4	\N
+3	16	example post from the backend	\N	5	\N
+4	16	going to go get in n out for the 12th time!	\N	5	\N
 \.
 
 
@@ -164,7 +166,7 @@ COPY public.users (user_id, user_name, user_password, user_profile_image, user_h
 -- Name: posts_post_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.posts_post_id_seq', 2, true);
+SELECT pg_catalog.setval('public.posts_post_id_seq', 4, true);
 
 
 --
