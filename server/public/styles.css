@@ -663,7 +663,7 @@ HOME FEED CSS
     position: absolute;
     bottom: 0;
     left: 8%;
-    
+    text-align: center;
 }
 
 .togg > h6 {
@@ -775,16 +775,17 @@ HOME FEED CSS
 
     #feedCont{
         width: 60vw;
+        padding: 5px;
+        text-align: center;
     }
 
     .modeToggler {
-        width: 20vw;
+        width: 16vw;
         height: 3vh;
     }
 
     .toggIconHolder{
-        width: 8vw;
-        
+        width: 7vw;
     }
 
     #postInput {
