@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react"
 import React from 'react'
 import Bg from "./bg"
+import Post_Card from "./post_card"
 
 const Feed = (props) => {
+
+    useEffect(() => {
+        props.getPosts()
+    }, []) 
 
     const toggler = () => {
         const iconHolder = document.querySelector('.toggIconHolder')
@@ -46,6 +51,21 @@ const Feed = (props) => {
         }
     }
 
+    const items = (props.posts !== null && props.posts !== undefined) 
+    ?  (props.posts.map((post, index) => {
+            return(
+                <div className='m-auto' key={index}>
+                    <Post_Card
+                    post={post}
+                    key={post.post_id}
+                    />
+                </div>
+            );
+        })
+    )
+    : <h2 className="empty mt-5 m-auto">No Activity History available, please add new activity to view history</h2>
+
+
     return (
         <div>
             <div className='landingNav'>
@@ -75,6 +95,9 @@ const Feed = (props) => {
                     <div className='inputCont'>
                         <textarea style={{resize: 'none'}} placeholder='enter post here ..' name="postInput" id="postInput" cols="30" rows="10"></textarea>
                         <button>+</button>
+                    </div>
+                    <div id='feedCont' className='row-cols-lg-2'>
+                        {items}
                     </div>
                 </div>
             </div>

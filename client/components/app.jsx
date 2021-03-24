@@ -7,11 +7,11 @@ import Feed from './feed'
 
 const App = () => {
 
-    const [view, setView] = useState({ name: 'init', params: {} })
+    const [view, setView] = useState({ name: 'feed', params: {} })
     const [user, setUser] = useState({})
-    const [posts, setPosts] = useState({})
-
-    useEffect(() => {
+    const [posts, setPosts] = useState([])
+    
+    const getPosts = () => {
         fetch('/api/getPosts', {
             method: 'GET',
             headers: { 'Content-Type': 'application/json'}
@@ -21,16 +21,16 @@ const App = () => {
                 return null
             } else {
                 return response.json();
-            }
+                }
         })
             .then(result => {
                 if (!result) {
                     return null
                 } else {
-                    setPosts(result)
+                    setPosts(result.reverse())
                 }
             })
-    },[])
+    }
 
     const login = (loginInfo) => {
         if (!loginInfo) {
@@ -158,7 +158,7 @@ const App = () => {
             : (view.name === 'signup')
                 ? <Signup signup={signUp} loginAsGuest={loginAsGuest} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                 : (view.name === 'feed')
-                    ?<Feed posts={posts} user={user} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
+                    ?<Feed getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                     : null
     return (
         <div>
