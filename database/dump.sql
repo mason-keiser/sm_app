@@ -166,7 +166,7 @@ COPY public.users (user_id, user_name, user_password, user_profile_image, user_h
 -- Name: posts_post_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.posts_post_id_seq', 4, true);
+SELECT pg_catalog.setval('public.posts_post_id_seq', 16, true);
 
 
 --
