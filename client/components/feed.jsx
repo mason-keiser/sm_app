@@ -5,6 +5,8 @@ import Post_Card from "./post_card"
 
 const Feed = (props) => {
 
+    const [newPost, setNewPost] = useState();
+
     useEffect(() => {
         props.getPosts()
     }, []) 
@@ -51,6 +53,22 @@ const Feed = (props) => {
         }
     }
 
+    const handleChange = (event) => {
+        setNewPost(event.target.value)
+    }
+
+    const submitPost = () => {
+        if (!newPost) {
+            console.log('falsy post')
+            return null
+        }
+        props.postToFeed({
+            user_id: props.user.user_id,
+            post: newPost,
+            likes: 0,
+        })
+    }
+
     const items = (props.posts !== null && props.posts !== undefined) 
     ?  (props.posts.map((post, index) => {
             return(
@@ -93,8 +111,8 @@ const Feed = (props) => {
                 </div>
                 <div className='postCont'>
                     <div className='inputCont'>
-                        <textarea style={{resize: 'none'}} placeholder='enter post here ..' name="postInput" id="postInput" cols="30" rows="10"></textarea>
-                        <button>+</button>
+                        <textarea style={{resize: 'none'}} placeholder='enter post here ..' name="postInput" id="postInput" cols="30" rows="10" onChange={handleChange}></textarea>
+                        <button onClick={() => submitPost()}>+</button>
                     </div>
                     <div id='feedCont' className='row-cols-lg-2'>
                         {items}
