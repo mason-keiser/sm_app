@@ -101,7 +101,10 @@ app.get('/api/login/:user_name/:user_password/', (req, res, next) => {
 // API GET POSTS
 
 app.get('/api/getPosts', (req, res, next) => {
-  const sql = `SELECT * FROM "posts"`
+  const sql = `
+  SELECT * FROM "posts"
+  INNER JOIN users ON posts.user_id=users.user_id;
+  `
   db.query(sql)
   .then(result => {
     if (!result.rows[0]) {
