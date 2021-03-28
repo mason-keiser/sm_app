@@ -102,14 +102,18 @@ app.get('/api/login/:user_name/:user_password/', (req, res, next) => {
 
 app.get('/api/getPosts', (req, res, next) => {
   const sql = `
-  SELECT * FROM "posts"
-  INNER JOIN users ON posts.user_id=users.user_id;
+  SELECT * FROM posts
+  INNER JOIN users ON posts.user_id=users.user_id
   `
   db.query(sql)
   .then(result => {
     if (!result.rows[0]) {
       return res.status(400).json({ message: `get posts attempt was unsuccessful` });
     } else {
+      result.rows.forEach((i) => {
+        delete i.user_password
+      })
+     
       return res.status(200).json(result.rows)
     }
   })
