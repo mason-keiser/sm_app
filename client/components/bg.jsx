@@ -122,7 +122,7 @@ const Bg = (props) => {
                     },
                     detectRetina: true,
                     background: {
-                        color: "#F5F5F5",
+
                         image: "",
                         position: "50% 50%",
                         repeat: "no-repeat",

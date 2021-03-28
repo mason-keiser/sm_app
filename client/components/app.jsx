@@ -13,6 +13,28 @@ const App = () => {
     const [posts, setPosts] = useState([])
     const [nightMode, setNightMode] = useState(false)
 
+    const viewIndPost = (postId) => {
+        fetch('/api/singPost',{
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json'}
+        })
+        .then(response => {
+            if (response.status === 400 || response.status === 404) {
+                return null
+            } else {
+                return response.json();
+            }
+        })
+            .then(result => {
+                if (!result) {
+                    return null
+                } else {
+                    result.sort((a, b) => (a.post_id > b.post_id) ? 1 : -1)
+                    setPosts(result.reverse())
+                }
+            }) 
+    }
+
     const likePost = (postId) => {
         fetch('/api/like' , {
             method: 'PUT',
@@ -222,8 +244,8 @@ const App = () => {
                 ? <Signup signup={signUp} loginAsGuest={loginAsGuest} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                 : (view.name === 'feed')
                     ?<Feed nightMode={nightMode} setNightMode={setNightMode} likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
-                    : (view.name === 'feed')
-                        ? <Ind_Post nightMode={nightMode} setNightMode={setNightMode} likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
+                    : (view.name === 'indPost')
+                        ? <Ind_Post nightMode={nightMode} setNightMode={setNightMode} likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} view={view} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                         : null
     return (
         <div>
