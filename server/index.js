@@ -168,7 +168,7 @@ app.post('/api/posts/', (req, res, next) => {
   });
 })
 
-// API POST REQUEST TO INCREASE LIKES
+// API PUT REQUEST TO INCREASE LIKES
 
 app.put('/api/like', (req, res, next) => {
   const post_id = req.body.post_id;
@@ -177,6 +177,30 @@ app.put('/api/like', (req, res, next) => {
   SET likes = likes + 1
   WHERE post_id = $1
   `
+  db.query(sql, [post_id])
+  .then(result => {
+    if (!result) {
+      return res.status(400).json({ message: `post attempt was unsuccessful` });
+    } else {
+      return res.status(200).json(result.rows)
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    res.status(500).json({ error: 'An unexpected error occurred.' });
+  });
+})
+
+// API GET REQUEST FOR SINGULAR POST
+
+app.get('/api/singPost', (req, res, next) => {
+  const post_id = req.body.post_id
+  if (!post_id) return null
+  const sql = `
+  SELECT * FROM posts
+  WHERE post_id = $1
+  `
+
   db.query(sql, [post_id])
   .then(result => {
     if (!result) {

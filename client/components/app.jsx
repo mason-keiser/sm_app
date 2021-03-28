@@ -4,6 +4,7 @@ import Landing from "./landing"
 import Login from "./login"
 import Signup from './signup'
 import Feed from './feed'
+import Ind_Post from "./ind_post"
 
 const App = () => {
 
@@ -221,7 +222,9 @@ const App = () => {
                 ? <Signup signup={signUp} loginAsGuest={loginAsGuest} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                 : (view.name === 'feed')
                     ?<Feed nightMode={nightMode} setNightMode={setNightMode} likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
-                    : null
+                    : (view.name === 'feed')
+                        ? <Ind_Post nightMode={nightMode} setNightMode={setNightMode} likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
+                        : null
     return (
         <div>
             {navTert}
