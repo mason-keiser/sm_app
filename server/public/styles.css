@@ -786,7 +786,7 @@ HOME FEED CSS
 }
 
 .nm.fa-star:hover{
-    background: yellow;
+    color: yellow;
     cursor: pointer;
 }
 

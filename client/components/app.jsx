@@ -22,6 +22,21 @@ const App = () => {
             if (response.status === 400 || response.status === 404) {
                 return null
             } else {
+                const stars = document.querySelectorAll('.fa-star')
+
+                for (let i = 0; i < stars.length; i++) {
+                    if (postId.post_id === stars[i].id) {
+                        stars[i].style.color = 'yellow'
+                    }
+                    setTimeout(() => {
+                        if (nightMode == false) {
+                            stars[i].style.color = 'black'
+                        } else {
+                            stars[i].style.color = 'white'
+                        }
+                    },400) 
+                }
+                
                 return response.json();
             }
         })
