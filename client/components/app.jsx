@@ -49,6 +49,7 @@ const App = () => {
                 if (!result) {
                     return null
                 } else {
+                    result.sort((a, b) => (a.post_id > b.post_id) ? 1 : -1)
                     setPosts(result.reverse())
                 }
             })
