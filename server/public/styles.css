@@ -790,8 +790,8 @@ HOME FEED CSS
 }
 
 .toTop {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     background: #24B67E;
     display: flex;
     align-items: center;
@@ -815,6 +815,12 @@ HOME FEED CSS
 @media screen and (min-width: 1000px) {
     .inputCont >button {
        top: 11.5rem
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .inputCont > button {
+        top: 13rem
     }
 }
 
