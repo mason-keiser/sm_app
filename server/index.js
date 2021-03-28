@@ -195,11 +195,13 @@ app.put('/api/like', (req, res, next) => {
 
 app.get('/api/singPost', (req, res, next) => {
   const post_id = req.body.post_id
-  if (!post_id) return null
   const sql = `
   SELECT * FROM posts
+  INNER JOIN users ON posts.user_id=users.user_id
   WHERE post_id = $1
   `
+
+  if (!post_id) return res.status(400).json({ message: `no post_id was given` });
 
   db.query(sql, [post_id])
   .then(result => {
