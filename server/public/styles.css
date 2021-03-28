@@ -640,6 +640,7 @@ HOME FEED CSS
     flex-direction: column;
     align-items: center;
     background: #F5F5F5;
+    position: fixed;
 }
 
 .menTit {
@@ -706,6 +707,8 @@ HOME FEED CSS
     width: 75vw;
     display: flex;
     flex-direction: column;
+    position: absolute;
+    left: 25vw;
 }
 
 #postInput{
@@ -751,11 +754,62 @@ HOME FEED CSS
 
 #feedCont{
     width: 75vw;
-    height: 69vh;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: space-evenly;
+    max-height: 100%;
+    overflow: auto;
+}
+
+.singPost {
+    width: 100%;
+    height: 20vh;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.5);
+    border-top: 0.5px solid rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 20vh;
+}
+
+.profileImageCont {
+    border: 1px solid black;
+    background: white;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fa-star:hover{
+    color: yellow;
+    cursor: pointer;
+}
+
+.toTop {
+    width: 45px;
+    height: 45px;
+    background: #24B67E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.co {
+    width: 30vw;
+}
+
+.l {
+    text-align: left;
 }
 
 @media screen and (min-width: 1000px) {
@@ -765,18 +819,31 @@ HOME FEED CSS
 }
 
 @media screen and (max-width: 470px) {
+    .profileImageCont {
+        height: 40px;
+        width: 40px;
+    }
+
+    .co {
+        width: 60vw;
+    }
+
     .sideMenu{
         width: 40vw;
     }
 
     .postCont{
         width: 60vw;
+        left: 40vw;
     }
 
     #feedCont{
         width: 60vw;
-        padding: 5px;
         text-align: center;
+    }
+
+    .singPost {
+        padding: 5px;
     }
 
     .modeToggler {
@@ -805,5 +872,10 @@ HOME FEED CSS
 
     .dateHolder > h4 {
         font-size: 1rem;
+    }
+    
+    .toTop {
+        height: 35px;
+        width: 35px;
     }
 }

@@ -2,6 +2,10 @@ import { useEffect, useState } from "react"
 import React from 'react'
 import Bg from "./bg"
 import Post_Card from "./post_card"
+import {
+    Link,
+    animateScroll as scroll
+  } from 'react-scroll';
 
 const Feed = (props) => {
 
@@ -19,11 +23,16 @@ const Feed = (props) => {
         const words = document.querySelectorAll('.nm')
         const userI = document.getElementById('userI')
         const menu = document.getElementById('menu')
+        const image = document.querySelectorAll('.profileImageCont')
 
         if (iconHolder.classList.contains('d')) {
             for (let i = 0; i < words.length; i++ ) {
                 words[i].style.color = 'black'
                 words[i].style.borderColor = 'black'
+            }
+            for (let j = 0; j < image.length; j++) {
+                image[j].style.color = 'black'
+                image[j].style.background = 'white'
             }
             userI.style.color = 'black'
             iconHolder.style.float = 'right'
@@ -39,6 +48,10 @@ const Feed = (props) => {
             for (let i = 0; i < words.length; i++ ) {
                 words[i].style.color = 'white'
                 words[i].style.borderColor = 'white'
+            }
+            for (let j = 0; j < image.length; j++) {
+                image[j].style.color = 'white'
+                image[j].style.background = 'black'
             }
             userI.style.color = 'white'
             iconHolder.style.float = 'left'
@@ -75,7 +88,7 @@ const Feed = (props) => {
     const items = (props.posts !== null && props.posts !== undefined) 
     ?  (props.posts.map((post, index) => {
             return(
-                <div className='m-auto' key={index}>
+                <div className='singPost m-auto' key={index}>
                     <Post_Card
                     post={post}
                     key={post.post_id}
@@ -120,6 +133,9 @@ const Feed = (props) => {
                     <div id='feedCont' className='row-cols-lg-2'>
                         {items}
                     </div>
+                    <div className='toTop' onClick={() => scroll.scrollToTop()}>
+                        <div className='fas fa-chevron-up' style={{color: 'white'}}></div>    
+                    </div> 
                 </div>
             </div>
             <Bg/>

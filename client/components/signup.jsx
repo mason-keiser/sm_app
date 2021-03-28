@@ -51,7 +51,7 @@ const Signup = (props) => {
 
     const handleChange = (event) => {
         if (event.target.id === 'user_name') {
-            setUserName(`@${event.target.value}`)
+            setUserName(`${event.target.value}`)
         }
         if (event.target.id === 'password1') {
             setUserPassword1(event.target.value)

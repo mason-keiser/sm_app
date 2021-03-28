@@ -93,7 +93,7 @@ const App = () => {
     }
 
     const loginAsGuest = () => {
-        fetch('/api/login/@guest/guest', {
+        fetch('/api/login/guest/guest', {
             method: 'GET',
             headers: { 'Content-Type': 'application/json'}
         })
