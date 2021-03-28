@@ -11,6 +11,28 @@ const App = () => {
     const [user, setUser] = useState({})
     const [posts, setPosts] = useState([])
 
+    const likePost = (postId) => {
+        fetch('/api/like' , {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(postId)
+        })
+         .then(response => {
+            if (response.status === 400 || response.status === 404) {
+                return null
+            } else {
+                return response.json();
+            }
+        })
+            .then(result => {
+                if (!result) {
+                    return null
+                } else {
+                    getPosts()
+                }
+            })
+    }
+
     const getPosts = () => {
         fetch('/api/getPosts', {
             method: 'GET',
@@ -181,7 +203,7 @@ const App = () => {
             : (view.name === 'signup')
                 ? <Signup signup={signUp} loginAsGuest={loginAsGuest} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                 : (view.name === 'feed')
-                    ?<Feed postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
+                    ?<Feed likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                     : null
     return (
         <div>
