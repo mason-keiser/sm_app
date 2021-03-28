@@ -58,6 +58,7 @@ const Feed = (props) => {
     }
 
     const submitPost = () => {
+        const input = document.getElementById('postInput')
         if (!newPost) {
             console.log('falsy post')
             return null
@@ -67,6 +68,8 @@ const Feed = (props) => {
             post: newPost,
             likes: 0,
         })
+        input.value = ''
+        setNewPost('')
     }
 
     const items = (props.posts !== null && props.posts !== undefined) 

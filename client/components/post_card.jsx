@@ -3,9 +3,11 @@ import React from 'react'
 
 const Post_Card = (props) => {
 
+    const tert = (props.post.user_name[0] === '@') ? props.post.user_name : `@${props.post.user_name}`
+
     return (
         <div>
-            <h6 className='nm'>{`@${props.post.user_name}`}</h6>
+            <h6 className='nm'>{`${tert}`}</h6>
             <div className='nm'>{props.post.post}</div>
         </div>
     )
