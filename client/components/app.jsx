@@ -10,6 +10,7 @@ const App = () => {
     const [view, setView] = useState({ name: 'init', params: {} })
     const [user, setUser] = useState({})
     const [posts, setPosts] = useState([])
+    const [nightMode, setNightMode] = useState(false)
 
     const likePost = (postId) => {
         fetch('/api/like' , {
@@ -204,7 +205,7 @@ const App = () => {
             : (view.name === 'signup')
                 ? <Signup signup={signUp} loginAsGuest={loginAsGuest} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                 : (view.name === 'feed')
-                    ?<Feed likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
+                    ?<Feed nightMode={nightMode} setNightMode={setNightMode} likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                     : null
     return (
         <div>

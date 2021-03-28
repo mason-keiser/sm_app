@@ -771,6 +771,7 @@ HOME FEED CSS
     justify-content: center;
     align-items: center;
     min-height: 20vh;
+    overflow: hidden;
 }
 
 .profileImageCont {
@@ -784,8 +785,8 @@ HOME FEED CSS
     justify-content: center;
 }
 
-.fa-star:hover{
-    color: yellow;
+.nm.fa-star:hover{
+    background: yellow;
     cursor: pointer;
 }
 
