@@ -5,6 +5,12 @@ import Bg from "./bg"
 const Ind_Post = (props) => {
 
     useEffect(() => {
+      
+    }, [])
+
+  
+
+    useEffect(() => {
         const iconHolder = document.querySelector('.toggIconHolder')
         const icon = document.getElementById('modeIcon');
         const bar = document.querySelector('.modeToggler')
@@ -63,6 +69,10 @@ const Ind_Post = (props) => {
         }
     }
 
+    console.log(props.indPost)
+
+    const replies = (props.indPost == null || props.indPost == undefined) ? 0 : props.indPost[0].replies
+
     return (
         <div>
              <div className='landingNav'>
@@ -89,6 +99,22 @@ const Ind_Post = (props) => {
                     <h6 className='foote nm'> Mason Keiser  © 2021. All rights reserved.</h6>
                 </div>
             </div>
+            {(props.indPost == undefined) ? null : 
+              <div className='postCont'>
+              <div className='d-flex flex-row p-2 co'>
+                  
+                  <div className='co d-flex flex-column justify-content-between p-2' style={{height: '20vh', textAlign: 'center'}}>
+                      <h6 className='l nm mt-3' id='indUser'>{`@${props.indPost[0].user_name}`}</h6>
+                      <div className='l nm' id='indPost'>{props.indPost[0].post}</div>
+                      <div className='d-flex flex-row justify-content-center' >
+                          <div className='nm fas fa-star m-3 indlikes' ><span className='nm m-2' id='indLikes'>{props.indPost[0].likes}</span></div>
+                          <div className='nm fas fa-comments m-3'><span className='nm m-2'>{replies}</span></div>
+                      </div>
+                  </div>
+  
+              </div>
+              </div> }
+            
             <Bg/>
         </div>
     )

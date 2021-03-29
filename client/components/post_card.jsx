@@ -31,7 +31,7 @@ const Post_Card = (props) => {
                 {profImage}
                 <div className='co d-flex flex-column justify-content-between p-2' style={{height: '20vh', textAlign: 'center'}}>
                     <h6 className='l nm mt-3'>{`@${props.post.user_name}`}</h6>
-                    <div className='l nm' onClick={() => props.setView({name: 'indPost', params: {post_id: props.post.post_id}})}>{props.post.post}</div>
+                    <div className='l nm' onClick={() =>  props.setView({name: 'indPost', params: {post_id: props.viewIndPost()}})}>{props.post.post}</div>
                     <div className='d-flex flex-row justify-content-center' >
                         <div className='nm fas fa-star m-3'id={props.post.post_id} onClick={handleLike}><span className='nm m-2'>{props.post.likes}</span></div>
                         <div className='nm fas fa-comments m-3'><span className='nm m-2'>{replies}</span></div>

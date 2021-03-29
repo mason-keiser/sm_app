@@ -98,6 +98,7 @@ const Feed = (props) => {
             return(
                 <div className='singPost m-auto' key={index}>
                     <Post_Card
+                    viewIndPost={props.viewIndPost}
                     postId={postId}
                     setView={props.setView}
                     setPostId={setPostId}

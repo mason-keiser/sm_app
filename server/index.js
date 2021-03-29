@@ -193,8 +193,8 @@ app.put('/api/like', (req, res, next) => {
 
 // API GET REQUEST FOR SINGULAR POST
 
-app.get('/api/singPost', (req, res, next) => {
-  const post_id = req.body.post_id
+app.get('/api/singPost/:post_id', (req, res, next) => {
+  const post_id = req.params.post_id
   const sql = `
   SELECT * FROM posts
   INNER JOIN users ON posts.user_id=users.user_id
@@ -208,6 +208,9 @@ app.get('/api/singPost', (req, res, next) => {
     if (!result) {
       return res.status(400).json({ message: `post attempt was unsuccessful` });
     } else {
+      result.rows.forEach((i) => {
+        delete i.user_password
+      })
       return res.status(200).json(result.rows)
     }
   })
