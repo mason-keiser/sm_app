@@ -131,8 +131,10 @@ const Ind_Post = (props) => {
                   </div>
   
               </div>
+              <div>no replies</div>
               </div>
               }
+             
             <Bg/>
         </div>
     )
