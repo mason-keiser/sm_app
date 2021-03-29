@@ -102,7 +102,7 @@ const Ind_Post = (props) => {
                         <h5 className='nm'>My Profile</h5>
                     </div>
                     <div className='profileTag mb-3' onClick={() => props.setView({name: 'feed', params: {}})} style={{height: '7vh'}}>
-                        <div id='userI' className=' nm fas fa-home'></div>
+                        <div id='userI' className='nm fas fa-home'></div>
                         <h5 className='nm'>Feed</h5>
                     </div>
                     <div className='togg d-flex flex-column align-items-center'>
