@@ -926,6 +926,23 @@ HOME FEED CSS
    
 }
 
+@media screen and (min-width: 370px) and (max-height: 670px) {
+    #postInput{
+        height: 17vh;
+    }
+    
+}
+
+@media screen and (min-width: 410px) and (max-height: 740px) {
+    #postInput{
+        height: 16vh;
+    }
+
+    .sm{
+        font-size: medium;
+    }
+}
+
 @media screen and (min-width: 370px) and (max-width: 390px) {
     .dateHolder >h4 {
         font-size: 0.8rem;
@@ -953,18 +970,6 @@ HOME FEED CSS
    }
 }
 
-
-@media screen and (min-width: 370px) and (max-height: 670px) {
-    #postInput{
-        height: 17vh;
-    }
-}
-
-@media screen and (min-width: 410px) and (max-height: 740px) {
-    #postInput{
-        height: 16vh;
-    }
-}
 /* 
 
 ==================================
