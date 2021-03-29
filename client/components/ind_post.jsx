@@ -86,6 +86,10 @@ const Ind_Post = (props) => {
         </div>
     ) : null
 
+    const loadReplies = (props.indPost !== undefined || props.indPost !== null)
+        ? <div className='nm' style={{textAlign: 'center', marginTop: '4rem'}}>No Other Replies</div>
+        : props.indPost.replies
+
     return (
         <div>
              <div className='landingNav'>
@@ -133,7 +137,7 @@ const Ind_Post = (props) => {
                 </div>
                 </div>
                 }
-                <div className='nm' style={{textAlign: 'center', marginTop: '4rem'}}>No Other Replies</div>
+                {loadReplies}
              </div>
             <Bg/>
         </div>
