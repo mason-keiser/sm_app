@@ -66,7 +66,7 @@ const App = () => {
                 menu.style.background ='#262626'
             }
         }, 500)
-    },[nightMode])
+    },[nightMode, posts])
 
     const viewIndPost = (postId) => {
         fetch('/api/singPost/' + postId,{
