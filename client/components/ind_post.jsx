@@ -116,25 +116,25 @@ const Ind_Post = (props) => {
                     <h6 className='foote nm'> Mason Keiser  © 2021. All rights reserved.</h6>
                 </div>
             </div>
-            {
-            (props.indPost == undefined) ? null : 
-              <div className='indCont'>
-              <div className='d-flex flex-row p-2 co mt-5 m-auto'>
-                {profImage}
-                  <div className='co d-flex flex-column justify-content-between p-2' style={{height: '20vh', textAlign: 'center'}}>
-                      <h6 className='l nm mt-3' id='indUser'>{`@${props.indPost.user_name}`}</h6>
-                      <div className='nm l' id='indPost'>{props.indPost.post}</div>
-                      <div className='d-flex flex-row justify-content-center' >
-                          <div className='nm fas fa-star m-3 indlikes' id={props.indPost.post_id} onClick={handleLike}><span className='nm m-2' id='indLikes'>{props.indPost.likes}</span></div>
-                          <div className='nm fas fa-comments m-3'><span className='nm m-2'>{replies}</span></div>
-                      </div>
-                  </div>
-  
-              </div>
-              <div>no replies</div>
-              </div>
-              }
-             
+            <div className='rightColumn'>
+                {
+                (props.indPost == undefined) ? null : 
+                <div className='indCont'>
+                <div className='d-flex flex-row p-2 co mt-5 m-auto'>
+                    {profImage}
+                    <div className='co d-flex flex-column justify-content-between p-2' style={{height: '20vh', textAlign: 'center'}}>
+                        <h6 className='l nm mt-3' id='indUser'>{`@${props.indPost.user_name}`}</h6>
+                        <div className='nm l' id='indPost'>{props.indPost.post}</div>
+                        <div className='d-flex flex-row justify-content-center' >
+                            <div className='nm fas fa-star m-3 indlikes' id={props.indPost.post_id} onClick={handleLike}><span className='nm m-2' id='indLikes'>{props.indPost.likes}</span></div>
+                            <div className='nm fas fa-comments m-3'><span className='nm m-2'>{replies}</span></div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                }
+                <div className='nm' style={{textAlign: 'center', marginTop: '4rem'}}>No Other Replies</div>
+             </div>
             <Bg/>
         </div>
     )
