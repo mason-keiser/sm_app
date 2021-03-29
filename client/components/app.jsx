@@ -65,7 +65,7 @@ const App = () => {
                 bg.firstChild.style.backgroundColor='#262626'
                 menu.style.background ='#262626'
             }
-        }, 1000)
+        }, 500)
     },[nightMode])
 
     const viewIndPost = (postId) => {
