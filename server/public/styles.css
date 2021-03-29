@@ -653,6 +653,11 @@ HOME FEED CSS
     justify-content: center;
     align-items: center;
     height: 15vh;
+    cursor: pointer;
+}
+
+.profileTag > h5:hover {
+    color: rgba(0, 0, 0, 0.2);
 }
 
 .profileTag > .fas {
