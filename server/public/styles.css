@@ -818,6 +818,11 @@ HOME FEED CSS
     text-align: left;
 }
 
+.nice{
+    height: 20vh;
+    text-align: center;
+}
+
 @media screen and (min-width: 1000px) {
     .inputCont >button {
        top: 11.5rem
@@ -890,6 +895,35 @@ HOME FEED CSS
         height: 35px;
         width: 35px;
     }
+}
+
+@media screen and (max-width: 330px) {
+    .dateHolder >h4 {
+        font-size: 0.8rem;
+    }
+    .foote {
+        font-size: small;
+    }
+
+    #postInput{
+        height: 21vh;
+    }
+
+    .sm{
+        font-size: small;
+    }
+
+    .singPost{
+        height: 30vh;
+        display: unset;
+    }
+
+   .nice{
+       width: 40vw;
+       height: 30vh;
+   }
+
+   
 }
 
 /* 
