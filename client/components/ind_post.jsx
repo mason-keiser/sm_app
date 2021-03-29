@@ -77,6 +77,15 @@ const Ind_Post = (props) => {
 
     const replies = (props.indPost !== null) ? 0 : props.indPost.replies
 
+    const profImage = (props.indPost !== null) 
+    ? (
+        <div className='imageCo mt-3'>
+            <div className='profileImageCont p-2'>
+                <div className='nm fas fa-user'></div>
+            </div>
+        </div>
+    ) : null
+
     return (
         <div>
              <div className='landingNav'>
@@ -87,7 +96,7 @@ const Ind_Post = (props) => {
             </div>
             <div className='columnCont'>
                 <div id='menu'className='sideMenu'>
-                    <h3 className='menTit mt-3 nm' onClick={() => props.setView({name: 'feed', params: {}})}>üConnect</h3>
+                    <h3 style={{cursor: 'pointer'}} className='menTit mt-3 nm' onClick={() => props.setView({name: 'feed', params: {}})}>üConnect</h3>
                     <div className='profileTag'>
                         <div id='userI' className='fas fa-user'></div>
                         <h4 className='nm'>My Profile</h4>
@@ -105,12 +114,12 @@ const Ind_Post = (props) => {
             </div>
             {
             (props.indPost == undefined) ? null : 
-              <div className='postCont'>
-              <div className='d-flex flex-row p-2 co'>
-                  
+              <div className='indCont'>
+              <div className='d-flex flex-row p-2 co mt-5 m-auto'>
+                {profImage}
                   <div className='co d-flex flex-column justify-content-between p-2' style={{height: '20vh', textAlign: 'center'}}>
                       <h6 className='l nm mt-3' id='indUser'>{`@${props.indPost.user_name}`}</h6>
-                      <div className='l nm' id='indPost'>{props.indPost.post}</div>
+                      <div className='nm l' id='indPost'>{props.indPost.post}</div>
                       <div className='d-flex flex-row justify-content-center' >
                           <div className='nm fas fa-star m-3 indlikes' id={props.indPost.post_id} onClick={handleLike}><span className='nm m-2' id='indLikes'>{props.indPost.likes}</span></div>
                           <div className='nm fas fa-comments m-3'><span className='nm m-2'>{replies}</span></div>

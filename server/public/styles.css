@@ -886,3 +886,30 @@ HOME FEED CSS
         width: 35px;
     }
 }
+
+/* 
+
+==================================
+
+CSS FOR IND POST PAGE
+
+==================================
+
+*/
+
+.indCont {
+    width: 75vw;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 25vw;
+    margin-top: 3rem;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 470px) {
+    .indCont{
+        width: 60vw;
+        left: 40vw;
+    }
+}
