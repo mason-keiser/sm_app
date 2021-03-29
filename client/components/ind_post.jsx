@@ -53,7 +53,7 @@ const Ind_Post = (props) => {
             bg.firstChild.style.backgroundColor='#262626'
             menu.style.background ='#262626'
         }
-    },[props.nightMode])
+    },[props.nightMode, props.indPost])
 
     const toggler = () => {
         if (props.nightMode == false) {
