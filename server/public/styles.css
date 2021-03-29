@@ -941,6 +941,10 @@ HOME FEED CSS
     .sm{
         font-size: medium;
     }
+
+    .dateHolder > h4 {
+        font-size: 1rem;
+    }
 }
 
 @media screen and (min-width: 370px) and (max-width: 390px) {
