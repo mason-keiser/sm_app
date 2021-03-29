@@ -8,7 +8,6 @@ import {
   } from 'react-scroll';
 
 const Feed = (props) => {
-    const [postId, setPostId] = useState()
     const [newPost, setNewPost] = useState();
 
     useEffect(() => {
@@ -99,9 +98,9 @@ const Feed = (props) => {
                 <div className='singPost m-auto' key={index}>
                     <Post_Card
                     viewIndPost={props.viewIndPost}
-                    postId={postId}
+                    postId={props.postId}
                     setView={props.setView}
-                    setPostId={setPostId}
+                    setPostId={props.setPostId}
                     likePost={props.likePost}
                     post={post}
                     key={post.post_id}

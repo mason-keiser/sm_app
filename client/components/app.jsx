@@ -11,6 +11,7 @@ const App = () => {
     const [view, setView] = useState({ name: 'init', params: {} })
     const [user, setUser] = useState({})
     const [posts, setPosts] = useState([])
+    const [postId, setPostId] = useState('postId')
     const [nightMode, setNightMode] = useState(false)
     const [indPost, setIndPost] = useState()
 
@@ -30,12 +31,13 @@ const App = () => {
                 if (!result) {
                     return null
                 } else {
-                    setIndPost(result)
+                    setIndPost(result[0])
                 }
             }) 
     }
 
     const likePost = (postId) => {
+        console.log(postId)
         fetch('/api/like' , {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
@@ -59,7 +61,7 @@ const App = () => {
                         }
                     },400) 
                 }
-                
+                setPostId()
                 return response.json();
             }
         })
@@ -243,9 +245,9 @@ const App = () => {
             : (view.name === 'signup')
                 ? <Signup signup={signUp} loginAsGuest={loginAsGuest} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                 : (view.name === 'feed')
-                    ?<Feed  viewIndPost={viewIndPost} nightMode={nightMode} setNightMode={setNightMode} likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
+                    ?<Feed setPostId={setPostId} viewIndPost={viewIndPost} nightMode={nightMode} setNightMode={setNightMode} likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                     : (view.name === 'indPost')
-                        ? <Ind_Post viewIndPost={viewIndPost} indPost={indPost} setIndPost={setIndPost} nightMode={nightMode} setNightMode={setNightMode} likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} view={view} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
+                        ? <Ind_Post setPostId={setPostId} viewIndPost={viewIndPost} indPost={indPost} setIndPost={setIndPost} nightMode={nightMode} setNightMode={setNightMode} likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} view={view} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                         : null
     return (
         <div>
