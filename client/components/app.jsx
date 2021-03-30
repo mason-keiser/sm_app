@@ -5,6 +5,7 @@ import Login from "./login"
 import Signup from './signup'
 import Feed from './feed'
 import Ind_Post from "./ind_post"
+import My_Profile from "./my_profile"
 
 const App = () => {
 
@@ -248,7 +249,9 @@ const App = () => {
                     ?<Feed setPostId={setPostId} viewIndPost={viewIndPost} nightMode={nightMode} setNightMode={setNightMode} likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                     : (view.name === 'indPost')
                         ? <Ind_Post setPostId={setPostId} viewIndPost={viewIndPost} indPost={indPost} setIndPost={setIndPost} nightMode={nightMode} setNightMode={setNightMode} likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} view={view} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
-                        : null
+                        : (view.name === 'myProfile')
+                            ? <My_Profile setPostId={setPostId} viewIndPost={viewIndPost} indPost={indPost} setIndPost={setIndPost} nightMode={nightMode} setNightMode={setNightMode} likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} view={view} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
+                            : null
     return (
         <div>
             {navTert}

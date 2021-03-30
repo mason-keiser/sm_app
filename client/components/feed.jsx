@@ -125,7 +125,7 @@ const Feed = (props) => {
                     <h3 className='menTit mt-3 nm'>üConnect</h3>
                     <div className='profileTag'>
                         <div id='userI' className='fas fa-user'></div>
-                        <h5 className='nm'>My Profile</h5>
+                        <h5 onClick={() => props.setView({name: 'myProfile', params: {}})} className='nm'>My Profile</h5>
                     </div>
                     <div className='togg d-flex flex-column align-items-center'>
                         <h6 className='nm'>Night Mode:</h6>

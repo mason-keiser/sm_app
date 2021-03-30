@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from "react"
 import Bg from "./bg"
 
-const Ind_Post = (props) => {
+const My_Profile = (props) => {
 
     useEffect(() => {
         const iconHolder = document.querySelector('.toggIconHolder')
@@ -53,42 +53,7 @@ const Ind_Post = (props) => {
             bg.firstChild.style.backgroundColor='#262626'
             menu.style.background ='#262626'
         }
-    },[props.nightMode, props.indPost])
-
-    const toggler = () => {
-        if (props.nightMode == false) {
-            props.setNightMode(true)
-        } if (props.nightMode == true)  {
-            props.setNightMode(false)
-        }
-    }
-
-    const handleLike = (event) => {
-        props.setPostId(event.target.id)
-
-        const obj = {
-            post_id: event.target.id
-        }
-        if (!obj) return null
-
-        props.likePost(obj)
-        props.viewIndPost(event.target.id)
-    }
-
-    const replies = (props.indPost !== null) ? 0 : props.indPost.replies
-
-    const profImage = (props.indPost !== null) 
-    ? (
-        <div className='imageCo mt-3'>
-            <div className='profileImageCont p-2'>
-                <div className='nm fas fa-user'></div>
-            </div>
-        </div>
-    ) : null
-
-    const loadReplies = (props.indPost !== undefined || props.indPost !== null)
-        ? <div className='nm' style={{textAlign: 'center', marginTop: '4rem'}}>No Other Replies</div>
-        : props.indPost.replies
+    },[props.nightMode])
 
     return (
         <div>
@@ -100,14 +65,10 @@ const Ind_Post = (props) => {
             </div>
             <div className='columnCont'>
                 <div id='menu'className='sideMenu'>
-                    <h3 style={{cursor: 'pointer'}} className='menTit mt-3 nm' onClick={() => props.setView({name: 'feed', params: {}})}>üConnect</h3>
-                    <div className='profileTag' style={{height: '7vh'}}>
+                    <h3 className='menTit mt-3 nm'>üConnect</h3>
+                    <div className='profileTag'>
                         <div id='userI' className='fas fa-user'></div>
-                        <h5 onClick={() => props.setView({name: 'myProfile', params: {}})} className='nm'>My Profile</h5>
-                    </div>
-                    <div className='profileTag mb-3' onClick={() => props.setView({name: 'feed', params: {}})} style={{height: '7vh'}}>
-                        <div id='userI' className='nm fas fa-home'></div>
-                        <h5 className='nm'>Feed</h5>
+                        <h5 className='nm'>My Profile</h5>
                     </div>
                     <div className='togg d-flex flex-column align-items-center'>
                         <h6 className='nm'>Night Mode:</h6>
@@ -120,28 +81,9 @@ const Ind_Post = (props) => {
                     <h6 className='foote nm'> Mason Keiser  © 2021. All rights reserved.</h6>
                 </div>
             </div>
-            <div className='rightColumn'>
-                {
-                (props.indPost == undefined) ? null : 
-                <div className='indCont'>
-                <div className='d-flex flex-row p-2 co mt-5 m-auto'>
-                    {profImage}
-                    <div className='nice co d-flex flex-column justify-content-between p-2'>
-                        <h6 className='sm l nm mt-3' id='indUser'>{`@${props.indPost.user_name}`}</h6>
-                        <div className='sm nm l' id='indPost'>{props.indPost.post}</div>
-                        <div className='d-flex flex-row justify-content-center' >
-                            <div className='nm fas fa-star m-3 indlikes sm' id={props.indPost.post_id} onClick={handleLike}><span className='sm nm m-2' id='indLikes'>{props.indPost.likes}</span></div>
-                            <div className='nm fas fa-comments m-3 sm'><span className='sm nm m-2'>{replies}</span></div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-                }
-                {loadReplies}
-             </div>
             <Bg/>
         </div>
     )
 }
 
-export default Ind_Post
+export default My_Profile
