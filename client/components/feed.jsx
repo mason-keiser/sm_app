@@ -111,7 +111,6 @@ const Feed = (props) => {
     )
     : <h2 className="empty mt-5 m-auto">No Posts available</h2>
 
-
     return (
         <div>
             <div className='landingNav'>

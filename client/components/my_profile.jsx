@@ -55,6 +55,14 @@ const My_Profile = (props) => {
         }
     },[props.nightMode])
 
+    const toggler = () => {
+        if (props.nightMode == false) {
+            props.setNightMode(true)
+        } if (props.nightMode == true)  {
+            props.setNightMode(false)
+        }
+    }
+
     return (
         <div>
              <div className='landingNav'>
@@ -65,7 +73,7 @@ const My_Profile = (props) => {
             </div>
             <div className='columnCont'>
                 <div id='menu'className='sideMenu'>
-                    <h3 className='menTit mt-3 nm'>üConnect</h3>
+                    <h3 onClick={() => props.setView({name: 'feed', params: {}})} className='menTit mt-3 nm'>üConnect</h3>
                     <div className='profileTag'>
                         <div id='userI' className='fas fa-user'></div>
                         <h5 className='nm'>My Profile</h5>
