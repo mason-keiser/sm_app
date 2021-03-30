@@ -74,9 +74,9 @@ const My_Profile = (props) => {
             <div className='columnCont'>
                 <div id='menu'className='sideMenu'>
                     <h3 onClick={() => props.setView({name: 'feed', params: {}})} className='menTit mt-3 nm'>üConnect</h3>
-                    <div className='profileTag'>
-                        <div id='userI' className='fas fa-user'></div>
-                        <h5 className='nm'>My Profile</h5>
+                    <div className='profileTag mb-3' onClick={() => props.setView({name: 'feed', params: {}})} style={{height: '7vh'}}>
+                        <div id='userI' className='nm fas fa-home'></div>
+                        <h5 className='nm'>Feed</h5>
                     </div>
                     <div className='togg d-flex flex-column align-items-center'>
                         <h6 className='nm'>Night Mode:</h6>
