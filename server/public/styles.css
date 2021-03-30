@@ -721,6 +721,7 @@ HOME FEED CSS
     padding: 10px;
     align-self: center;
     width: 35vw;
+    outline: none;
     height: 15vh;
     border: none;
     box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
