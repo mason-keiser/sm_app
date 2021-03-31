@@ -1094,6 +1094,10 @@ CSS FOR PROFILE PAGE
     cursor: pointer;
 }
 
+#p {
+    color: #24B67E;
+}
+
 @media screen and (max-width: 470px) {
     .switchCont > h5 {
         font-size: medium;
