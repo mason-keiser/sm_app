@@ -1009,3 +1009,95 @@ CSS FOR IND POST PAGE
         left: 40vw;
     }
 }
+
+/*
+
+==================================
+
+CSS FOR PROFILE PAGE
+
+==================================
+
+*/
+
+.profCont{
+    position: absolute;
+    left: 25vw;
+    height: 100vh;
+    width: 75vw;
+}
+
+.headEr {
+    margin-top: 4.5rem;
+    width: 75vw;
+    height: 20vh;
+}
+
+.headEr > div {
+    object-fit: cover;
+    height: 25vh;
+    width: 100%;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.profileImageCont2{
+    border: 1px solid black;
+    background: white;
+    border-radius: 50%;
+    width: 15vw;
+    height: 20vh;
+    display: flex;
+    margin-left: 3rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.imageCo2 {
+    position: absolute;
+    top: 10rem;
+}
+
+#userIm {
+    font-size: 3rem;
+}
+
+@media screen and (max-width: 470px) {
+    .indCont{
+        width: 60vw;
+    }
+
+    .profCont{
+        left: 40vw;
+        width: 60vw;
+    }
+
+    .profileImageCont2{
+        width: 30vw;
+        height: 15vh;
+        margin-left: 0;
+    }
+
+    .imageCo2 {
+        top: 9rem;
+        width: 60vw;
+        display: flex;
+        justify-content: center;
+    }
+
+    .headEr {
+        margin-top: 3.5rem;
+        width: 60vw;
+    }
+
+    .headEr > div {
+        height: 20vh;
+        width: 60vw;
+    }
+}
+
+@media screen and (max-width: 340px) {
+    .imageCo2 {
+        top: 7rem;
+    }
+}

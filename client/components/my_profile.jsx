@@ -13,6 +13,7 @@ const My_Profile = (props) => {
         const userI = document.getElementById('userI')
         const menu = document.getElementById('menu')
         const image = document.querySelectorAll('.profileImageCont')
+        const headerbg = document.querySelector('#headerbg')
 
         if (props.nightMode == false) {
             for (let i = 0; i < words.length; i++ ) {
@@ -23,6 +24,7 @@ const My_Profile = (props) => {
                 image[j].style.color = 'black'
                 image[j].style.background = 'white'
             }
+            headerbg.style.background='black'
             userI.style.color = 'black'
             iconHolder.style.float = 'right'
             iconHolder.classList.remove('d')
@@ -42,6 +44,7 @@ const My_Profile = (props) => {
                 image[j].style.color = 'white'
                 image[j].style.background = 'black'
             }
+            headerbg.style.background='white'
             userI.style.color = 'white'
             iconHolder.style.float = 'left'
             iconHolder.classList.add('d')
@@ -62,6 +65,24 @@ const My_Profile = (props) => {
             props.setNightMode(false)
         }
     }
+
+    const headerImg = (!props.user.user_profile_header) 
+        ? (
+            <div className='headEr'>
+                <div style={{background: 'black', }} alt="header" id='headerbg'></div>
+            </div>
+        ) 
+        : null
+
+    const profImg = (!props.user.user_profile_header) 
+    ? (
+        <div className='imageCo2 mt-3'>
+            <div className='profileImageCont profileImageCont2 p-2'>
+                <div className='nm fas fa-user' id='userIm'></div>
+            </div>
+        </div>
+    ) 
+    : null
 
     return (
         <div>
@@ -87,6 +108,12 @@ const My_Profile = (props) => {
                         </div>
                     </div>
                     <h6 className='foote nm'> Mason Keiser  © 2021. All rights reserved.</h6>
+                </div>
+            </div>
+            <div className='profCont'>
+                <div className='headerCont'>
+                    {headerImg}
+                    {profImg}
                 </div>
             </div>
             <Bg/>
