@@ -1,6 +1,10 @@
 import React from 'react'
 import { useEffect, useState } from "react"
 import Bg from "./bg"
+import {
+    Link,
+    animateScroll as scroll
+  } from 'react-scroll';
 
 const My_Profile = (props) => {
 
@@ -66,6 +70,19 @@ const My_Profile = (props) => {
         }
     }
 
+    const menuTogg = (event) => {
+        const men1 = document.getElementById('p')
+        const men2 = document.getElementById('s')
+
+        if (event.target.id === men1.id) {
+            men1.style.color = '#24B67E'
+            men2.style.color='black'
+        } else {
+            men2.style.color = '#24B67E'
+            men2.style.color='black'
+        }
+    }
+
     const headerImg = (!props.user.user_profile_header) 
         ? (
             <div className='headEr'>
@@ -114,6 +131,17 @@ const My_Profile = (props) => {
                 <div className='headerCont'>
                     {headerImg}
                     {profImg}
+                </div>
+                <div>
+                    <h4 id='useName' className='nm'>@{props.user.user_name}</h4>
+                    <h6 id='useName2' className='nm bio' style={{paddingLeft: 0 ,textAlign: 'center'}}>this is my bio: https://masonkeiser.com</h6>
+                </div>
+                <div className='switchCont'>
+                    <h5 id='p' onClick={menuTogg} className='nm h'>My Posts</h5>
+                    <h5 id='s' onClick={menuTogg}className='nm h'>Settings</h5>
+                </div>
+                <div className='toTop' onClick={() => scroll.scrollToTop()}>
+                    <div className='fas fa-chevron-up' style={{color: 'white'}}></div>    
                 </div>
             </div>
             <Bg/>

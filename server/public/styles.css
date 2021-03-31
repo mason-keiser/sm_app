@@ -1062,7 +1062,60 @@ CSS FOR PROFILE PAGE
     font-size: 3rem;
 }
 
+#useName{
+    margin-top: 5rem;
+    padding-left: 18rem;
+}
+
+#useName2{
+    padding-left: 18rem;
+    margin-top: 1rem;
+}
+
+.bio{
+    padding-left: 0;
+}
+
+.switchCont{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 3rem;
+    padding-bottom: 20px;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.5);
+}
+
+.switchCont > h5 {
+    font-size: large;
+}
+
+.h:hover {
+    color: #24B67E;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 470px) {
+    .switchCont > h5 {
+        font-size: medium;
+    }
+
+    .switchCont {
+        margin-top: 2rem;
+        padding-bottom: 10px;
+    }
+
+    #useName{
+        text-align: center;
+        margin-top: 4.5rem;
+        padding-left: 0;
+    }
+
+    #useName2{
+        text-align: center;
+        
+        padding-left: 0;
+    }
+
     .indCont{
         width: 60vw;
     }
