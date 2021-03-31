@@ -76,10 +76,18 @@ const My_Profile = (props) => {
 
         if (event.target.id === men1.id) {
             men1.style.color = '#24B67E'
-            men2.style.color='black'
-        } else {
+            if (props.nightMode == true) {
+                men2.style.color='white'
+            } else {
+                men2.style.color='black'
+            }
+        } if (event.target.id === men2.id) {
             men2.style.color = '#24B67E'
-            men2.style.color='black'
+            if (props.nightMode == true) {
+                men1.style.color='white'
+            } else {
+                men1.style.color='black'
+            }
         }
     }
 
