@@ -15,6 +15,28 @@ const App = () => {
     const [postId, setPostId] = useState('postId')
     const [nightMode, setNightMode] = useState(false)
     const [indPost, setIndPost] = useState()
+    const [usersPosts, setUsersPosts] = useState()
+
+    const getUsersPosts = (user_id) => {
+        fetch('/api/getUserPosts/' + user_id, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json'}
+        })
+        .then(response => {
+            if (response.status === 400 || response.status === 404) {
+                return null
+            } else {
+                return response.json();
+            }
+        })
+            .then(result => {
+                if (!result) {
+                    return null
+                } else {
+                    setUsersPosts(result)
+                }
+            }) 
+    }
 
     const viewIndPost = (postId) => {
         fetch('/api/singPost/' + postId,{
@@ -146,6 +168,7 @@ const App = () => {
                     if (!result) {
                         return null
                     } else {
+                        getUsersPosts(result[0].user_id)
                         setUser({
                             user_id: result[0].user_id,
                             user_name: result[0].user_name,
@@ -173,6 +196,7 @@ const App = () => {
                     if (!result) {
                         return null
                     } else {
+                        getUsersPosts(result[0].user_id)
                         setUser({
                             user_id: result[0].user_id,
                             user_name: result[0].user_name,

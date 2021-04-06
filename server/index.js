@@ -241,17 +241,7 @@ app.get('/api/getUserPosts/:user_id', (req, res, next) => {
     if (!result) {
       return res.status(400).json({ message: `post attempt was unsuccessful` });
     } else {
-      db.query(userSql, [user_id])
-      .then(result2 => {
-        if (!result2) {
-          return res.status(400).json({ message: `post attempt was unsuccessful` });
-        } else {
-          result2.rows.forEach((i) => {
-            delete i.user_password
-          })
-          return res.status(200).json(result.rows.concat(result2.rows))
-        }
-      })
+      return res.status(200).json(result.rows)
     }
   })
   .catch(err => {
