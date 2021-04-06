@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from "react"
 import Bg from "./bg"
+import Post_Card from "./post_card"
 import {
     Link,
     animateScroll as scroll
@@ -109,6 +110,25 @@ const My_Profile = (props) => {
     ) 
     : null
 
+    const items = (props.posts !== null && props.posts !== undefined) 
+    ?  (props.posts.map((post, index) => {
+            return(
+                <div className='singPost m-auto' key={index}>
+                    <Post_Card
+                    viewIndPost={props.viewIndPost}
+                    postId={props.postId}
+                    setView={props.setView}
+                    setPostId={props.setPostId}
+                    likePost={props.likePost}
+                    post={post}
+                    key={post.post_id}
+                    />
+                </div>
+            );
+        })
+    )
+    : <h2 className="empty mt-5 m-auto">No Posts available</h2>
+
     return (
         <div>
              <div className='landingNav'>
@@ -147,6 +167,9 @@ const My_Profile = (props) => {
                 <div className='switchCont'>
                     <h5 id='p' onClick={menuTogg} className='nm h'>My Posts</h5>
                     <h5 id='s' onClick={menuTogg}className='nm h'>Settings</h5>
+                </div>
+                <div>
+                    {items}
                 </div>
                 <div className='toTop' onClick={() => scroll.scrollToTop()}>
                     <div className='fas fa-chevron-up' style={{color: 'white'}}></div>    
