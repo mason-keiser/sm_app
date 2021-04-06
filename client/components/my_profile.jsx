@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from "react"
 import Bg from "./bg"
-import Post_Card from "./post_card"
+import My_Post_Card from "./my_post_card"
 import {
     Link,
     animateScroll as scroll
@@ -19,6 +19,8 @@ const My_Profile = (props) => {
         const menu = document.getElementById('menu')
         const image = document.querySelectorAll('.profileImageCont')
         const headerbg = document.querySelector('#headerbg')
+        const men1 = document.getElementById('p')
+        const men2 = document.getElementById('s')
 
         if (props.nightMode == false) {
             for (let i = 0; i < words.length; i++ ) {
@@ -40,6 +42,7 @@ const My_Profile = (props) => {
             bar.style.background = 'white'
             bg.firstChild.style.backgroundColor="#F5F5F5"
             menu.style.background ='#F5F5F5'
+            men1.style.color = '#24B67E'
         } if (props.nightMode == true) {
             for (let i = 0; i < words.length; i++ ) {
                 words[i].style.color = 'white'
@@ -60,6 +63,7 @@ const My_Profile = (props) => {
             bar.style.background = 'black'
             bg.firstChild.style.backgroundColor='#262626'
             menu.style.background ='#262626'
+            men1.style.color = '#24B67E'
         }
     },[props.nightMode])
 
@@ -74,6 +78,7 @@ const My_Profile = (props) => {
     const menuTogg = (event) => {
         const men1 = document.getElementById('p')
         const men2 = document.getElementById('s')
+        men1.style.color = '#24B67E'
 
         if (event.target.id === men1.id) {
             men1.style.color = '#24B67E'
@@ -114,12 +119,13 @@ const My_Profile = (props) => {
     ?  (props.posts.map((post, index) => {
             return(
                 <div className='singPost m-auto' key={index}>
-                    <Post_Card
+                    <My_Post_Card
                     viewIndPost={props.viewIndPost}
                     postId={props.postId}
                     setView={props.setView}
                     setPostId={props.setPostId}
                     likePost={props.likePost}
+                    user={props.user}
                     post={post}
                     key={post.post_id}
                     />

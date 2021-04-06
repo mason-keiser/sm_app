@@ -274,7 +274,7 @@ const App = () => {
                     : (view.name === 'indPost')
                         ? <Ind_Post setPostId={setPostId} viewIndPost={viewIndPost} indPost={indPost} setIndPost={setIndPost} nightMode={nightMode} setNightMode={setNightMode} likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} view={view} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                         : (view.name === 'myProfile')
-                            ? <My_Profile setPostId={setPostId} viewIndPost={viewIndPost} indPost={indPost} setIndPost={setIndPost} nightMode={nightMode} setNightMode={setNightMode} likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} view={view} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
+                            ? <My_Profile usersPosts={usersPosts} setPostId={setPostId} viewIndPost={viewIndPost} indPost={indPost} setIndPost={setIndPost} nightMode={nightMode} setNightMode={setNightMode} likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} view={view} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                             : null
     return (
         <div>
