@@ -220,6 +220,46 @@ app.get('/api/singPost/:post_id', (req, res, next) => {
   });
 })
 
+// API GET USERS POSTS
+
+app.get('/api/getUserPosts/:user_id', (req, res, next) => {
+  const user_id = req.params.user_id
+  const sql = `
+  SELECT * FROM posts
+  WHERE user_id = $1
+  `
+
+  const userSql = `
+  SELECT * FROM users
+  WHERE user_id = $1
+  `
+
+  if (!user_id) return res.status(400).json({ message: `no user_id was given` });
+
+  db.query(sql, [user_id])
+  .then(result => {
+    if (!result) {
+      return res.status(400).json({ message: `post attempt was unsuccessful` });
+    } else {
+      db.query(userSql, [user_id])
+      .then(result2 => {
+        if (!result2) {
+          return res.status(400).json({ message: `post attempt was unsuccessful` });
+        } else {
+          result2.rows.forEach((i) => {
+            delete i.user_password
+          })
+          return res.status(200).json(result.rows.concat(result2.rows))
+        }
+      })
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    res.status(500).json({ error: 'An unexpected error occurred.' });
+  });
+})
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
