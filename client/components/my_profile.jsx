@@ -8,6 +8,7 @@ import {
   } from 'react-scroll';
 
 const My_Profile = (props) => {
+    const [settings, setSettings] = useState(false);
 
     useEffect(() => {
         const iconHolder = document.querySelector('.toggIconHolder')
@@ -21,6 +22,7 @@ const My_Profile = (props) => {
         const headerbg = document.querySelector('#headerbg')
         const men1 = document.getElementById('p')
         const men2 = document.getElementById('s')
+        men1.style.color = '#24B67E'
 
         if (props.nightMode == false) {
             for (let i = 0; i < words.length; i++ ) {
@@ -31,6 +33,13 @@ const My_Profile = (props) => {
                 image[j].style.color = 'black'
                 image[j].style.background = 'white'
             }
+
+            if (settings == false) {
+                men1.style.color = '#24B67E'
+            } else {
+                men2.style.color = '#24B67E'
+            }
+
             headerbg.style.background='black'
             userI.style.color = 'black'
             iconHolder.style.float = 'right'
@@ -42,7 +51,8 @@ const My_Profile = (props) => {
             bar.style.background = 'white'
             bg.firstChild.style.backgroundColor="#F5F5F5"
             menu.style.background ='#F5F5F5'
-            men1.style.color = '#24B67E'
+            
+          
         } if (props.nightMode == true) {
             for (let i = 0; i < words.length; i++ ) {
                 words[i].style.color = 'white'
@@ -52,6 +62,13 @@ const My_Profile = (props) => {
                 image[j].style.color = 'white'
                 image[j].style.background = 'black'
             }
+
+            if (settings == false) {
+                men1.style.color = '#24B67E'
+            } else {
+                men2.style.color = '#24B67E'
+            }
+    
             headerbg.style.background='white'
             userI.style.color = 'white'
             iconHolder.style.float = 'left'
@@ -63,9 +80,8 @@ const My_Profile = (props) => {
             bar.style.background = 'black'
             bg.firstChild.style.backgroundColor='#262626'
             menu.style.background ='#262626'
-            men1.style.color = '#24B67E'
         }
-    },[props.nightMode])
+    },[props.nightMode, settings])
 
     const toggler = () => {
         if (props.nightMode == false) {
@@ -82,6 +98,7 @@ const My_Profile = (props) => {
 
         if (event.target.id === men1.id) {
             men1.style.color = '#24B67E'
+            setSettings(false)
             if (props.nightMode == true) {
                 men2.style.color='white'
             } else {
@@ -89,6 +106,7 @@ const My_Profile = (props) => {
             }
         } if (event.target.id === men2.id) {
             men2.style.color = '#24B67E'
+            setSettings(true)
             if (props.nightMode == true) {
                 men1.style.color='white'
             } else {
@@ -135,6 +153,16 @@ const My_Profile = (props) => {
     )
     : <h2 className="empty mt-5 m-auto">No Posts available</h2>
 
+    const profTerp = (settings) 
+        ? (
+            null
+        ) 
+        : (
+            <div>
+                {items}
+            </div>
+        )
+
     return (
         <div>
              <div className='landingNav'>
@@ -174,9 +202,7 @@ const My_Profile = (props) => {
                     <h5 id='p' onClick={menuTogg} className='nm h'>My Posts</h5>
                     <h5 id='s' onClick={menuTogg}className='nm h'>Settings</h5>
                 </div>
-                <div>
-                    {items}
-                </div>
+                {profTerp}
                 <div className='toTop' onClick={() => scroll.scrollToTop()}>
                     <div className='fas fa-chevron-up' style={{color: 'white'}}></div>    
                 </div>
