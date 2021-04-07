@@ -168,7 +168,7 @@ const My_Profile = (props) => {
                 </div>
                 <div>
                     <h4 id='useName' className='nm'>@{props.user.user_name}</h4>
-                    <h6 id='useName2' className='nm bio' style={{paddingLeft: 0 ,textAlign: 'center'}}>this is my bio: https://masonkeiser.com</h6>
+                    <h6 id='useName2' className='nm bio' style={{paddingLeft: 0 ,textAlign: 'center'}}>{props.user.user_bio}</h6>
                 </div>
                 <div className='switchCont'>
                     <h5 id='p' onClick={menuTogg} className='nm h'>My Posts</h5>

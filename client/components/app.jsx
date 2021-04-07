@@ -171,6 +171,7 @@ const App = () => {
                         getUsersPosts(result[0].user_id)
                         setUser({
                             user_id: result[0].user_id,
+                            user_bio: result[0].user_bio,
                             user_name: result[0].user_name,
                             user_profile_image: result[0].user_profile_image ? result[0].user_profile_image : null,
                             user_header_image: result[0].user_header_image ? result[0].user_header_image : null
@@ -199,6 +200,7 @@ const App = () => {
                         getUsersPosts(result[0].user_id)
                         setUser({
                             user_id: result[0].user_id,
+                            user_bio: result[0].user_bio,
                             user_name: result[0].user_name,
                             user_profile_image: result[0].user_profile_image ? result[0].user_profile_image : null,
                             user_profile_header: result[0].user_profile_header ? result[0].user_header_image : null
@@ -235,6 +237,7 @@ const App = () => {
                 } else {
                     setUser({
                         user_id: result.user_id,
+                        user_bio: result[0].user_bio,
                         user_name: result.user_name,
                         user_profile_image: result.user_profile_image ? result.user_profile_image : null,
                         user_profile_header: result.user_profile_header ? result.user_header_image : null
