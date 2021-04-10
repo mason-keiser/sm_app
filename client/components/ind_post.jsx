@@ -103,11 +103,11 @@ const Ind_Post = (props) => {
                     <h3 style={{cursor: 'pointer'}} className='menTit mt-3 nm' onClick={() => props.setView({name: 'feed', params: {}})}>üConnect</h3>
                     <div className='profileTag' style={{height: '7vh'}}>
                         <div id='userI' className='fas fa-user'></div>
-                        <h5 onClick={() => props.setView({name: 'myProfile', params: {}})} className='nm'>My Profile</h5>
+                        <h5 onClick={() => props.setView({name: 'myProfile', params: {}})} className='nm ho'>My Profile</h5>
                     </div>
                     <div className='profileTag mb-3' onClick={() => props.setView({name: 'feed', params: {}})} style={{height: '7vh'}}>
                         <div id='userI' className='nm fas fa-home'></div>
-                        <h5 className='nm'>Feed</h5>
+                        <h5 className='nm ho'>Feed</h5>
                     </div>
                     <div className='togg d-flex flex-column align-items-center'>
                         <h6 className='nm'>Night Mode:</h6>

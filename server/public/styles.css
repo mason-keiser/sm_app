@@ -824,6 +824,10 @@ HOME FEED CSS
     text-align: center;
 }
 
+.ho:hover{
+    opacity: 60%;
+}
+
 @media screen and (min-width: 1000px) {
     .inputCont >button {
        top: 11.5rem
@@ -1098,8 +1102,95 @@ CSS FOR PROFILE PAGE
     color: #24B67E;
 }
 
+.settingsCont{
+    width: 75vw;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.settingsCont2 {
+    width: 75vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.settingsCont >h6 {
+    font-size: larger;
+    margin: 1.5rem;
+    cursor: pointer;
+}
+
+.settingsCont2 >h6 {
+    font-size: larger;
+    margin: 1.5rem;
+    cursor: pointer;
+}
+
+.cbHeader > h6 {
+    font-size: larger;
+}
+
+.settingsCont >h6:hover {
+    opacity: 60%;
+}
+
+.settingsCont2 >h6:hover {
+    opacity: 60%;
+}
+
+.backButton {
+    position: absolute;
+    left: 10px;
+    top: 61vh;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #24B67E;
+    color: white;
+}
+
+.backButton:hover{
+    opacity: 90%;
+    cursor: pointer;
+}
+
+.backButton > span {
+    color: white;
+}
+
+.cbHeader {
+    margin-top: 1rem;
+}
+
 @media screen and (max-width: 470px) {
+    .backButton{
+        top: 57vh;
+        left: 5px;
+        width: 30px;
+        height: 30px;
+    }
+
     .switchCont > h5 {
+        font-size: medium;
+    }
+
+    .cbHeader > h6 {
+        font-size: medium;
+    }
+
+    .settingsCont >h6 {
+        font-size: medium;
+    }
+
+    .settingsCont2 >h6 {
         font-size: medium;
     }
 
@@ -1118,6 +1209,14 @@ CSS FOR PROFILE PAGE
         text-align: center;
         
         padding-left: 0;
+    }
+
+    .settingsCont{
+        width: 60vw;
+    }
+
+    .settingsCont2{
+        width: 60vw;
     }
 
     .indCont{
@@ -1156,5 +1255,36 @@ CSS FOR PROFILE PAGE
 @media screen and (max-width: 340px) {
     .imageCo2 {
         top: 7rem;
+    }
+
+    .settingsCont {
+        height: 30vh;
+    }
+
+    .settingsCont > h6 {
+        font-size: smaller;
+        margin: 1rem;
+    }
+
+    .settingsCont2 {
+        height: 30vh;
+    }
+
+    .settingsCont2 > h6 {
+        font-size: smaller;
+        margin: 1rem;
+    }
+    .cbHeader > h6 {
+        font-size: smaller;
+    }
+
+    .backButton{
+        top: 68vh;
+    }
+}
+
+@media screen and (max-width: 380px) and (min-height: 800px) {
+    .backButton{
+        top: 53vh;
     }
 }

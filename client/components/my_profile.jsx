@@ -6,6 +6,7 @@ import {
     Link,
     animateScroll as scroll
   } from 'react-scroll';
+import Settings from './settings'
 
 const My_Profile = (props) => {
     const [settings, setSettings] = useState(false);
@@ -155,11 +156,14 @@ const My_Profile = (props) => {
 
     const profTerp = (settings) 
         ? (
-            null
+            <Settings props={props} settings={settings}/>
         ) 
         : (
             <div>
                 {items}
+                <div className='toTop' onClick={() => scroll.scrollToTop()}>
+                    <div className='fas fa-chevron-up' style={{color: 'white'}}></div>    
+                </div>
             </div>
         )
 
@@ -176,7 +180,7 @@ const My_Profile = (props) => {
                     <h3 onClick={() => props.setView({name: 'feed', params: {}})} className='menTit mt-3 nm'>üConnect</h3>
                     <div className='profileTag mb-3' onClick={() => props.setView({name: 'feed', params: {}})} style={{height: '7vh'}}>
                         <div id='userI' className='nm fas fa-home'></div>
-                        <h5 className='nm'>Feed</h5>
+                        <h5 className='nm ho'>Feed</h5>
                     </div>
                     <div className='togg d-flex flex-column align-items-center'>
                         <h6 className='nm'>Night Mode:</h6>
@@ -199,13 +203,10 @@ const My_Profile = (props) => {
                     <h6 id='useName2' className='nm bio' style={{paddingLeft: 0 ,textAlign: 'center'}}>{props.user.user_bio}</h6>
                 </div>
                 <div className='switchCont'>
-                    <h5 id='p' onClick={menuTogg} className='nm h'>My Posts</h5>
-                    <h5 id='s' onClick={menuTogg}className='nm h'>Settings</h5>
+                    <h5 id='p' onClick={menuTogg} className='nm h ho'>My Posts</h5>
+                    <h5 id='s' onClick={menuTogg}className='nm h ho'>Settings</h5>
                 </div>
                 {profTerp}
-                <div className='toTop' onClick={() => scroll.scrollToTop()}>
-                    <div className='fas fa-chevron-up' style={{color: 'white'}}></div>    
-                </div>
             </div>
             <Bg/>
         </div>
