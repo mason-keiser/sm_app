@@ -1137,10 +1137,12 @@ CSS FOR PROFILE PAGE
 
 .settingsCont >h6:hover {
     opacity: 60%;
+    color: #24B67E;
 }
 
 .settingsCont2 >h6:hover {
     opacity: 60%;
+    color: #24B67E;
 }
 
 .backButton {
@@ -1160,6 +1162,7 @@ CSS FOR PROFILE PAGE
 .backButton:hover{
     opacity: 90%;
     cursor: pointer;
+    color: #24B67E;
 }
 
 .backButton > span {
@@ -1170,12 +1173,56 @@ CSS FOR PROFILE PAGE
     margin-top: 1rem;
 }
 
+.bioCont {
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bioCont > input {
+    height: 7vh;
+    width: 40vw;
+    font-size: larger;
+    margin-bottom: 1rem;
+    padding: 0px 5px 0px 5px;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.subBtnCont > button {
+    background: #24B67E;
+    color: white;
+    border: none;
+    width: 5vw;
+    height: 5vh;
+    border-radius: 5px;
+    margin-top: 3rem;
+}
+
 @media screen and (max-width: 470px) {
     .backButton{
         top: 57vh;
         left: 5px;
         width: 30px;
         height: 30px;
+    }
+
+    .subBtnCont > button {
+        background: #24B67E;
+        color: white;
+        border: none;
+        width: 20vw;
+        height: 5vh;
+        margin-top: 1rem;
+    }
+
+    .bioCont > input {
+        width: 50vw;
     }
 
     .switchCont > h5 {
@@ -1258,6 +1305,10 @@ CSS FOR PROFILE PAGE
     }
 
     .settingsCont {
+        height: 30vh;
+    }
+
+    .bioCont{
         height: 30vh;
     }
 

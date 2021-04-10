@@ -4,6 +4,7 @@ import Bg from "./bg"
 
 const Settings = (props) => {
     const [settingsView, setSettingsView] = useState('home');
+    const [bio, setBio] = useState('')
 
     useEffect(() => {
         const iconHolder = document.querySelector('.toggIconHolder')
@@ -102,6 +103,12 @@ const Settings = (props) => {
                     <div className='backButton' onClick={() => setSettingsView('home')}><span className='fas fa-chevron-left'></span></div>
                     <div className='cbHeader'>
                         <h6 className='nm'>Change Bio</h6>
+                    </div>
+                    <div className='bioCont'>
+                        <input type="text" id='bio' placeholder='enter new bio'/>
+                        <div className='subBtnCont'>
+                            <button>Submit</button>
+                        </div>
                     </div>
                 </div>
             )
