@@ -3,7 +3,7 @@ import React from 'react'
 
 const My_Post_Card = (props) => {
 
-    const profImage = (props.user.user_profile_image === null) 
+    const profImage = (!props.user.user_profile_image) 
         ? (
             <div className='imageCo mt-3'>
                 <div className='profileImageCont p-2'>

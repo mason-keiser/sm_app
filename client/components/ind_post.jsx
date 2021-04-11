@@ -53,7 +53,7 @@ const Ind_Post = (props) => {
             bg.firstChild.style.backgroundColor='#262626'
             menu.style.background ='#262626'
         }
-    },[props.nightMode, props.indPost])
+    },[props.nightMode, props.indPost, props])
 
     const toggler = () => {
         if (props.nightMode == false) {
@@ -77,7 +77,7 @@ const Ind_Post = (props) => {
 
     const replies = (props.indPost !== null) ? 0 : props.indPost.replies
 
-    const profImage = (props.indPost == null) 
+    const profImage = (props.indPost == null || !props.indPost.user_profile_image ) 
     ? (
         <div className='imageCo mt-3'>
             <div className='profileImageCont p-2'>

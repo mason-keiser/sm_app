@@ -109,7 +109,7 @@ const My_Profile = (props) => {
             bg.firstChild.style.backgroundColor='#262626'
             menu.style.background ='#262626'
         }
-    },[props.nightMode, settings, bio, modal])
+    },[props.nightMode, settings, bio, modal, props.usersPosts])
 
     const changeBio = (bioInfo) => {
         fetch('/api/changeBio', {
