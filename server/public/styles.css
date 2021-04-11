@@ -1205,7 +1205,7 @@ CSS FOR PROFILE PAGE
 }
 
 .cpiCont{
-    height: 40vh;
+    height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1234,19 +1234,17 @@ CSS FOR PROFILE PAGE
 }
 
 .previewImg{
-    width: 10vw;
+    width: 20vw;
     border: 1px solid black;
     border-radius: 5px;
-    height: 25vh;
+    height: 40vh;
 }
 
 .previewImg > img {
     object-fit: cover;
-    width: 10vw;
-    border: 1px solid black;
+    width: 20vw;
     border-radius: 5px;
-    height: 25vh;
-    max-height: 25vh;
+    height: 40vh;
 }
 
 .image_upload {
@@ -1274,10 +1272,12 @@ CSS FOR PROFILE PAGE
 
     .previewImg{
         width: 50vw;
+        height: 30vh;
     }
     
     .previewImg > img {
         width: 50vw;
+        height: 30vh;
     }
 
     .subBtnCont > button {
@@ -1376,6 +1376,11 @@ CSS FOR PROFILE PAGE
         top: 7rem;
     }
 
+    .image_upload {
+        height: 6vh;
+        width: 30vw;
+    }
+
     .settingsCont {
         height: 30vh;
     }
@@ -1385,7 +1390,7 @@ CSS FOR PROFILE PAGE
     }
 
     .cpiCont{
-        height: 30vh;
+        height: 55vh;
     }
 
     .settingsCont > h6 {
