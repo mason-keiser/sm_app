@@ -791,6 +791,12 @@ HOME FEED CSS
     justify-content: center;
 }
 
+.profileImageCont > img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
 .nm.fa-star:hover{
     color: yellow;
     cursor: pointer;
@@ -842,6 +848,11 @@ HOME FEED CSS
 
 @media screen and (max-width: 470px) {
     .profileImageCont {
+        height: 40px;
+        width: 40px;
+    }
+
+    .profileImageCont > img{
         height: 40px;
         width: 40px;
     }
@@ -1258,7 +1269,50 @@ CSS FOR PROFILE PAGE
     padding-top: 5px;
 }
 
+.modalCont {
+    z-index: 999;
+    background: white;
+    position: fixed;
+    top: 50%;
+    height: 30vh;
+    width: 30vw;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+#yn {
+    width: 40vw;
+    margin-top: 3rem;
+}
+
+#yn > h6:hover {
+    opacity: 60%;
+    cursor: pointer;
+}
+
+#upi {
+    height: 25vh;
+    width: 20vw;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 @media screen and (max-width: 470px) {
+
+    #upi {
+        height: 15vh;
+        width: 30vw;
+    }
+
+    .modalCont {
+        height: 30vh;
+        width: 50vw;
+    }
+
     .backButton{
         top: 57vh;
         left: 5px;

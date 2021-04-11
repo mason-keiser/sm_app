@@ -77,14 +77,20 @@ const Ind_Post = (props) => {
 
     const replies = (props.indPost !== null) ? 0 : props.indPost.replies
 
-    const profImage = (props.indPost !== null) 
+    const profImage = (props.indPost == null) 
     ? (
         <div className='imageCo mt-3'>
             <div className='profileImageCont p-2'>
                 <div className='nm fas fa-user'></div>
             </div>
         </div>
-    ) : null
+    ) : (
+        <div className='imageCo mt-3'>
+            <div className='profileImageCont'>
+                <img src={props.indPost.user_profile_image} style={{objectFit: 'cover'}} alt=""/>
+            </div>
+        </div>
+    )
 
     const loadReplies = (props.indPost !== undefined || props.indPost !== null)
         ? <div className='nm' style={{textAlign: 'center', marginTop: '4rem'}}>No Other Replies</div>

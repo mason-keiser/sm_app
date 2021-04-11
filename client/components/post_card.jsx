@@ -10,7 +10,13 @@ const Post_Card = (props) => {
                     <div className='nm fas fa-user'></div>
                 </div>
             </div>
-        ) : null
+        ) : (
+            <div className='imageCo mt-3'>
+                <div className='profileImageCont'>
+                    <img src={props.post.user_profile_image} style={{objectFit: 'cover'}}/>
+                </div>
+            </div>
+        )
 
     const replies = (props.post.replies == null ) ? 0 : props.post.replies.length  
 

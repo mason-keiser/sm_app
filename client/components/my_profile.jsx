@@ -11,6 +11,25 @@ import Settings from './settings'
 const My_Profile = (props) => {
     const [settings, setSettings] = useState(false);
     const [bio, setBio] = useState()
+    const [newProfImg, setNewProfImg] = useState();
+    const [modal, setModal] = useState(false)
+    const [settingsView, setSettingsView] = useState('home');
+
+    const yes = () => {
+        changeImg(newProfImg)
+        setNewProfImg(null)
+        setSettingsView('home')
+    }
+
+    const modalTerp = (modal == true) ? (
+        <div className='modalCont'>
+            <h5 className='nm' style={{textAlign: 'center'}}>Confirm Profile Image</h5>
+            <div id='yn' className='d-flex flex-row align-items-center justify-content-around'>
+                <h6 className='nm' onClick={() => yes()}>yes</h6>
+                <h6 className='nm'>no</h6>
+            </div>
+        </div>
+    ) : null
 
     useEffect(() => {
         const iconHolder = document.querySelector('.toggIconHolder')
@@ -24,6 +43,7 @@ const My_Profile = (props) => {
         const headerbg = document.querySelector('#headerbg')
         const men1 = document.getElementById('p')
         const men2 = document.getElementById('s')
+        const mod = document.querySelector('.modalCont')
         men1.style.color = '#24B67E'
 
         if (props.nightMode == false) {
@@ -42,6 +62,10 @@ const My_Profile = (props) => {
                 men2.style.color = '#24B67E'
             }
 
+            if (mod) {
+
+            mod.style.background = 'white'
+            }
             headerbg.style.background='black'
             userI.style.color = 'black'
             iconHolder.style.float = 'right'
@@ -70,7 +94,9 @@ const My_Profile = (props) => {
             } else {
                 men2.style.color = '#24B67E'
             }
-    
+            if (mod) {
+                mod.style.background = 'black'
+            }
             headerbg.style.background='white'
             userI.style.color = 'white'
             iconHolder.style.float = 'left'
@@ -83,10 +109,9 @@ const My_Profile = (props) => {
             bg.firstChild.style.backgroundColor='#262626'
             menu.style.background ='#262626'
         }
-    },[props.nightMode, settings, bio])
+    },[props.nightMode, settings, bio, modal])
 
     const changeBio = (bioInfo) => {
-        let sendBio = bio.replace(/"([^"]+(?="))"/g, '$1')
         fetch('/api/changeBio', {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
@@ -105,6 +130,28 @@ const My_Profile = (props) => {
                 } else {
                     props.setUser(result[0])
                     setBio('')
+                }
+            }) 
+    }
+
+    const changeImg = (imgInfo) => {
+        fetch('/api/changeProfileImg', {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(imgInfo)
+        })
+        .then(response => {
+            if (response.status === 400 || response.status === 404) {
+                return null
+            } else {
+                return response.json();
+            }
+        })
+            .then(result => {
+                if (!result) {
+                    return null
+                } else {
+                    props.setUser(result[0])
                 }
             }) 
     }
@@ -149,7 +196,7 @@ const My_Profile = (props) => {
         ) 
         : null
 
-    const profImg = (!props.user.user_profile_header) 
+    const profImg = (!props.user.user_profile_image) 
     ? (
         <div className='imageCo2 mt-3'>
             <div className='profileImageCont profileImageCont2 p-2'>
@@ -157,10 +204,16 @@ const My_Profile = (props) => {
             </div>
         </div>
     ) 
-    : null
+    : (
+        <div className='imageCo2'>
+            <div className='profileImageCont profileImageCont2'>
+                <img src={props.user.user_profile_image} alt=""id='upi'/>
+            </div>
+        </div>
+    )
 
-    const items = (props.posts !== null && props.posts !== undefined) 
-    ?  (props.posts.map((post, index) => {
+    const items = (props.usersPosts !== null && props.usersPosts !== undefined) 
+    ?  (props.usersPosts.map((post, index) => {
             return(
                 <div className='singPost m-auto' key={index}>
                     <My_Post_Card
@@ -181,7 +234,7 @@ const My_Profile = (props) => {
 
     const profTerp = (settings) 
         ? (
-            <Settings changeBio={changeBio} bio={bio} setBio={setBio} props={props} settings={settings}/>
+            <Settings settingsView={settingsView} setSettingsView={setSettingsView} setModal={setModal} modalTerp={modalTerp} setNewProfImg={setNewProfImg} newProfImg={newProfImg} changeImg={changeImg} changeBio={changeBio} bio={bio} setBio={setBio} props={props} settings={settings}/>
         ) 
         : (
             <div>

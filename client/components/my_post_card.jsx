@@ -3,14 +3,20 @@ import React from 'react'
 
 const My_Post_Card = (props) => {
 
-    const profImage = (props.post.user_profile_image === null) 
+    const profImage = (props.user.user_profile_image === null) 
         ? (
             <div className='imageCo mt-3'>
                 <div className='profileImageCont p-2'>
                     <div className='nm fas fa-user'></div>
                 </div>
             </div>
-        ) : null
+        ) : (
+            <div className='imageCo mt-3'>
+                <div className='profileImageCont'>
+                    <img src={props.user.user_profile_image} style={{objectFit: 'cover'}}/>
+                </div>
+            </div>
+        )
 
     const replies = (props.post.replies == null ) ? 0 : props.post.replies.length  
 

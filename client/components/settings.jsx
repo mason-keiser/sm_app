@@ -3,11 +3,23 @@ import { useEffect, useState } from "react"
 import Bg from "./bg"
 
 const Settings = (props) => {
-    const [settingsView, setSettingsView] = useState('home');
     const [previewSource, setPreviewSource] = useState(null)
-    const [modal, setModal] = useState()
 
     const submitBio = () => {
+        let obj = {
+            img: previewSource.previewSource,
+            user_id: props.props.user.user_id
+        }
+        if (!obj) {
+            document.getElementById('req').style.color = 'red'
+            document.getElementById('req').innerHTML = 'new image added'
+            return
+        }
+
+        props.changeImg(obj)
+    }
+
+    const submitImg = () => {
         if (props.bio.length > 50) {
             document.getElementById('req').style.color = 'red'
             document.getElementById('req').innerHTML = 'exceeded character limit'
@@ -22,8 +34,9 @@ const Settings = (props) => {
         }
 
         props.changeBio(obj)
-        setSettingsView('home')
+        props.setSettingsView('home')
     }
+
 
     useEffect(() => {
         const iconHolder = document.querySelector('.toggIconHolder')
@@ -96,15 +109,15 @@ const Settings = (props) => {
             bg.firstChild.style.backgroundColor='#262626'
             menu.style.background ='#262626'
         }
-    }, [props.props.nightMode, settingsView])
+    }, [props.props.nightMode, props.settingsView, props.modal])
 
     const settingsHandler = (event) => {
         if (event.target.id === 'cph') {
-            setSettingsView('cph')
+            props.setSettingsView('cph')
         } if (event.target.id ==='cpi') {
-            setSettingsView('cpi')
+            props.setSettingsView('cpi')
         } if (event.target.id === 'cb') {
-            setSettingsView('cb')
+            props.setSettingsView('cb')
         }
     }
 
@@ -115,12 +128,19 @@ const Settings = (props) => {
                 setPreviewSource({
                     previewSource: reader.result
                 }) 
+                props.setNewProfImg({
+                    img: reader.result,
+                    user_id: props.props.user.user_id
+                })
             }
         }
         reader.readAsDataURL(event.target.files[0])
+        setTimeout(() => {
+            props.setModal(true)
+        },1000) 
     }
 
-    const view = (settingsView === 'home') 
+    const view = (props.settingsView === 'home') 
         ? (
             <div className='settingsCont'>
                 <h6 className='nm' id='cph' onClick={(e) => settingsHandler(e)}>Change Profile Header</h6>
@@ -128,10 +148,10 @@ const Settings = (props) => {
                 <h6 className='nm' id='cb' onClick={(e) => settingsHandler(e)}>Change Bio</h6>
             </div>
         )
-            : (settingsView === 'cb')
+            : (props.settingsView === 'cb')
             ? (
                 <div className='settingsCont2'>
-                    <div className='backButton' onClick={() => setSettingsView('home')}><span className='fas fa-chevron-left'></span></div>
+                    <div className='backButton' onClick={() => props.setSettingsView('home')}><span className='fas fa-chevron-left'></span></div>
                     <div className='cbHeader'>
                         <h6 className='nm'>Change Bio</h6>
                     </div>
@@ -144,10 +164,11 @@ const Settings = (props) => {
                     </div>
                 </div>
             )
-                : (settingsView === 'cpi') 
+                : (props.settingsView === 'cpi') 
                     ? (
                         <div className='settingsCont2'>
-                            <div className='backButton' onClick={() => setSettingsView('home')}><span className='fas fa-chevron-left'></span></div>
+                            {props.modalTerp}
+                            <div className='backButton' onClick={() => props.setSettingsView('home')}><span className='fas fa-chevron-left'></span></div>
                             <div className='cbHeader'>
                                 <h6 className='nm'>Change Profile Image</h6>
                             </div>
@@ -156,6 +177,7 @@ const Settings = (props) => {
                                     <input type="file" placeholder='Type Here' name='img' accept='images/*;capture=camera' className="" id='prof_img' onChange={handleFile}/>
                                     <div className="label mb-3" >
                                         <label htmlFor="prof_img" className="image_upload">Add Image</label>
+                                        <div id='req'></div>
                                     </div>
                                     <div className="previewImg" id='label'>
                                         {previewSource !== null ? (
@@ -167,10 +189,10 @@ const Settings = (props) => {
                             </form>
                         </div>
                     ) 
-                    : (settingsView === 'cph')
+                    : (props.settingsView === 'cph')
                         ? (
                         <div className='settingsCont2'>
-                            <div className='backButton' onClick={() => setSettingsView('home')}><span className='fas fa-chevron-left'></span></div>
+                            <div className='backButton' onClick={() => props.setSettingsView('home')}><span className='fas fa-chevron-left'></span></div>
                             <div className='cbHeader'>
                                 <h6 className='nm'>Change Profile Header</h6>
                             </div>
