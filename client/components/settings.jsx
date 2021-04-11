@@ -6,10 +6,16 @@ const Settings = (props) => {
     const [settingsView, setSettingsView] = useState('home');
 
     const submitBio = () => {
+        if (props.bio.length > 50) {
+            document.getElementById('req').style.color = 'red'
+            document.getElementById('req').innerHTML = 'exceeded character limit'
+            return 
+        }
         if (!props.bio) {
             return null
         }
-        let obj = {
+        let obj =
+        {
             bio: props.bio,
             user_id: props.props.user.user_id
         }
@@ -117,7 +123,8 @@ const Settings = (props) => {
                         <h6 className='nm'>Change Bio</h6>
                     </div>
                     <div className='bioCont'>
-                        <input onChange={() => props.setBio(event.target.value)}  type="text" id='bio' placeholder='enter new bio'/>
+                        <input onChange={() => props.setBio(event.target.value)}  type="text" id='bio' placeholder='50 character limit'/>
+                        <div id='req'></div>
                         <div className='subBtnCont'>
                             <button onClick={() => submitBio()}>Submit</button>
                         </div>
