@@ -1321,6 +1321,11 @@ CSS FOR PROFILE PAGE
         height: 30vh;
     }
 
+    .bioCont > input {
+        margin-top: 2rem;
+        margin-bottom: 0;
+    }
+
     .settingsCont2 > h6 {
         font-size: smaller;
         margin: 1rem;
@@ -1330,12 +1335,12 @@ CSS FOR PROFILE PAGE
     }
 
     .backButton{
-        top: 68vh;
+        top: 73vh;
     }
 }
 
 @media screen and (max-width: 380px) and (min-height: 800px) {
     .backButton{
-        top: 53vh;
+        top: 56vh;
     }
 }
