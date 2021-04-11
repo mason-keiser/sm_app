@@ -33,6 +33,7 @@ const App = () => {
                 if (!result) {
                     return null
                 } else {
+                    result.sort((a, b) => (b.post_id > a.post_id) ? 1 : -1)
                     setUsersPosts(result)
                 }
             }) 
@@ -93,6 +94,7 @@ const App = () => {
                     return null
                 } else {
                     getPosts()
+                    getUsersPosts(user.user_id)
                 }
             })
     }
@@ -113,8 +115,8 @@ const App = () => {
                 if (!result) {
                     return null
                 } else {
-                    result.sort((a, b) => (a.post_id > b.post_id) ? 1 : -1)
-                    setPosts(result.reverse())
+                    result.sort((a, b) => (b.post_id > a.post_id) ? 1 : -1)
+                    setPosts(result)
                 }
             })
     }
