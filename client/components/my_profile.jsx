@@ -10,6 +10,7 @@ import Settings from './settings'
 
 const My_Profile = (props) => {
     const [settings, setSettings] = useState(false);
+    const [bio, setBio] = useState()
 
     useEffect(() => {
         const iconHolder = document.querySelector('.toggIconHolder')
@@ -82,7 +83,31 @@ const My_Profile = (props) => {
             bg.firstChild.style.backgroundColor='#262626'
             menu.style.background ='#262626'
         }
-    },[props.nightMode, settings])
+    },[props.nightMode, settings, bio])
+
+    const changeBio = (bioInfo) => {
+        let sendBio = bio.replace(/"([^"]+(?="))"/g, '$1')
+        fetch('/api/changeBio', {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(bioInfo)
+        })
+        .then(response => {
+            if (response.status === 400 || response.status === 404) {
+                return null
+            } else {
+                return response.json();
+            }
+        })
+            .then(result => {
+                if (!result) {
+                    return null
+                } else {
+                    props.setUser(result[0])
+                    setBio('')
+                }
+            }) 
+    }
 
     const toggler = () => {
         if (props.nightMode == false) {
@@ -156,7 +181,7 @@ const My_Profile = (props) => {
 
     const profTerp = (settings) 
         ? (
-            <Settings props={props} settings={settings}/>
+            <Settings changeBio={changeBio} bio={bio} setBio={setBio} props={props} settings={settings}/>
         ) 
         : (
             <div>

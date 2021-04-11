@@ -4,7 +4,19 @@ import Bg from "./bg"
 
 const Settings = (props) => {
     const [settingsView, setSettingsView] = useState('home');
-    const [bio, setBio] = useState('')
+
+    const submitBio = () => {
+        if (!props.bio) {
+            return null
+        }
+        let obj = {
+            bio: props.bio,
+            user_id: props.props.user.user_id
+        }
+
+        props.changeBio(obj)
+        setSettingsView('home')
+    }
 
     useEffect(() => {
         const iconHolder = document.querySelector('.toggIconHolder')
@@ -105,14 +117,26 @@ const Settings = (props) => {
                         <h6 className='nm'>Change Bio</h6>
                     </div>
                     <div className='bioCont'>
-                        <input type="text" id='bio' placeholder='enter new bio'/>
+                        <input onChange={() => props.setBio(event.target.value)}  type="text" id='bio' placeholder='enter new bio'/>
                         <div className='subBtnCont'>
-                            <button>Submit</button>
+                            <button onClick={() => submitBio()}>Submit</button>
                         </div>
                     </div>
                 </div>
             )
-                : null
+                : (settingsView === 'cpi') 
+                    ? (
+                        <div className='settingsCont2'>
+                            <div className='backButton' onClick={() => setSettingsView('home')}><span className='fas fa-chevron-left'></span></div>
+                        </div>
+                    ) 
+                    : (settingsView === 'cph')
+                        ? (
+                        <div className='settingsCont2'>
+                            <div className='backButton' onClick={() => setSettingsView('home')}><span className='fas fa-chevron-left'></span></div>
+                        </div>
+                        )
+                        : null
 
     return (
         <div>
