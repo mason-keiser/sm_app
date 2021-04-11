@@ -135,12 +135,18 @@ const Settings = (props) => {
                     ? (
                         <div className='settingsCont2'>
                             <div className='backButton' onClick={() => setSettingsView('home')}><span className='fas fa-chevron-left'></span></div>
+                            <div className='cbHeader'>
+                                <h6 className='nm'>Change Profile Image</h6>
+                            </div>
                         </div>
                     ) 
                     : (settingsView === 'cph')
                         ? (
                         <div className='settingsCont2'>
                             <div className='backButton' onClick={() => setSettingsView('home')}><span className='fas fa-chevron-left'></span></div>
+                            <div className='cbHeader'>
+                                <h6 className='nm'>Change Profile Header</h6>
+                            </div>
                         </div>
                         )
                         : null
