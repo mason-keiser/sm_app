@@ -4,6 +4,8 @@ import Bg from "./bg"
 
 const Settings = (props) => {
     const [settingsView, setSettingsView] = useState('home');
+    const [previewSource, setPreviewSource] = useState(null)
+    const [modal, setModal] = useState()
 
     const submitBio = () => {
         if (props.bio.length > 50) {
@@ -11,13 +13,12 @@ const Settings = (props) => {
             document.getElementById('req').innerHTML = 'exceeded character limit'
             return 
         }
-        if (!props.bio) {
-            return null
-        }
-        let obj =
-        {
+        let obj = {
             bio: props.bio,
             user_id: props.props.user.user_id
+        }
+        if (!obj) {
+            return null
         }
 
         props.changeBio(obj)
@@ -107,6 +108,18 @@ const Settings = (props) => {
         }
     }
 
+    const handleFile = (event) => {
+        let reader = new FileReader(event);
+        reader.onload = () => {
+            if (reader.readyState === 2) {
+                setPreviewSource({
+                    previewSource: reader.result
+                }) 
+            }
+        }
+        reader.readAsDataURL(event.target.files[0])
+    }
+
     const view = (settingsView === 'home') 
         ? (
             <div className='settingsCont'>
@@ -138,6 +151,20 @@ const Settings = (props) => {
                             <div className='cbHeader'>
                                 <h6 className='nm'>Change Profile Image</h6>
                             </div>
+                            <form action="">
+                                <div className='cpiCont'>
+                                    <input type="file" placeholder='Type Here' name='img' accept='images/*;capture=camera' className="" id='prof_img' onChange={handleFile}/>
+                                    <div className="label mb-3" >
+                                        <label htmlFor="prof_img" className="image_upload">Add Image</label>
+                                    </div>
+                                    <div className="previewImg" id='label'>
+                                        {previewSource !== null ? (
+                                            <img src={previewSource.previewSource} id='label' alt="chosen"/>
+                                            ) : null
+                                        }
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     ) 
                     : (settingsView === 'cph')
