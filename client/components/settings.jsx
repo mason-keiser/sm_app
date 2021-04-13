@@ -191,7 +191,7 @@ const Settings = (props) => {
                                         <label htmlFor="prof_img" className="image_upload">Add Image</label>
                                         <div id='req'></div>
                                     </div>
-                                    <div className="previewImg" id='label'>
+                                    <div className="previewHImg" id='label'>
                                         {props.previewSource !== null ? (
                                             <img src={props.previewSource.previewSource} id='label' alt="chosen"/>
                                             ) : null

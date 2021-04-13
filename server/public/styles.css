@@ -1254,16 +1254,29 @@ CSS FOR PROFILE PAGE
 .previewImg{
     width: 20vw;
     border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 50%;
     height: 40vh;
 }
 
 .previewImg > img {
     object-fit: cover;
     width: 20vw;
-    border-radius: 5px;
-    height: 40vh;
-    border-radius: 1px solid black;
+    border-radius: 50%;
+    height: 20vh;
+    border: 1px solid black;
+}
+
+.previewHImg{
+    width: 70vw;
+    border: 1px solid black;
+    height: 20vh;
+}
+
+.previewHImg > img {
+    object-fit: cover;
+    width: 70vw;
+    height: 20vh;
+    border: 1px solid black;
 }
 
 .image_upload {
@@ -1344,6 +1357,16 @@ CSS FOR PROFILE PAGE
     }
     
     .previewImg > img {
+        width: 50vw;
+        height: 30vh;
+    }
+
+    .previewHImg{
+        width: 50vw;
+        height: 30vh;
+    }
+    
+    .previewHImg > img {
         width: 50vw;
         height: 30vh;
     }
@@ -1502,5 +1525,12 @@ CSS FOR PROFILE PAGE
 @media screen and (max-width: 380px) and (min-height: 800px) {
     .backButton{
         top: 56vh;
+    }
+}
+
+@media screen and (min-height :660px) and (max-height:  670px) {
+    .backButton{
+        top: 65vh;
+        left: 5px;
     }
 }
