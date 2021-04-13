@@ -3,11 +3,10 @@ import { useEffect, useState } from "react"
 import Bg from "./bg"
 
 const Settings = (props) => {
-    const [previewSource, setPreviewSource] = useState(null)
 
     const submitBio = () => {
         let obj = {
-            img: previewSource.previewSource,
+            img: props.previewSource.previewSource,
             user_id: props.props.user.user_id
         }
         if (!obj) {
@@ -18,25 +17,6 @@ const Settings = (props) => {
 
         props.changeImg(obj)
     }
-
-    const submitImg = () => {
-        if (props.bio.length > 50) {
-            document.getElementById('req').style.color = 'red'
-            document.getElementById('req').innerHTML = 'exceeded character limit'
-            return 
-        }
-        let obj = {
-            bio: props.bio,
-            user_id: props.props.user.user_id
-        }
-        if (!obj) {
-            return null
-        }
-
-        props.changeBio(obj)
-        props.setSettingsView('home')
-    }
-
 
     useEffect(() => {
         const iconHolder = document.querySelector('.toggIconHolder')
@@ -125,7 +105,7 @@ const Settings = (props) => {
         let reader = new FileReader(event);
         reader.onload = () => {
             if (reader.readyState === 2) {
-                setPreviewSource({
+                props.setPreviewSource({
                     previewSource: reader.result
                 }) 
                 props.setNewProfImg({
@@ -180,8 +160,8 @@ const Settings = (props) => {
                                         <div id='req'></div>
                                     </div>
                                     <div className="previewImg" id='label'>
-                                        {previewSource !== null ? (
-                                            <img src={previewSource.previewSource} id='label' alt="chosen"/>
+                                        {props.previewSource !== null ? (
+                                            <img src={props.previewSource.previewSource} id='label' alt="chosen"/>
                                             ) : null
                                         }
                                     </div>

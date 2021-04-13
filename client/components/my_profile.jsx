@@ -14,6 +14,7 @@ const My_Profile = (props) => {
     const [newProfImg, setNewProfImg] = useState();
     const [modal, setModal] = useState(false)
     const [settingsView, setSettingsView] = useState('home');
+    const [previewSource, setPreviewSource] = useState(null)
 
     const yes = () => {
         changeImg(newProfImg)
@@ -21,12 +22,18 @@ const My_Profile = (props) => {
         setSettingsView('home')
     }
 
+    const no = () => {
+        setNewProfImg(null)
+        setPreviewSource(null)
+        setModal(false)
+    }
+
     const modalTerp = (modal == true) ? (
         <div className='modalCont'>
             <h5 className='nm' style={{textAlign: 'center'}}>Confirm Profile Image</h5>
             <div id='yn' className='d-flex flex-row align-items-center justify-content-around'>
                 <h6 className='nm' onClick={() => yes()}>yes</h6>
-                <h6 className='nm'>no</h6>
+                <h6 className='nm' onClick={() => no()}>no</h6>
             </div>
         </div>
     ) : null
@@ -109,7 +116,7 @@ const My_Profile = (props) => {
             bg.firstChild.style.backgroundColor='#262626'
             menu.style.background ='#262626'
         }
-    },[props.nightMode, settings, bio, modal, props.usersPosts])
+    },[props.nightMode, settings, bio, modal, props.usersPosts, previewSource])
 
     const changeBio = (bioInfo) => {
         fetch('/api/changeBio', {
@@ -234,7 +241,7 @@ const My_Profile = (props) => {
 
     const profTerp = (settings) 
         ? (
-            <Settings settingsView={settingsView} setSettingsView={setSettingsView} setModal={setModal} modalTerp={modalTerp} setNewProfImg={setNewProfImg} newProfImg={newProfImg} changeImg={changeImg} changeBio={changeBio} bio={bio} setBio={setBio} props={props} settings={settings}/>
+            <Settings previewSource={previewSource} setPreviewSource={setPreviewSource} settingsView={settingsView} setSettingsView={setSettingsView} setModal={setModal} modalTerp={modalTerp} setNewProfImg={setNewProfImg} newProfImg={newProfImg} changeImg={changeImg} changeBio={changeBio} bio={bio} setBio={setBio} props={props} settings={settings}/>
         ) 
         : (
             <div>
