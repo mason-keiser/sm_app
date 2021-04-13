@@ -124,7 +124,7 @@ const My_Profile = (props) => {
             bg.firstChild.style.backgroundColor='#262626'
             menu.style.background ='#262626'
         }
-    },[props.nightMode, settings, bio, modal, props.usersPosts, previewSource])
+    },[props.user, props.nightMode, settings, bio, modal, props.usersPosts, previewSource, props.user.user_header_image])
 
     const changeBio = (bioInfo) => {
         fetch('/api/changeBio', {
@@ -225,7 +225,7 @@ const My_Profile = (props) => {
         }
     }
 
-    const headerImg = (props.user.user_header_image) 
+    const headerImg = (!props.user.user_header_image) 
         ? (
             <div className='headEr'>
                 <div style={{background: 'black', }} alt="header" id='headerbg'></div>

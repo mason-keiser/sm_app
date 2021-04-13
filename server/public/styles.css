@@ -1048,6 +1048,13 @@ CSS FOR PROFILE PAGE
     height: 20vh;
 }
 
+#headerbg > img {
+    width: 75vw;
+    height: 25vh;
+    border-bottom: 1px solid black;
+    object-fit: cover;
+}
+
 .headEr > div {
     object-fit: cover;
     height: 25vh;
@@ -1256,6 +1263,7 @@ CSS FOR PROFILE PAGE
     width: 20vw;
     border-radius: 5px;
     height: 40vh;
+    border-radius: 1px solid black;
 }
 
 .image_upload {
@@ -1426,6 +1434,12 @@ CSS FOR PROFILE PAGE
     }
 
     .headEr > div {
+        height: 20vh;
+        width: 60vw;
+    }
+
+
+    #headerbg > img {
         height: 20vh;
         width: 60vw;
     }

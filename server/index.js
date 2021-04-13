@@ -10,7 +10,7 @@ const sessionMiddleware = require('./session_middleware');
 
 const app = express();
 
-app.use(express.json({limit: '50mb'}));
+app.use(express.json({limit: '1000mb'}));
 
 app.use(staticMiddleware);
 app.use(sessionMiddleware);
