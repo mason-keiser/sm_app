@@ -316,6 +316,38 @@ app.put('/api/changeProfileImg', (req, res, next) => {
 
 })
 
+// API PUT REQUEST TO CHANGE HEADER IMAGE
+
+app.put('/api/changeHeaderImg', (req, res, next) => {
+  const user_id = req.body.user_id;
+  const img = req.body.img;
+  const sql = `
+  UPDATE users
+  SET user_header_image = $1
+  WHERE user_id = $2
+  RETURNING *
+  `
+
+  const params = [img, user_id]
+
+  db.query(sql, params)
+  .then(result => {
+    if (!result) {
+      return res.status(400).json({ message: `post attempt was unsuccessful` });
+    } else {
+      result.rows.forEach((i) => {
+        delete i.user_password
+      })
+      return res.status(200).json(result.rows)
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    res.status(500).json({ error: 'An unexpected error occurred.' });
+  });
+
+})
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });

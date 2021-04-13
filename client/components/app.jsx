@@ -204,8 +204,8 @@ const App = () => {
                             user_id: result[0].user_id,
                             user_bio: result[0].user_bio,
                             user_name: result[0].user_name,
-                            user_profile_image: result[0].user_profile_image ? result[0].user_profile_image : null,
-                            user_profile_header: result[0].user_profile_header ? result[0].user_header_image : null
+                            user_profile_image: result[0].user_profile_image,
+                            user_profile_header: result[0].user_header_image
                         })
                         setView ({ name: 'feed', params: {}})
                     }

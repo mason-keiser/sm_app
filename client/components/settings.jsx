@@ -108,10 +108,17 @@ const Settings = (props) => {
                 props.setPreviewSource({
                     previewSource: reader.result
                 }) 
-                props.setNewProfImg({
-                    img: reader.result,
-                    user_id: props.props.user.user_id
-                })
+                if (props.settingsView === 'cpi') {
+                    props.setNewProfImg({
+                        img: reader.result,
+                        user_id: props.props.user.user_id
+                    })
+                } else {
+                    props.setNewHeaderImg({
+                        img: reader.result,
+                        user_id: props.props.user.user_id
+                    })
+                }
             }
         }
         reader.readAsDataURL(event.target.files[0])
@@ -172,10 +179,26 @@ const Settings = (props) => {
                     : (props.settingsView === 'cph')
                         ? (
                         <div className='settingsCont2'>
+                            {props.modalTerp}
                             <div className='backButton' onClick={() => props.setSettingsView('home')}><span className='fas fa-chevron-left'></span></div>
                             <div className='cbHeader'>
                                 <h6 className='nm'>Change Profile Header</h6>
                             </div>
+                            <form action="">
+                                <div className='cpiCont'>
+                                    <input type="file" placeholder='Type Here' name='img' accept='images/*;capture=camera' className="" id='prof_img' onChange={handleFile}/>
+                                    <div className="label mb-3" >
+                                        <label htmlFor="prof_img" className="image_upload">Add Image</label>
+                                        <div id='req'></div>
+                                    </div>
+                                    <div className="previewImg" id='label'>
+                                        {props.previewSource !== null ? (
+                                            <img src={props.previewSource.previewSource} id='label' alt="chosen"/>
+                                            ) : null
+                                        }
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                         )
                         : null

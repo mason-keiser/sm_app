@@ -12,14 +12,21 @@ const My_Profile = (props) => {
     const [settings, setSettings] = useState(false);
     const [bio, setBio] = useState()
     const [newProfImg, setNewProfImg] = useState();
+    const [newHeaderImg, setNewHeaderImg] = useState();
     const [modal, setModal] = useState(false)
     const [settingsView, setSettingsView] = useState('home');
     const [previewSource, setPreviewSource] = useState(null)
 
     const yes = () => {
-        changeImg(newProfImg)
-        setNewProfImg(null)
-        setSettingsView('home')
+        if (settingsView === 'cpi') {
+            changeImg(newProfImg)
+            setNewProfImg(null)
+            setSettingsView('home')
+        } if (settingsView === 'cph') {
+            changeHeaderImg(newHeaderImg)
+            setNewHeaderImg(null)
+            setSettingsView('home')
+        }
     }
 
     const no = () => {
@@ -28,9 +35,10 @@ const My_Profile = (props) => {
         setModal(false)
     }
 
+    let modalTitle = (settingsView === 'cph') ? 'Header' : 'Profile'
     const modalTerp = (modal == true) ? (
         <div className='modalCont'>
-            <h5 className='nm' style={{textAlign: 'center'}}>Confirm Profile Image</h5>
+            <h5 className='nm' style={{textAlign: 'center'}}>Confirm {modalTitle} Image</h5>
             <div id='yn' className='d-flex flex-row align-items-center justify-content-around'>
                 <h6 className='nm' onClick={() => yes()}>yes</h6>
                 <h6 className='nm' onClick={() => no()}>no</h6>
@@ -163,6 +171,28 @@ const My_Profile = (props) => {
             }) 
     }
 
+    const changeHeaderImg = (imgInfo) => {
+        fetch('/api/changeHeaderImg', {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(imgInfo)
+        })
+        .then(response => {
+            if (response.status === 400 || response.status === 404) {
+                return null
+            } else {
+                return response.json();
+            }
+        })
+            .then(result => {
+                if (!result) {
+                    return null
+                } else {
+                    props.setUser(result[0])
+                }
+            }) 
+    }
+
     const toggler = () => {
         if (props.nightMode == false) {
             props.setNightMode(true)
@@ -195,13 +225,19 @@ const My_Profile = (props) => {
         }
     }
 
-    const headerImg = (!props.user.user_profile_header) 
+    const headerImg = (props.user.user_header_image) 
         ? (
             <div className='headEr'>
                 <div style={{background: 'black', }} alt="header" id='headerbg'></div>
             </div>
         ) 
-        : null
+        : (
+            <div className='headEr'>
+                <div alt="header" id='headerbg'>
+                    <img src={props.user.user_header_image} alt="" id='headerbg'/>
+                </div>
+            </div>
+        )
 
     const profImg = (!props.user.user_profile_image) 
     ? (
@@ -241,7 +277,7 @@ const My_Profile = (props) => {
 
     const profTerp = (settings) 
         ? (
-            <Settings previewSource={previewSource} setPreviewSource={setPreviewSource} settingsView={settingsView} setSettingsView={setSettingsView} setModal={setModal} modalTerp={modalTerp} setNewProfImg={setNewProfImg} newProfImg={newProfImg} changeImg={changeImg} changeBio={changeBio} bio={bio} setBio={setBio} props={props} settings={settings}/>
+            <Settings setNewHeaderImg={setNewHeaderImg} previewSource={previewSource} setPreviewSource={setPreviewSource} settingsView={settingsView} setSettingsView={setSettingsView} setModal={setModal} modalTerp={modalTerp} setNewProfImg={setNewProfImg} newProfImg={newProfImg} changeImg={changeImg} changeBio={changeBio} bio={bio} setBio={setBio} props={props} settings={settings}/>
         ) 
         : (
             <div>
