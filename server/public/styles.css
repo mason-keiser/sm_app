@@ -1154,6 +1154,10 @@ CSS FOR PROFILE PAGE
     justify-content: center;
 }
 
+.profileImageCont2 > img {
+    border: 1px solid black;
+}
+
 .imageCo2 {
     position: absolute;
     top: 10rem;
@@ -1334,14 +1338,15 @@ CSS FOR PROFILE PAGE
     width: 20vw;
     border: 1px solid black;
     border-radius: 50%;
-    height: 40vh;
+    height: 30vh;
+    margin-top: 1rem;
 }
 
 .previewImg > img {
     object-fit: cover;
     width: 20vw;
     border-radius: 50%;
-    height: 20vh;
+    height: 30vh;
     border: 1px solid black;
 }
 
@@ -1618,8 +1623,7 @@ CSS FOR PROFILE PAGE
     #headerbg > img {
         height: 38vh;
     }
-
-
+    
     #useName {
         padding-left: 0;
         text-align: center;
@@ -1715,5 +1719,139 @@ CSS FOR PROFILE PAGE
         width: 30vw;
         height: 10vh;
         margin-bottom: 1rem;
+    }
+}
+
+@media screen and (orientation: portrait) and (min-height: 1000px) {
+    .inputCont > button {
+        top: 13rem;
+    }
+
+    .modeToggler {
+        height: 4vh;
+        width: 13vw;
+    }
+
+    .toggIconHolder {
+        width: 5vw;
+    }
+
+    #headerbg {
+        height: 20vh;
+    }
+
+    #headerbg > img {
+        height: 20vh;
+    }
+    .profileImageCont2 {
+        height: 15vh;
+        width: 15vw;
+    }
+
+    .profileImageCont2  > img{
+        height: 15vh;
+        width: 15vw;
+    }
+
+    #useName {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .backButton {
+        top: 55vh;
+    }
+
+    .image_upload {
+        width: 15vw;
+    }
+
+    #bio {
+        height: 5vh;
+    }
+
+    .subBtnCont > button {
+        height: 4vh;
+        width: 13vw;
+    }
+
+    .previewImg {
+        height: 20vh;
+        width: 25vw;
+    }
+
+    .previewImg > img{
+        height: 20vh;
+        width: 25vw;
+    }
+
+    .cpiCont {
+        height: 40vh;
+    }
+}
+
+@media screen and (orientation: portrait) and (min-height: 1300px) {
+    .inputCont > button {
+        top: 16rem;
+    }
+
+    #headerbg {
+        height: 17vh;
+    }
+
+    #headerbg > img {
+        height: 17vh;
+    }   
+    
+    
+    .image_upload {
+        padding-top: 10px;
+    }
+
+    .backButton {
+        top: 45vh;
+    }
+
+    .settingsCont > h6 {
+        font-size: x-large;
+        margin: 2rem;
+    }
+}
+
+@media screen and (orientation: landscape) and (min-width: 1000px) and (max-height: 780px) {
+    .subBtnCont > button {
+        height: 4vh;
+        width: 13vw;
+    }
+
+    .backButton {
+        top: 65vh;
+    }    
+
+    .image_upload {
+        height: 5vh;
+    }
+}
+
+@media screen and (orientation: landscape) and (min-width: 1300px) and (max-height: 1090px) { 
+    .settingsCont > h6 {
+        font-size: x-large;
+    }
+
+    .backButton {
+        top: 55vh;
+    }
+
+    .image_upload {
+        height: 4vh;
+        padding-top: 11px;
+    }
+
+    .inputCont > button {
+        top: 13rem;
+    }
+
+    .cpiCont {
+        height: 52vh;
     }
 }

@@ -6,7 +6,7 @@ const Settings = (props) => {
 
     const submitBio = () => {
         let obj = {
-            img: props.previewSource.previewSource,
+            bio: props.bio,
             user_id: props.props.user.user_id
         }
         if (!obj) {
@@ -15,7 +15,7 @@ const Settings = (props) => {
             return
         }
 
-        props.changeImg(obj)
+        props.changeBio(obj)
     }
 
     useEffect(() => {

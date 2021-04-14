@@ -78,7 +78,6 @@ const My_Profile = (props) => {
             }
 
             if (mod) {
-
             mod.style.background = 'white'
             }
             headerbg.style.background='black'
@@ -111,6 +110,7 @@ const My_Profile = (props) => {
             }
             if (mod) {
                 mod.style.background = 'black'
+                mod.style.border = '1px solid white'
             }
             headerbg.style.background='white'
             userI.style.color = 'white'
@@ -145,6 +145,7 @@ const My_Profile = (props) => {
                 } else {
                     props.setUser(result[0])
                     setBio('')
+                    setSettingsView('home')
                 }
             }) 
     }
