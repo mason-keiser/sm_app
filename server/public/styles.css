@@ -990,6 +990,85 @@ HOME FEED CSS
    }
 }
 
+@media screen and (orientation: landscape) and (max-height: 440px) {
+    #postInput {
+        height: 30vh;
+    }
+
+    .profileTag {
+        margin: 1rem;
+    }
+
+    .ho {
+        font-size: medium;
+    }
+
+    .nice {
+        height: 40vh;
+    }
+
+    .singPost {
+        height: 50vh;
+        align-items: unset;
+        padding-top: 1rem;
+    }
+
+    #headerbg {
+        height: 38vh;
+    }
+
+    #useName{
+        padding-left: 0;
+        text-align: center;
+    }
+
+
+    #headerbg > img {
+        height: 38vh;
+    }
+
+    .inputCont > button {
+        top: 11rem;
+    }
+
+    .co {
+        width: 40vw;
+    }
+
+    .backButton{
+        top: 130vh;
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 390px) {
+    #postInput {
+        height: 32vh;
+        width: 40vw;
+    }
+
+    .singPost {
+        height: 50vh;
+        align-items: unset;
+        padding-top: 1rem;
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 340px) {
+    #postInput {
+        height: 40vh;
+    }
+
+    .inputCont > button {
+        top: 12rem;
+    }
+
+    .singPost {
+        height: 60vh;
+        align-items: unset;
+        padding-top: 1rem;
+    }
+}
+
 /* 
 
 ==================================
@@ -1532,5 +1611,40 @@ CSS FOR PROFILE PAGE
     .backButton{
         top: 65vh;
         left: 5px;
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 440px) {
+    #useName {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .backButton{
+        top: 110vh;
+    }
+
+    .settingsCont {
+        height: 60vh;
+    }
+
+    .image_upload {
+        height: 10vh;
+        width: 14vw;
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 340px) {
+    .settingsCont {
+        height: 60vh;    
+    }
+
+    .backButton{
+        top: 130vh;
+    }
+
+    .image_upload {
+        height: 10vh;
+        width: 16vw;
     }
 }
