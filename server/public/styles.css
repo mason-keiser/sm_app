@@ -1615,6 +1615,11 @@ CSS FOR PROFILE PAGE
 }
 
 @media screen and (orientation: landscape) and (max-height: 440px) {
+    #headerbg > img {
+        height: 38vh;
+    }
+
+
     #useName {
         padding-left: 0;
         text-align: center;
