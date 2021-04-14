@@ -1647,4 +1647,8 @@ CSS FOR PROFILE PAGE
         height: 10vh;
         width: 16vw;
     }
+
+    .indCont {
+        padding-bottom: 1.5rem;
+    }
 }
