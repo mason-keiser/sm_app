@@ -1621,7 +1621,7 @@ CSS FOR PROFILE PAGE
     }
 
     .backButton{
-        top: 110vh;
+        top: 100vh;
     }
 
     .settingsCont {
@@ -1632,6 +1632,23 @@ CSS FOR PROFILE PAGE
         height: 10vh;
         width: 14vw;
     }
+
+    .subBtnCont > button {
+        width: 30vw;
+        height: 10vh;
+        margin-bottom: 1rem;
+    }
+
+    .bioCont {
+        height: 30vh;
+        margin-top: 2rem;
+    }
+
+    #bio {
+        height: 20vh;
+        margin-bottom: 0;
+        padding: 10px 5px 10px 5px;
+    }
 }
 
 @media screen and (orientation: landscape) and (max-height: 340px) {
@@ -1640,7 +1657,22 @@ CSS FOR PROFILE PAGE
     }
 
     .backButton{
-        top: 130vh;
+        top: 100vh;
+    }
+
+    .inputCont > button {
+        top: 14rem;
+    }
+
+    .bioCont {
+        height: 30vh;
+        margin-top: 1rem;
+    }
+
+    .subBtnCont > button {
+        width: 30vw;
+        height: 10vh;
+        margin-bottom: 1rem;
     }
 
     .image_upload {
@@ -1650,5 +1682,33 @@ CSS FOR PROFILE PAGE
 
     .indCont {
         padding-bottom: 1.5rem;
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 325px) {
+
+    .backButton{
+        top: 120vh;
+    }
+
+    #bio {
+        height: 20vh;
+        margin-bottom: 0;
+        padding: 10px 5px 10px 5px;
+    }
+
+    .inputCont > button {
+        top: 12rem;
+    }
+
+    .bioCont {
+        height: 30vh;
+        margin-top: 2rem;
+    }
+
+    .subBtnCont > button {
+        width: 30vw;
+        height: 10vh;
+        margin-bottom: 1rem;
     }
 }
