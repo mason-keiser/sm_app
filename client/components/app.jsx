@@ -55,7 +55,7 @@ const App = () => {
                 if (!result) {
                     return null
                 } else {
-                    setIndPost(result[0])
+                    setIndPost(result)
                 }
             }) 
     }

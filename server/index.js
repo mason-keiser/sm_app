@@ -203,6 +203,11 @@ app.get('/api/singPost/:post_id', (req, res, next) => {
   WHERE post_id = $1
   `
 
+  const sql2 = `
+  SELECT * FROM replies
+  WHERE post_id=$1
+  `
+
   if (!post_id) return res.status(400).json({ message: `no post_id was given` });
 
   db.query(sql, [post_id])
@@ -213,7 +218,15 @@ app.get('/api/singPost/:post_id', (req, res, next) => {
       result.rows.forEach((i) => {
         delete i.user_password
       })
-      return res.status(200).json(result.rows)
+      db.query(sql2, [result.rows[0].post_id])
+      .then(result2 => {
+        if (!result2) {
+          return res.status(400).json({ message: `post attempt was unsuccessful` });
+        } else {
+          return res.status(200).json([{indPost: result.rows[0]},{replies: result2.rows[0]}])
+        }
+      })
+
     }
   })
   .catch(err => {
@@ -349,10 +362,13 @@ app.put('/api/changeHeaderImg', (req, res, next) => {
 })
 
 // API TO POST A REPLY 
+// THIS FUNCTION SHOULD POST TO A SEPERATE TABLE OTHER THAN POSTS, GO TO REPLY TABLE
 
 app.post('/api/postReply', (req, res, next) => {
   const post_id = req.body.post_id;
-  if (!post_id) return res.status(400).json({ message: `no post_id was given` });
+  const user_id = req.body.user_id;
+  const user_name = req.body.user_name;
+  const user_profile_image = req.body.user_profile_image;
 
   const sql = `
   UPDATE customer

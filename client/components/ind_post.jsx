@@ -75,9 +75,9 @@ const Ind_Post = (props) => {
         props.viewIndPost(event.target.id)
     }
 
-    const replies = (props.indPost !== null) ? 0 : props.indPost.replies
+    const replies = (props.indPost !== null) ? 0 : props.indPost[0].indPost.replies
 
-    const profImage = (props.indPost == null || !props.indPost.user_profile_image ) 
+    const profImage = (props.indPost == null || !props.indPost[0].indPost.user_profile_image ) 
     ? (
         <div className='imageCo mt-3'>
             <div className='profileImageCont p-2'>
@@ -87,7 +87,7 @@ const Ind_Post = (props) => {
     ) : (
         <div className='imageCo mt-3'>
             <div className='profileImageCont'>
-                <img src={props.indPost.user_profile_image} style={{objectFit: 'cover'}} alt=""/>
+                <img src={props.indPost[0].indPost.user_profile_image} style={{objectFit: 'cover'}} alt=""/>
             </div>
         </div>
     )
@@ -133,10 +133,10 @@ const Ind_Post = (props) => {
                 <div className='d-flex flex-row p-2 co mt-5 m-auto'>
                     {profImage}
                     <div className='nice co d-flex flex-column justify-content-between p-2'>
-                        <h6 className='sm l nm mt-3' id='indUser'>{`@${props.indPost.user_name}`}</h6>
-                        <div className='sm nm l' id='indPost'>{props.indPost.post}</div>
+                        <h6 className='sm l nm mt-3' id='indUser'>{`@${props.indPost[0].indPost.user_name}`}</h6>
+                        <div className='sm nm l' id='indPost'>{props.indPost[0].indPost.post}</div>
                         <div className='d-flex flex-row justify-content-center' >
-                            <div className='nm fas fa-star m-3 indlikes sm' id={props.indPost.post_id} onClick={handleLike}><span className='sm nm m-2' id='indLikes'>{props.indPost.likes}</span></div>
+                            <div className='nm fas fa-star m-3 indlikes sm' id={props.indPost[0].indPost.post_id} onClick={handleLike}><span className='sm nm m-2' id='indLikes'>{props.indPost[0].indPost.likes}</span></div>
                             <div className='nm fas fa-comments m-3 sm'><span className='sm nm m-2'>{replies}</span></div>
                         </div>
                     </div>
