@@ -376,7 +376,6 @@ app.post('/api/postReply', (req, res, next) => {
       RETURNING *
   `
 
-
   const params = [post_id, user_id, user_name, user_profile_image, reply]
 
   db.query(sql, params)

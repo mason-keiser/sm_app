@@ -40,6 +40,8 @@ const Feed = (props) => {
                 icon.style.color = 'orange'
                 icon.classList.add('fa-sun')
                 iconHolder.style.background = '#F5F5F5'
+                iconHolder.style.border = ' 1px solid white'
+                iconHolder.style.boxShadow = '0 4px 2px -2px rgba(0, 0, 0, 0.2)'
                 bar.style.background = 'white'
                 bg.firstChild.style.backgroundColor="#F5F5F5"
                 menu.style.background ='#F5F5F5'
@@ -59,6 +61,7 @@ const Feed = (props) => {
                 icon.classList.remove('fa-sun')
                 icon.classList.add('fa-moon')
                 iconHolder.style.background = '#262626'
+                iconHolder.style.border = ' 1px solid black'
                 bar.style.background = 'black'
                 bg.firstChild.style.backgroundColor='#262626'
                 menu.style.background ='#262626'
