@@ -67,7 +67,7 @@ CREATE TABLE public.posts (
     post character varying(500) NOT NULL,
     post_image character varying(100000),
     likes integer NOT NULL,
-    replies text[]
+    replies jsonb
 );
 
 
