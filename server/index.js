@@ -362,20 +362,22 @@ app.put('/api/changeHeaderImg', (req, res, next) => {
 })
 
 // API TO POST A REPLY 
-// THIS FUNCTION SHOULD POST TO A SEPERATE TABLE OTHER THAN POSTS, GO TO REPLY TABLE
 
 app.post('/api/postReply', (req, res, next) => {
   const post_id = req.body.post_id;
   const user_id = req.body.user_id;
   const user_name = req.body.user_name;
   const user_profile_image = req.body.user_profile_image;
+  const reply = req.body.reply;
 
   const sql = `
-  UPDATE customer
-  SET replies = $2
-  WHERE post_id = $1;
+  INSERT INTO replies ("post_id", "user_id", "user_name", "user_profile_image", "reply")
+      VALUES ($1, $2, $3, $4, $5) 
+      RETURNING *
   `
-  const params = [post_id, req.body.reply]
+
+
+  const params = [post_id, user_id, user_name, user_profile_image, reply]
 
   db.query(sql, params)
     .then(result => {
