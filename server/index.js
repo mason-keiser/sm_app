@@ -348,6 +348,33 @@ app.put('/api/changeHeaderImg', (req, res, next) => {
 
 })
 
+// API TO POST A REPLY 
+
+app.post('/api/postReply', (req, res, next) => {
+  const post_id = req.body.post_id;
+  if (!post_id) return res.status(400).json({ message: `no post_id was given` });
+
+  const sql = `
+  UPDATE customer
+  SET replies = $2
+  WHERE post_id = $1;
+  `
+  const params = [post_id, req.body.reply]
+
+  db.query(sql, params)
+    .then(result => {
+      if (!result){
+        return res.status(400).json({ message: `post attempt was unsuccessful`})
+      }
+      return res.status(200).json(result.rows)
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ error: 'An unexpected error occurred.' });
+    });
+  
+})
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
