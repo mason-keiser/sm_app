@@ -218,8 +218,6 @@ app.get('/api/singPost/:post_id', (req, res, next) => {
     } else {
       result.rows.forEach((i) => {
         delete i.user_password
-        delete i.user_profile_image
-        delete i.user_header_image
       })
       db.query(sql2, [result.rows[0].post_id])
       .then(result2 => {
@@ -228,8 +226,6 @@ app.get('/api/singPost/:post_id', (req, res, next) => {
         } else {
           result2.rows.forEach((i) => {
             delete i.user_password
-            delete i.user_profile_image
-            delete i.user_header_image
           })
           return res.status(200).json([{indPost: result.rows[0]},{replies: result2.rows}])
         }

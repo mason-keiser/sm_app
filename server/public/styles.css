@@ -1431,6 +1431,10 @@ CSS FOR PROFILE PAGE
     object-fit: cover;
 }
 
+.box {
+    height: 15vh
+}
+
 @media screen and (max-width: 470px) {
 
     #upi {

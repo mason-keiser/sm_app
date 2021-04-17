@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from "react"
 import Bg from "./bg"
+import Reply_Card from './reply_card'
 
 const Ind_Post = (props) => {
     const [replies, setReplies] = useState();
@@ -98,7 +99,23 @@ const Ind_Post = (props) => {
 
     const loadReplies = (replies === undefined || replies.length == 0)
         ? <div className='nm' style={{textAlign: 'center', marginTop: '4rem'}}>No Other Replies</div>
-        : <div>there are replies</div>
+        : (replies.map((reply, index) => {
+            return(
+                <div className='singPost m-auto' key={index}>
+                    <Reply_Card
+                    viewIndPost={props.viewIndPost}
+                    postId={props.postId}
+                    setView={props.setView}
+                    setPostId={props.setPostId}
+                    likePost={props.likePost}
+                    user={props.user}
+                    reply={reply}
+                    key={reply.post_id}
+                    />
+                </div>
+            );
+        })
+    )
 
     useEffect(() => {
         if (props.indPost !== undefined) {
@@ -106,6 +123,9 @@ const Ind_Post = (props) => {
         } 
     }, [props.indPost])
     
+    const refresh = () => {
+
+    }
 
     return (
         <div>
