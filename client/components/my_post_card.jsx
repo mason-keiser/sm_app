@@ -2,6 +2,32 @@ import { useEffect, useState } from "react"
 import React from 'react'
 
 const My_Post_Card = (props) => {
+    const [r, setR] = useState()
+
+    const getReps = () => {
+        fetch('/api/replyz/' + props.post.post_id, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json'}
+        })
+        .then(response => {
+            if (response.status === 400 || response.status === 404) {
+                return null
+            } else {
+                return response.json();
+            }
+        })
+            .then(result => {
+                if (!result) {
+                    return null
+                } else {
+                    setR(result)
+                }
+            }) 
+    }
+
+    useEffect(() => {
+        getReps()
+    }, [])
 
     const profImage = (!props.user.user_profile_image) 
         ? (
@@ -17,8 +43,8 @@ const My_Post_Card = (props) => {
                 </div>
             </div>
         )
-
-    const replies = (props.post.replies == null ) ? 0 : props.post.replies.length  
+    
+    const replies = (!r ) ? 0 : r.length  
 
     const handleLike = (event) => {
         props.setPostId(event.target.id)
