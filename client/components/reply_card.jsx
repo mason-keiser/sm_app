@@ -23,7 +23,7 @@ const Reply_Card = (props) => {
                 {profImage}
                 <div className='nice co d-flex flex-column justify-content-evenly p-2'>
                     <h6 className='sm l nm mt-3'>{`${props.reply.user_name}`}</h6>
-                    <div style={{cursor: 'pointer'}} className='sm l nm mt-3 ml-2'>{props.reply.reply}</div>
+                    <div style={{cursor: 'pointer'}} className='sm l nm mt-3 '>{props.reply.reply}</div>
                 </div>
             </div>
         </div>

@@ -224,9 +224,6 @@ app.get('/api/singPost/:post_id', (req, res, next) => {
         if (!result2) {
           return res.status(400).json({ message: `post attempt was unsuccessful` });
         } else {
-          result2.rows.forEach((i) => {
-            delete i.user_password
-          })
           return res.status(200).json([{indPost: result.rows[0]},{replies: result2.rows}])
         }
       })
