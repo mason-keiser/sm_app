@@ -155,6 +155,9 @@ const Ind_Post = (props) => {
                 </div>
                 }
                 {loadReplies}
+                <div className='replyButton'>
+                    <button>Reply</button>
+                </div>
              </div>
             <Bg/>
         </div>
