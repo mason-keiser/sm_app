@@ -191,10 +191,9 @@ COPY public.posts (post_id, user_id, post, post_image, likes) FROM stdin;
 2	16	Time to go surfing	\N	10
 4	16	going to go get in n out for the 12th time!	\N	20
 23	19	Can’t wait to finish this app 	\N	8
-25	19	yooooo	\N	12
 22	19	new guest post	\N	28
-24	19	post	\N	6
 3	16	example post from the backend	\N	14
+26	16	At the tail end of this proj, can’t wait for the next	\N	6
 \.
 
 
@@ -223,7 +222,7 @@ COPY public.users (user_id, user_name, user_password, user_bio, user_profile_ima
 -- Name: posts_post_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.posts_post_id_seq', 25, true);
+SELECT pg_catalog.setval('public.posts_post_id_seq', 26, true);
 
 
 --
