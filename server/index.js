@@ -105,7 +105,8 @@ app.get('/api/login/:user_name/:user_password/', (req, res, next) => {
 app.get('/api/getPosts', (req, res, next) => {
   const sql = `
   SELECT * FROM posts
-  INNER JOIN users ON posts.user_id=users.user_id
+  LEFT JOIN users ON posts.user_id=users.user_id
+  
   `
   db.query(sql)
   .then(result => {
@@ -217,13 +218,20 @@ app.get('/api/singPost/:post_id', (req, res, next) => {
     } else {
       result.rows.forEach((i) => {
         delete i.user_password
+        delete i.user_profile_image
+        delete i.user_header_image
       })
       db.query(sql2, [result.rows[0].post_id])
       .then(result2 => {
         if (!result2) {
           return res.status(400).json({ message: `post attempt was unsuccessful` });
         } else {
-          return res.status(200).json([{indPost: result.rows[0]},{replies: result2.rows[0]}])
+          result2.rows.forEach((i) => {
+            delete i.user_password
+            delete i.user_profile_image
+            delete i.user_header_image
+          })
+          return res.status(200).json([{indPost: result.rows[0]},{replies: result2.rows}])
         }
       })
 
@@ -391,6 +399,29 @@ app.post('/api/postReply', (req, res, next) => {
     });
   
 })
+
+// API TO GET ALL REPLIES
+
+app.get('/api/replyz/:post_id', (req, res, next) => {
+  const post_id = req.params.post_id;
+  const sql = `
+  SELECT * FROM replies
+  WHERE post_id = $1
+  `
+  db.query(sql, [post_id])
+  .then(result => {
+    if (!result) {
+      return res.status(400).json({ message: `post attempt was unsuccessful` });
+    } else {
+      return res.status(200).json(result.rows)
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    res.status(500).json({ error: 'An unexpected error occurred.' });
+  });
+})
+
 
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));

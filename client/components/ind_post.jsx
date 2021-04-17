@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import Bg from "./bg"
 
 const Ind_Post = (props) => {
+    const [replies, setReplies] = useState();
 
     useEffect(() => {
         const iconHolder = document.querySelector('.toggIconHolder')
@@ -56,7 +57,7 @@ const Ind_Post = (props) => {
             bg.firstChild.style.backgroundColor='#262626'
             menu.style.background ='#262626'
         }
-    },[props.nightMode, props.indPost, props])
+    },[props.nightMode, props.indPost, replies])
 
     const toggler = () => {
         if (props.nightMode == false) {
@@ -78,7 +79,7 @@ const Ind_Post = (props) => {
         props.viewIndPost(event.target.id)
     }
 
-    const replies = (props.indPost !== null) ? 0 : props.indPost[0].indPost.replies
+    const repliez = (replies === undefined || replies.length == 0) ? 0 : replies.length
 
     const profImage = (props.indPost == null || !props.indPost[0].indPost.user_profile_image ) 
     ? (
@@ -95,9 +96,16 @@ const Ind_Post = (props) => {
         </div>
     )
 
-    const loadReplies = (props.indPost !== undefined || props.indPost !== null)
+    const loadReplies = (replies === undefined || replies.length == 0)
         ? <div className='nm' style={{textAlign: 'center', marginTop: '4rem'}}>No Other Replies</div>
-        : props.indPost.replies
+        : <div>there are replies</div>
+
+    useEffect(() => {
+        if (props.indPost !== undefined) {
+            setReplies(props.indPost[1].replies)
+        } 
+    }, [props.indPost])
+    
 
     return (
         <div>
@@ -140,7 +148,7 @@ const Ind_Post = (props) => {
                         <div className='sm nm l' id='indPost'>{props.indPost[0].indPost.post}</div>
                         <div className='d-flex flex-row justify-content-center' >
                             <div className='nm fas fa-star m-3 indlikes sm' id={props.indPost[0].indPost.post_id} onClick={handleLike}><span className='sm nm m-2' id='indLikes'>{props.indPost[0].indPost.likes}</span></div>
-                            <div className='nm fas fa-comments m-3 sm'><span className='sm nm m-2'>{replies}</span></div>
+                            <div className='nm fas fa-comments m-3 sm'><span className='sm nm m-2'>{repliez}</span></div>
                         </div>
                     </div>
                 </div>
