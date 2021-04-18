@@ -134,7 +134,7 @@ const Feed = (props) => {
     }
 
     const items = (feedPosts !== null && feedPosts !== undefined) 
-    ?  (feedPosts.map((post, index) => {
+    ?  (props.posts.map((post, index) => {
             return(
                 <div className='singPost m-auto' key={index}>
                     <Post_Card
