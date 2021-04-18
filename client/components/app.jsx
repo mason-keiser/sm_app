@@ -16,6 +16,30 @@ const App = () => {
     const [nightMode, setNightMode] = useState(false)
     const [indPost, setIndPost] = useState()
     const [usersPosts, setUsersPosts] = useState()
+    const [replyModal, setReplyModal] = useState();
+
+    const postReply = (replyInfo) => {
+        fetch('/api/postReply', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify(replyInfo)
+        })
+        .then(response => {
+            if (response.status === 400 || response.status === 404) {
+                return null
+            } else {
+                return response.json();
+            }
+        })
+            .then(result => {
+                if (!result) {
+                    return null
+                } else {
+                    setReplyModal(false)
+                    viewIndPost(result[0].post_id)
+                }
+            })
+    }
 
     const getUsersPosts = (user_id) => {
         fetch('/api/getUserPosts/' + user_id, {
@@ -277,7 +301,7 @@ const App = () => {
                 : (view.name === 'feed')
                     ?<Feed setPostId={setPostId} viewIndPost={viewIndPost} nightMode={nightMode} setNightMode={setNightMode} likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                     : (view.name === 'indPost')
-                        ? <Ind_Post setPostId={setPostId} viewIndPost={viewIndPost} indPost={indPost} setIndPost={setIndPost} nightMode={nightMode} setNightMode={setNightMode} likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} view={view} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
+                        ? <Ind_Post replyModal={replyModal} setReplyModal={setReplyModal} postReply={postReply} setPostId={setPostId} viewIndPost={viewIndPost} indPost={indPost} setIndPost={setIndPost} nightMode={nightMode} setNightMode={setNightMode} likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} view={view} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                         : (view.name === 'myProfile')
                             ? <My_Profile setUser={setUser} usersPosts={usersPosts} setPostId={setPostId} viewIndPost={viewIndPost} indPost={indPost} setIndPost={setIndPost} nightMode={nightMode} setNightMode={setNightMode} likePost={likePost} postToFeed={postToFeed} getPosts={getPosts} setPosts={setPosts} posts={posts} user={user} setView={setView} view={view} dateBuilder={dateBuilder} formatAMPM={formatAMPM}/>
                             : null

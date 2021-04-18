@@ -1092,6 +1092,7 @@ CSS FOR IND POST PAGE
     position: absolute;
     left: 25vw;
     height: 100vh;
+    overflow-x: hidden;
 }
 
 @media screen and (max-width: 470px) {
@@ -1378,6 +1379,7 @@ CSS FOR PROFILE PAGE
     display: flex;
     justify-content: center;
     margin-top: 3rem;
+    margin-bottom: 1rem;
 }
 
 .replyButton > button {
@@ -1390,6 +1392,7 @@ CSS FOR PROFILE PAGE
     margin-top: 1rem;
     text-align: center;
     padding-top: 5px;
+    margin-bottom: 1rem;
     box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
 }
 
@@ -1539,6 +1542,7 @@ CSS FOR PROFILE PAGE
 
     .replyButton > button {
         width: 35vw;
+        margin-bottom: 2rem;
     }
 
     .submitReplyBtn > button {
@@ -1665,6 +1669,19 @@ CSS FOR PROFILE PAGE
 @media screen and (max-width: 340px) {
     .imageCo2 {
         top: 7rem;
+    }
+
+    .modalCont2 {
+        height: 40vh;
+    }
+
+    .di > h5 {
+        font-size: small;
+        margin-top: 10px;
+    }
+
+    .box {
+        height: 28vh;
     }
 
     .image_upload {

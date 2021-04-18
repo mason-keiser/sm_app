@@ -16,6 +16,7 @@ const My_Profile = (props) => {
     const [modal, setModal] = useState(false)
     const [settingsView, setSettingsView] = useState('home');
     const [previewSource, setPreviewSource] = useState(null)
+    const [replyModal, setReplyModal] = useState();
 
     const yes = () => {
         if (settingsView === 'cpi') {

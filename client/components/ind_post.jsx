@@ -5,7 +5,7 @@ import Reply_Card from './reply_card'
 
 const Ind_Post = (props) => {
     const [replies, setReplies] = useState();
-    const [modal, setModal] = useState();
+    const [replyModal, setReplyModal] = useState();
     const [newReply, setNewReply] = useState();
 
     useEffect(() => {
@@ -69,7 +69,7 @@ const Ind_Post = (props) => {
             bg.firstChild.style.backgroundColor='#262626'
             menu.style.background ='#262626'
         }
-    },[props.nightMode, props.indPost, replies, modal])
+    },[props.nightMode, props.indPost, replies, props.replyModal])
 
     const toggler = () => {
         if (props.nightMode == false) {
@@ -93,6 +93,22 @@ const Ind_Post = (props) => {
 
     const handleChange = (event) => {
         setNewReply(event.target.value)
+    }
+
+    const handleReplySubmit = (callback) => {
+        event.preventDefault();
+        const obj = {
+            post_id: props.indPost[0].indPost.post_id,
+            reply: newReply,
+            user_name: props.user.user_name,
+            user_profile_image: props.user.user_profile_image
+        }
+
+        if (!newReply) {
+            return console.log('no reply given')
+        } else {
+            callback(obj)
+        }
     }
 
     const repliez = (replies === undefined || replies.length == 0) ? 0 : replies.length
@@ -138,16 +154,16 @@ const Ind_Post = (props) => {
         } 
     }, [props.indPost])
 
-    const modalTerp = (modal == true) ? (
+    const modalTerp = (props.replyModal == true) ? (
         <div className='modalCont modalCont2'>
             <div className='di'>
-                <span onClick={() => setModal(false)} id='xspan' className='nm fas fa-times'></span>
+                <span onClick={() => props.setReplyModal(false)} id='xspan' className='nm fas fa-times'></span>
                 <h5 className='nm' style={{textAlign: 'center'}}>Reply to @{props.indPost[0].indPost.user_name} : </h5>
                 <div className='textarea'>
                     <textarea onChange={handleChange} placeholder='enter reply here ..' style={{resize: 'none'}} name="" id="" cols="30" rows="10"></textarea>
                 </div>
                 <div className='submitReplyBtn'>
-                    <button>Submit</button>
+                    <button onClick={() => handleReplySubmit(props.postReply)}>Submit</button>
                 </div>
             </div>
         </div>
@@ -202,7 +218,7 @@ const Ind_Post = (props) => {
                 }
                 {loadReplies}
                 <div className='replyButton'>
-                    <button onClick={() => setModal(true)}>Reply</button>
+                    <button onClick={() => props.setReplyModal(true)}>Reply</button>
                 </div>
                 {modalTerp}
              </div>
