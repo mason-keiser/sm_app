@@ -1393,9 +1393,27 @@ CSS FOR PROFILE PAGE
     box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
 }
 
+.submitReplyBtn > button {
+    background: #24B67E;
+    height: 4vh;
+    width: 10vw;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    margin-top: 2rem;
+    text-align: center;
+    padding-top: 5px;
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+}
+
+.submitReplyBtn {
+    display: flex;
+    justify-content: center;
+}
+
 .modalCont {
     z-index: 999;
-    background: white;
+    background: #F5F5F5;
     position: fixed;
     top: 50%;
     height: 30vh;
@@ -1435,7 +1453,63 @@ CSS FOR PROFILE PAGE
     height: 15vh
 }
 
+.modalCont2 {
+    left: 43vw;
+    width: 40vw;
+    height: 40vh;
+    top: 40%;
+    justify-content: unset;
+}
+
+#xspan {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+
+#xspan:hover {
+    opacity: 50%;
+    cursor: pointer;
+}
+
+.di{
+    width: 100%;
+}
+
+.di > h5 {
+    font-size: large;
+}
+
+.textarea > textarea {
+    resize: none;
+    width: 35vw;
+    height: 12vh;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+    margin-top: 2rem;
+    padding: 10px;
+    border-radius: 5px;
+}
+
 @media screen and (max-width: 470px) {
+    .textarea > textarea {
+        width: 45vw;
+        padding: 5px;
+        margin-top: 1rem;
+    }
+
+    .di > h5 {
+        font-size: medium;
+    }
+
+    .modalCont2 {
+        left: 45vw;
+    }
 
     #upi {
         height: 15vh;
@@ -1445,6 +1519,11 @@ CSS FOR PROFILE PAGE
     .modalCont {
         height: 30vh;
         width: 50vw;
+    }
+
+    .modalCont2 {
+        height: 40vh;
+        top: 30%;
     }
 
     .backButton{
@@ -1459,6 +1538,10 @@ CSS FOR PROFILE PAGE
     }
 
     .replyButton > button {
+        width: 35vw;
+    }
+
+    .submitReplyBtn > button {
         width: 35vw;
     }
 
@@ -1594,6 +1677,11 @@ CSS FOR PROFILE PAGE
         width: 30vw;
     }
 
+    .submitReplyBtn > button{
+        height: 6vh;
+        width: 30vw;
+    }
+
     .settingsCont {
         height: 30vh;
     }
@@ -1680,6 +1768,12 @@ CSS FOR PROFILE PAGE
         margin-bottom: 1rem;
     }
 
+    .submitReplyBtn > button {
+        height: 10vh;
+        width: 14vw;
+        margin-bottom: 1rem;
+    }
+
     .subBtnCont > button {
         width: 30vw;
         height: 10vh;
@@ -1728,6 +1822,11 @@ CSS FOR PROFILE PAGE
     }
 
     .replyButton > button {
+        height: 10vh;
+        width: 16vw;
+    }
+
+    .submitReplyBtn > button {
         height: 10vh;
         width: 16vw;
     }
@@ -1813,6 +1912,10 @@ CSS FOR PROFILE PAGE
         width: 15vw;
     }
 
+    .submitReplyBtn > button {
+        width: 15vw;
+    }
+
     #bio {
         height: 5vh;
     }
@@ -1859,6 +1962,10 @@ CSS FOR PROFILE PAGE
         padding-top: 10px;
     }
 
+    .submitReplyBtn > button {
+        padding-top: 10px;
+    }
+
     .backButton {
         top: 45vh;
     }
@@ -1886,6 +1993,10 @@ CSS FOR PROFILE PAGE
     .replyButton > button{
         height: 5vh;
     }
+
+    .submitReplyBtn > button{
+        height: 5vh;
+    }
 }
 
 @media screen and (orientation: landscape) and (min-width: 1300px) and (min-height: 1020px) and (max-height: 1030px) { 
@@ -1903,6 +2014,11 @@ CSS FOR PROFILE PAGE
     }
 
     .replyButton > button {
+        height: 4vh;
+        padding-top: 11px;
+    }
+
+    .submitReplyBtn> button {
         height: 4vh;
         padding-top: 11px;
     }

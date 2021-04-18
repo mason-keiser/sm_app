@@ -78,7 +78,8 @@ const My_Profile = (props) => {
             }
 
             if (mod) {
-            mod.style.background = 'white'
+            mod.style.background = '#F5F5F5'
+            mod.style.border = '1px solid black'
             }
             headerbg.style.background='black'
             userI.style.color = 'black'
@@ -111,8 +112,8 @@ const My_Profile = (props) => {
                 men2.style.color = '#24B67E'
             }
             if (mod) {
-                mod.style.background = 'black'
-                mod.style.border = '1px solid white'
+                mod.style.background = '#262626'
+                mod.style.border = '1px solid black'
             }
             headerbg.style.background='white'
             userI.style.color = 'white'

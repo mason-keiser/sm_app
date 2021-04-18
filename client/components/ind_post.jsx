@@ -5,6 +5,8 @@ import Reply_Card from './reply_card'
 
 const Ind_Post = (props) => {
     const [replies, setReplies] = useState();
+    const [modal, setModal] = useState();
+    const [newReply, setNewReply] = useState();
 
     useEffect(() => {
         const iconHolder = document.querySelector('.toggIconHolder')
@@ -15,6 +17,7 @@ const Ind_Post = (props) => {
         const userI = document.getElementById('userI')
         const menu = document.getElementById('menu')
         const image = document.querySelectorAll('.profileImageCont')
+        const mod = document.querySelector('.modalCont')
 
         if (props.nightMode == false) {
             for (let i = 0; i < words.length; i++ ) {
@@ -25,6 +28,10 @@ const Ind_Post = (props) => {
                 image[j].style.color = 'black'
                 image[j].style.background = 'white'
             }
+            if (mod) {
+                mod.style.background = '#F5F5F5'
+                mod.style.border = '1px solid black'
+                }
             userI.style.color = 'black'
             iconHolder.style.float = 'right'
             iconHolder.classList.remove('d')
@@ -46,6 +53,10 @@ const Ind_Post = (props) => {
                 image[j].style.color = 'white'
                 image[j].style.background = 'black'
             }
+            if (mod) {
+                mod.style.background = '#262626'
+                mod.style.border = '1px solid black'
+            }
             userI.style.color = 'white'
             iconHolder.style.float = 'left'
             iconHolder.classList.add('d')
@@ -58,7 +69,7 @@ const Ind_Post = (props) => {
             bg.firstChild.style.backgroundColor='#262626'
             menu.style.background ='#262626'
         }
-    },[props.nightMode, props.indPost, replies])
+    },[props.nightMode, props.indPost, replies, modal])
 
     const toggler = () => {
         if (props.nightMode == false) {
@@ -78,6 +89,10 @@ const Ind_Post = (props) => {
 
         props.likePost(obj)
         props.viewIndPost(event.target.id)
+    }
+
+    const handleChange = (event) => {
+        setNewReply(event.target.value)
     }
 
     const repliez = (replies === undefined || replies.length == 0) ? 0 : replies.length
@@ -122,10 +137,21 @@ const Ind_Post = (props) => {
             setReplies(props.indPost[1].replies)
         } 
     }, [props.indPost])
-    
-    const refresh = () => {
 
-    }
+    const modalTerp = (modal == true) ? (
+        <div className='modalCont modalCont2'>
+            <div className='di'>
+                <span onClick={() => setModal(false)} id='xspan' className='nm fas fa-times'></span>
+                <h5 className='nm' style={{textAlign: 'center'}}>Reply to @{props.indPost[0].indPost.user_name} : </h5>
+                <div className='textarea'>
+                    <textarea onChange={handleChange} placeholder='enter reply here ..' style={{resize: 'none'}} name="" id="" cols="30" rows="10"></textarea>
+                </div>
+                <div className='submitReplyBtn'>
+                    <button>Submit</button>
+                </div>
+            </div>
+        </div>
+    ) : null
 
     return (
         <div>
@@ -176,8 +202,9 @@ const Ind_Post = (props) => {
                 }
                 {loadReplies}
                 <div className='replyButton'>
-                    <button>Reply</button>
+                    <button onClick={() => setModal(true)}>Reply</button>
                 </div>
+                {modalTerp}
              </div>
             <Bg/>
         </div>
