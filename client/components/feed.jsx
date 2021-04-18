@@ -104,7 +104,7 @@ const Feed = (props) => {
                 bg.firstChild.style.backgroundColor='#262626'
                 menu.style.background ='#262626'
             }
-        },[props.nightMode, props.posts])
+        },[props.nightMode, props.posts, feedPosts])
 
     const toggler = () => {
         if (props.nightMode == false) {
