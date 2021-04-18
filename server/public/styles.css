@@ -980,7 +980,7 @@ HOME FEED CSS
     }
 
     .singPost{
-        height: 20vh;
+        height: 28vh;
         
     }
 
@@ -1671,6 +1671,10 @@ CSS FOR PROFILE PAGE
         top: 7rem;
     }
 
+    .textarea > textarea {
+        font-size: small;
+    }
+
     .modalCont2 {
         height: 40vh;
     }
@@ -1754,11 +1758,31 @@ CSS FOR PROFILE PAGE
         top: 65vh;
         left: 5px;
     }
+
+    .box {
+        height: 23vh;
+    }
 }
 
 @media screen and (orientation: landscape) and (max-height: 440px) {
     #headerbg > img {
         height: 38vh;
+    }
+
+    .textarea > textarea {
+        width: 35vw;
+        padding: 5px;
+        margin-top: 1rem;
+        height: 20vh;
+    }
+
+    .di > h5 {
+        font-size: medium;
+    }
+
+    .modalCont2 {
+        height: 60vh;
+        top: 20%
     }
     
     #useName {
@@ -1812,6 +1836,20 @@ CSS FOR PROFILE PAGE
 @media screen and (orientation: landscape) and (max-height: 340px) {
     .settingsCont {
         height: 60vh;    
+    }
+
+    .modalCont2 {
+        height: 70vh;
+        top: 19%;
+    }
+
+    .co {
+        width: 60vw;    
+    }
+
+    .textarea > textarea {
+        font-size: small;
+        height: 18vh;
     }
 
     .backButton{
@@ -1954,6 +1992,14 @@ CSS FOR PROFILE PAGE
 
     .cpiCont {
         height: 40vh;
+    }
+
+    .modalCont2{
+        height: 32vh;
+    }
+
+    .co {
+        width: 45vw;
     }
 }
 
