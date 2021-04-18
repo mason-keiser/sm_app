@@ -164,6 +164,7 @@ const App = () => {
                 } else {
                     setPosts(result)
                     getPosts()
+                    getUsersPosts(user.user_id)
                 }
             })
     }
@@ -263,7 +264,7 @@ const App = () => {
                 } else {
                     setUser({
                         user_id: result.user_id,
-                        user_bio: result[0].user_bio,
+                        user_bio: result.user_bio ? result.user_bio : null,
                         user_name: result.user_name,
                         user_profile_image: result.user_profile_image ? result.user_profile_image : null,
                         user_profile_header: result.user_profile_header ? result.user_header_image : null

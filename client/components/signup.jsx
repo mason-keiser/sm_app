@@ -41,6 +41,7 @@ const Signup = (props) => {
         const obj = {
             user_name: user_name,
             user_password: newPass,
+            user_bio: null,
         }
         if (!obj) {
            return null
