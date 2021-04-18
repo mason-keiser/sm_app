@@ -852,9 +852,7 @@ HOME FEED CSS
         width: 40px;
     }
 
-    .box {
-        height: 25vh;
-    }
+    
 
     .profileImageCont > img{
         height: 40px;
@@ -1546,6 +1544,10 @@ CSS FOR PROFILE PAGE
         width: 45vw;
         padding: 5px;
         margin-top: 1rem;
+    }
+
+    .box {
+        height: 25vh;
     }
 
     .di > h5 {
