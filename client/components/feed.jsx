@@ -9,10 +9,48 @@ import {
 
 const Feed = (props) => {
     const [newPost, setNewPost] = useState();
+    const [feedPosts, setFeedPosts] = useState();
 
     useEffect(() => {
-        props.getPosts()
+        getPosts()
+        if (!feedPosts) {
+            document.querySelector('.lds-ring').style.display = 'unset'
+        } else {
+            document.querySelector('.lds-ring').style.display = 'none'
+        }
     }, []) 
+
+    useEffect(() => {
+        if (!feedPosts) {
+            document.querySelector('.lds-ring').style.display = 'unset'
+        } else {
+            document.querySelector('.lds-ring').style.display = 'none'
+        }
+    },[feedPosts])
+
+
+    const getPosts = () => {
+        fetch('/api/getPosts', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json'}
+        })
+        .then(response => {
+            if (response.status === 400 || response.status === 404) {
+                return null
+            } else {
+                return response.json();
+            }
+        })
+            .then(result => {
+                if (!result) {
+                    return null
+                } else {
+                    result.sort((a, b) => (b.post_id > a.post_id) ? 1 : -1)
+                    props.setPosts(result)
+                    setFeedPosts(result)
+                }
+            })
+    }
 
     useEffect(() => {
             const iconHolder = document.querySelector('.toggIconHolder')
@@ -95,8 +133,8 @@ const Feed = (props) => {
         setNewPost('')
     }
 
-    const items = (props.posts !== null && props.posts !== undefined) 
-    ?  (props.posts.map((post, index) => {
+    const items = (feedPosts !== null && feedPosts !== undefined) 
+    ?  (feedPosts.map((post, index) => {
             return(
                 <div className='singPost m-auto' key={index}>
                     <Post_Card
@@ -104,6 +142,7 @@ const Feed = (props) => {
                     postId={props.postId}
                     setView={props.setView}
                     setPostId={props.setPostId}
+                    setIndPost = {props.setIndPost}
                     likePost={props.likePost}
                     post={post}
                     key={post.post_id}
@@ -112,7 +151,7 @@ const Feed = (props) => {
             );
         })
     )
-    : <h2 className="empty mt-5 m-auto">No Posts available</h2>
+    : null
 
     return (
         <div>
@@ -146,6 +185,7 @@ const Feed = (props) => {
                     </div>
                     <div id='feedCont' className='row-cols-lg-2'>
                         {items}
+                        <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
                     </div>
                     <div className='toTop' onClick={() => scroll.scrollToTop()}>
                         <div className='fas fa-chevron-up' style={{color: 'white'}}></div>    
