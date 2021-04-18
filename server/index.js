@@ -366,18 +366,17 @@ app.put('/api/changeHeaderImg', (req, res, next) => {
 
 app.post('/api/postReply', (req, res, next) => {
   const post_id = req.body.post_id;
-  const user_id = req.body.user_id;
   const user_name = req.body.user_name;
   const user_profile_image = req.body.user_profile_image;
   const reply = req.body.reply;
 
   const sql = `
-  INSERT INTO replies ("post_id", "user_id", "user_name", "user_profile_image", "reply")
-      VALUES ($1, $2, $3, $4, $5) 
+  INSERT INTO replies ("post_id", "user_name", "user_profile_image", "reply")
+      VALUES ($1, $2, $3, $4) 
       RETURNING *
   `
 
-  const params = [post_id, user_id, user_name, user_profile_image, reply]
+  const params = [post_id, user_name, user_profile_image, reply]
 
   db.query(sql, params)
     .then(result => {
