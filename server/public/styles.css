@@ -1456,7 +1456,7 @@ CSS FOR PROFILE PAGE
 .modalCont2 {
     left: 43vw;
     width: 40vw;
-    height: 40vh;
+    height: 37vh;
     top: 40%;
     justify-content: unset;
 }
@@ -1522,7 +1522,7 @@ CSS FOR PROFILE PAGE
     }
 
     .modalCont2 {
-        height: 40vh;
+        height: 35vh;
         top: 30%;
     }
 
