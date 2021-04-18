@@ -852,6 +852,10 @@ HOME FEED CSS
         width: 40px;
     }
 
+    .box {
+        height: 25vh;
+    }
+
     .profileImageCont > img{
         height: 40px;
         width: 40px;
