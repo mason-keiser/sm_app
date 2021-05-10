@@ -1,2 +1,2 @@
 # sm_app
-A Full-Stack social media application made with React Hooks.
+A full-stack social media application made with React Hooks.
