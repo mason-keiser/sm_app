@@ -14,7 +14,13 @@ A full-stack social media application made with React Hooks.
 * Bootstrap 4
 * AWS EC2
 # Features
-
+* User can create/log into account
+* User can create a post for the feed
+* User can respond to feed posts
+* User can like a post
+* User can upload/change bio
+* User can upload/change profile picture
+* User can upload/change profile header
 # Development
 ## System Requirements
 * Node.js 10 or higher
